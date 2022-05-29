@@ -131,12 +131,11 @@ if (dataFile) {
   timekeeperStore.data = dataFile;
 }
 
-if (configurationStore.isAutoSave === true)
-  handleAutoSave(isShown, text, isPositive);
+if (configurationStore.isAutoSave === true) handleAutoSave();
 
 // auto save
 configurationStore.$subscribe(() => {
-  handleAutoSave(isShown, text, isPositive);
+  handleAutoSave();
 });
 
 const toggleLeftDrawer = () => {
