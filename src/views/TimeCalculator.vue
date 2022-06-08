@@ -5,28 +5,28 @@
         type="text"
         filled
         v-model="store.startTime"
-        label="Arbeitsstart"
+        :label="t('work_time_start')"
         mask="##:##"
       ></q-input>
       <q-input
         type="text"
         filled
         v-model="store.breakTime"
-        label="Pause"
+        :label="t('break')"
         mask="##:##"
       ></q-input>
       <q-input
         type="text"
         filled
         v-model="store.endTime"
-        label="Arbeitsende"
+        :label="t('work_time_end')"
         mask="##:##"
       ></q-input>
       <div class="q-pt-md">
         <span class="q-pr-sm text-h6"
           >{{ calculateTime ? calculateTime : 0 }}
         </span>
-        <span>Arbeitszeit (in Stunden)</span>
+        <span>{{ t("work_time_in_hours") }}</span>
       </div>
     </div>
   </q-page>
@@ -36,6 +36,9 @@
 import { computed } from "vue";
 import { subHours, subMinutes } from "date-fns";
 import useTimeCalculatorStore from "@/stores/useTimeCalculatorStore";
+import { useI18n } from "vue-i18n";
+
+const { t, n, locale } = useI18n();
 
 const store = useTimeCalculatorStore();
 
@@ -63,9 +66,7 @@ const calculateTime = computed(() => {
 
     const hour = temp.getHours();
     const minutesInHours = temp.getMinutes() / 60;
-    return (Math.round((hour + minutesInHours) * 100) / 100).toLocaleString(
-      "de-DE"
-    );
+    return n(hour + minutesInHours, "decimal", locale.value);
   }
   return undefined;
 });

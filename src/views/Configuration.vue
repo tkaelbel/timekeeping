@@ -6,7 +6,7 @@
           type="text"
           filled
           v-model="configurationStore.weeklyHoursWorking"
-          label="Wochenarbeitszeit (Stunden)"
+          :label="t('weekly_work_time')"
           style="width: 250px; padding-bottom: 32px"
           mask="###"
         />
@@ -15,7 +15,7 @@
           type="text"
           filled
           v-model="configurationStore.yearlyVacationDays"
-          label="Urlaubstage"
+          :label="t('vacation_days')"
           style="width: 250px; padding-bottom: 32px"
           mask="###"
         />
@@ -24,14 +24,14 @@
           type="text"
           filled
           v-model="configurationStore.autoSaveTimeSeconds"
-          label="Auto. Speichern (Sekunden)"
+          :label="t('auto_save')"
           style="width: 250px; padding-bottom: 32px"
           mask="#####"
         />
 
         <div>
           <q-btn
-            label="Speichern"
+            :label="t('save')"
             type="submit"
             color="primary"
             @click="onApply"
@@ -45,7 +45,9 @@
 <script setup lang="ts">
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const configurationStore = useConfigurationStore();
 
 const onApply = async () => {

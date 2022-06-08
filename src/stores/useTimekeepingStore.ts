@@ -27,11 +27,7 @@ export default defineStore("timekeepingStore", {
       const { calculatedWeekOvertime } = calculateAdditionalInfos(this.data);
       if (calculatedWeekOvertime === 0) return 0;
 
-      return calculatedWeekOvertime % 1 === 0
-        ? calculatedWeekOvertime
-        : Number(
-            (Math.round(calculatedWeekOvertime * 100) / 100).toFixed(2)
-          ).toLocaleString("de-DE");
+      return calculatedWeekOvertime;
     },
     calculateRestVactionDays() {
       const { calculatedRestVacation } = calculateAdditionalInfos(this.data);
@@ -42,11 +38,7 @@ export default defineStore("timekeepingStore", {
         useConfigurationStore().yearlyVacationDays -
         calculatedRestVacation / dayHoursMustWork;
 
-      return daysRest % 1 === 0
-        ? daysRest
-        : Number((Math.round(daysRest * 100) / 100).toFixed(2)).toLocaleString(
-            "de-DE"
-          );
+      return daysRest;
     },
   },
 });

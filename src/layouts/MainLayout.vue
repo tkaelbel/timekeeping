@@ -14,19 +14,24 @@
         </div>
 
         <div class="gt-sm">
-          <q-btn flat icon="schedule" label="Zeiterassung" to="/" />
+          <q-btn flat icon="schedule" :label="t('time_keeper')" to="/" />
           <q-btn
             flat
             icon="calculate"
-            label="Zeitrechner"
+            :label="t('time_calculator')"
             to="/timecalculator"
           />
-          <q-btn flat icon="build" label="Konfiguration" to="/configuration" />
+          <q-btn
+            flat
+            icon="build"
+            :label="t('configuration')"
+            to="/configuration"
+          />
         </div>
 
-        <div>
+        <div class="gt-sm absolute-right">
+          <language-dropdown></language-dropdown>
           <q-toggle
-            class="fixed-top-right"
             color="secondary"
             v-model="isAutoSave"
             checked-icon="save"
@@ -34,7 +39,7 @@
             size="lg"
           >
             <q-tooltip>
-              Automatisches Speichern ist {{ isAutoSave ? "an" : "aus" }}
+              {{ isAutoSave ? t("auto_save_on") : t("auto_save_off") }}
             </q-tooltip>
           </q-toggle>
         </div>
@@ -47,21 +52,21 @@
           <q-item-section avatar>
             <q-icon name="schedule" size="25px" />
           </q-item-section>
-          <q-item-section>Zeiterfassung</q-item-section>
+          <q-item-section>{{ t("time_keeper") }}</q-item-section>
         </q-item>
 
         <q-item clickable to="/timecalculator">
           <q-item-section avatar>
             <q-icon name="calculate" size="25px" />
           </q-item-section>
-          <q-item-section>Zeitrechner</q-item-section>
+          <q-item-section>{{ t("time_calculator") }}</q-item-section>
         </q-item>
 
         <q-item clickable to="/configuration">
           <q-item-section avatar>
             <q-icon name="build" size="25px" />
           </q-item-section>
-          <q-item-section>Konfiguration</q-item-section>
+          <q-item-section>{{ t("configuration") }}</q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
@@ -89,6 +94,8 @@ import useConfigurationStore from "@/stores/useConfigurationStore";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
 
 import Popup from "@/components/Popup.vue";
+import LanguageDropdown from "@/components/LanguageDropdown.vue";
+import { useI18n } from "vue-i18n";
 
 const leftDrawerOpen = ref(false);
 
@@ -98,37 +105,41 @@ const { isAutoSave } = storeToRefs(configurationStore);
 
 const timekeeperStore = useTimekeepingStore();
 
-// create data dir
-await createDataFolder();
+const { t } = useI18n();
 
-const config = (await readFile("configuration.json")) as IConfigurationStore;
-// check for existing config file
-if (config) {
-  console.debug("Loaded configuration.json successfully");
-  const {
-    yearlyVacationDays,
-    weeklyHoursWorking,
-    isAutoSave,
-    autoSaveTimeSeconds,
-  } = config;
-  configurationStore.yearlyVacationDays = yearlyVacationDays
-    ? yearlyVacationDays
-    : configurationStore.yearlyVacationDays;
-  configurationStore.weeklyHoursWorking = weeklyHoursWorking
-    ? weeklyHoursWorking
-    : configurationStore.weeklyHoursWorking;
-  configurationStore.isAutoSave = isAutoSave
-    ? isAutoSave
-    : configurationStore.isAutoSave;
-  configurationStore.autoSaveTimeSeconds = autoSaveTimeSeconds
-    ? autoSaveTimeSeconds
-    : configurationStore.autoSaveTimeSeconds;
-}
+if (import.meta.env.VITE_APP_MODE === "tauri") {
+  // create data dir
+  await createDataFolder();
 
-const dataFile = (await readFile("data.json")) as IData;
-if (dataFile) {
-  console.debug("Loaded data.json successfully");
-  timekeeperStore.data = dataFile;
+  const config = (await readFile("configuration.json")) as IConfigurationStore;
+  // check for existing config file
+  if (config) {
+    console.debug("Loaded configuration.json successfully");
+    const {
+      yearlyVacationDays,
+      weeklyHoursWorking,
+      isAutoSave,
+      autoSaveTimeSeconds,
+    } = config;
+    configurationStore.yearlyVacationDays = yearlyVacationDays
+      ? yearlyVacationDays
+      : configurationStore.yearlyVacationDays;
+    configurationStore.weeklyHoursWorking = weeklyHoursWorking
+      ? weeklyHoursWorking
+      : configurationStore.weeklyHoursWorking;
+    configurationStore.isAutoSave = isAutoSave
+      ? isAutoSave
+      : configurationStore.isAutoSave;
+    configurationStore.autoSaveTimeSeconds = autoSaveTimeSeconds
+      ? autoSaveTimeSeconds
+      : configurationStore.autoSaveTimeSeconds;
+  }
+
+  const dataFile = (await readFile("data.json")) as IData;
+  if (dataFile) {
+    console.debug("Loaded data.json successfully");
+    timekeeperStore.data = dataFile;
+  }
 }
 
 if (configurationStore.isAutoSave === true) handleAutoSave();

@@ -2,69 +2,14 @@
   <q-page padding>
     <div class="q-gutter-md row">
       <div class="q-gutter-md">
-        <div class="monthpicker">
-          <div class="monthpicker-header">
-            <q-btn
-              dense
-              flat
-              icon="chevron_left"
-              round
-              @click="changeYear(false)"
-            ></q-btn>
-            {{ currentDate.getFullYear() }}
-            <q-btn
-              dense
-              flat
-              icon="chevron_right"
-              round
-              @click="changeYear(true)"
-            ></q-btn>
-          </div>
-          <div class="monthpicker-months">
-            <q-btn
-              :key="month.getTime()"
-              v-for="month in displayedMonths"
-              :label="
-                month.toLocaleDateString('de-DE', {
-                  month: 'short',
-                })
-              "
-              no-caps
-              no-outline
-              no-ripple
-              rounded
-              @click="selectMonth(month)"
-            ></q-btn>
-          </div>
-        </div>
-
+        <month-picker />
         <div class="q-gutter-md column">
-          <q-card class="my-card">
-            <q-card-section>
-              <div class="text-h6">Information</div>
-            </q-card-section>
-
-            <q-card-section class="q-pt-none">
-              Wochenarbeiszeit Soll: {{ configStore.weeklyHoursWorking }}
-            </q-card-section>
-
-            <q-card-section>
-              Gesamtüberstunden: {{ calculateOverallOvertime }}
-            </q-card-section>
-
-            <q-card-section>
-              Urlaubstage: {{ configStore.yearlyVacationDays }}</q-card-section
-            >
-
-            <q-card-section>
-              Urlaubstage Rest: {{ calculateRestVactionDays }}</q-card-section
-            >
-          </q-card>
+          <information-card />
         </div>
 
         <div class="q-gutter-md column">
           <q-btn
-            label="Speichern"
+            :label="t('save')"
             type="submit"
             color="primary"
             @click="onSave"
@@ -76,212 +21,61 @@
         <q-markup-table>
           <thead>
             <tr>
-              <th class="text-center">KW</th>
-              <th class="text-center">Montag</th>
-              <th class="text-center">Dienstag</th>
-              <th class="text-center">Mittwoch</th>
-              <th class="text-center">Donnerstag</th>
-              <th class="text-center">Freitag</th>
-              <th class="text-center">Samstag</th>
-              <th class="text-center">Sonntag</th>
-              <th class="text-center">Woche</th>
-              <th class="text-center">Überstunden</th>
+              <th class="text-center">{{ t("calendar_week") }}</th>
+              <th class="text-center">{{ t("monday") }}</th>
+              <th class="text-center">{{ t("tuesday") }}</th>
+              <th class="text-center">{{ t("wednesday") }}</th>
+              <th class="text-center">{{ t("thursday") }}</th>
+              <th class="text-center">{{ t("friday") }}</th>
+              <th class="text-center">{{ t("saturday") }}</th>
+              <th class="text-center">{{ t("sunday") }}</th>
+              <th class="text-center">{{ t("week") }}</th>
+              <th class="text-center">{{ t("overtime") }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="weekday in allDaysOfMonth.keys()" :key="weekday">
-              <td class="text-left">{{ weekday }}</td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.monday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.monday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
+            <tr
+              v-for="[calendarWeek, weekday] in allDaysOfMonth"
+              :key="calendarWeek"
+            >
+              <td class="text-left">{{ calendarWeek }}</td>
+
+              <td class="text-center" v-for="day in weekday">
+                <div v-if="day?.day">
+                  {{ d(day.day, "weekday", locale) }}
                   <div class="q-gutter-md row">
                     <q-input
                       class="day-input"
                       type="number"
                       filled
-                      v-model="inputValues[weekday].monday.hours"
+                      v-model="
+                        inputValues[calendarWeek][
+                          d(day.day, 'day', 'en').toLowerCase()
+                        ].hours
+                      "
                     >
                       <q-checkbox
                         dense
                         size="xs"
-                        v-model="inputValues[weekday].monday.vacation"
-                        label="U"
+                        v-model="
+                          inputValues[calendarWeek][
+                            d(day.day, 'day', 'en').toLowerCase()
+                          ].vacation
+                        "
+                        :label="t('vacation_short')"
                         class="text-secondary text-weight-bold"
                       />
                     </q-input>
                   </div>
                 </div>
               </td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.tuesday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.tuesday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
-                  <q-input
-                    class="day-input"
-                    type="number"
-                    filled
-                    v-model="inputValues[weekday].tuesday.hours"
-                  >
-                    <q-checkbox
-                      dense
-                      size="xs"
-                      v-model="inputValues[weekday].tuesday.vacation"
-                      label="U"
-                      class="text-secondary text-weight-bold"
-                    />
-                  </q-input>
-                </div>
-              </td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.wednesday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.wednesday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
-                  <q-input
-                    class="day-input"
-                    type="number"
-                    filled
-                    v-model="inputValues[weekday].wednesday.hours"
-                  >
-                    <q-checkbox
-                      dense
-                      size="xs"
-                      v-model="inputValues[weekday].wednesday.vacation"
-                      label="U"
-                      class="text-secondary text-weight-bold"
-                    />
-                  </q-input>
-                </div>
-              </td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.thursday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.thursday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
-                  <q-input
-                    class="day-input"
-                    type="number"
-                    filled
-                    v-model="inputValues[weekday].thursday.hours"
-                  >
-                    <q-checkbox
-                      dense
-                      size="xs"
-                      v-model="inputValues[weekday].thursday.vacation"
-                      label="U"
-                      class="text-secondary text-weight-bold"
-                    />
-                  </q-input>
-                </div>
-              </td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.friday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.friday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
-                  <q-input
-                    class="day-input"
-                    type="number"
-                    filled
-                    v-model="inputValues[weekday].friday.hours"
-                  >
-                    <q-checkbox
-                      dense
-                      size="xs"
-                      v-model="inputValues[weekday].friday.vacation"
-                      label="U"
-                      class="text-secondary text-weight-bold"
-                    />
-                  </q-input>
-                </div>
-              </td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.saturday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.saturday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
-                  <q-input
-                    class="day-input"
-                    type="number"
-                    filled
-                    v-model="inputValues[weekday].saturday.hours"
-                  >
-                    <q-checkbox
-                      dense
-                      size="xs"
-                      v-model="inputValues[weekday].saturday.vacation"
-                      label="U"
-                      class="text-secondary text-weight-bold"
-                    />
-                  </q-input>
-                </div>
-              </td>
-              <td class="text-center">
-                <div v-if="allDaysOfMonth.get(weekday)?.sunday?.day">
-                  {{
-                    allDaysOfMonth
-                      .get(weekday)
-                      ?.sunday?.day.toLocaleDateString("de-DE", {
-                        day: "2-digit",
-                        month: "2-digit",
-                      })
-                  }}
-                  <q-input
-                    class="day-input"
-                    type="number"
-                    filled
-                    v-model="inputValues[weekday].sunday.hours"
-                  >
-                    <q-checkbox
-                      dense
-                      size="xs"
-                      v-model="inputValues[weekday].sunday.vacation"
-                      label="U"
-                      class="text-secondary text-weight-bold"
-                    />
-                  </q-input>
-                </div>
-              </td>
 
               <td class="text-center">
-                <div>{{ weekSums(weekday).toLocaleString("de-DE") }}</div>
+                <div>{{ n(weekSums(calendarWeek), "decimal", locale) }}</div>
               </td>
               <td class="text-center">
                 <div>
-                  {{ calculateOvertime(weekday).toLocaleString("de-DE") }}
+                  {{ n(calculateOvertime(calendarWeek), "decimal", locale) }}
                 </div>
               </td>
             </tr>
@@ -298,39 +92,18 @@ import { getAllDaysOfMonth } from "@/utils/date-utils";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
+import { useI18n } from "vue-i18n";
 
-const {
-  currentDate,
-  data,
-  calculateOverallOvertime,
-  calculateRestVactionDays,
-} = storeToRefs(useTimekeepingStore());
+import MonthPicker from "@/components/MonthPicker.vue";
+import InformationCard from "@/components/InformationCard.vue";
+
+const { t, d, n, locale } = useI18n();
+
+const { currentDate, data } = storeToRefs(useTimekeepingStore());
 
 const timeKeeperStore = useTimekeepingStore();
 
 const configStore = useConfigurationStore();
-
-const displayedMonths = computed(() => {
-  const months: Date[] = [];
-
-  for (let i = 0; i < 12; i++) {
-    months.push(new Date(currentDate.value.getFullYear(), i));
-  }
-
-  return months;
-});
-
-const changeYear = (up: boolean) => {
-  if (up) {
-    const tempDate = new Date(currentDate.value);
-    tempDate.setMonth(tempDate.getMonth() + 12);
-    currentDate.value = tempDate;
-  } else {
-    const tempDate = new Date(currentDate.value);
-    tempDate.setMonth(tempDate.getMonth() - 12);
-    currentDate.value = tempDate;
-  }
-};
 
 const allDaysOfMonth = computed(() => {
   return getAllDaysOfMonth(currentDate.value);
@@ -339,9 +112,7 @@ const allDaysOfMonth = computed(() => {
 const inputValues = computed(() => {
   const year = currentDate.value.getFullYear();
 
-  const monthName = currentDate.value.toLocaleDateString("de-DE", {
-    month: "short",
-  });
+  const monthName = d(currentDate.value, "month", locale.value);
 
   // try it with state as data holder
   const overallData = data.value;
@@ -415,10 +186,6 @@ const calculateOvertime = (cw: number) => {
   return weekSum === 0 ? 0 : weekSum - configStore.weeklyHoursWorking;
 };
 
-const selectMonth = (month: Date) => {
-  currentDate.value = month;
-};
-
 const onSave = async () => {
   try {
     await timeKeeperStore.saveData();
@@ -447,33 +214,5 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .flex-break {
   flex: 1 0 100% !important;
-}
-
-.monthpicker {
-  width: 250px;
-}
-
-.monthpicker-current {
-  font-weight: bold;
-}
-
-.monthpicker-header {
-  font-weight: bold;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.monthpicker-months {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.monthpicker-months .q-btn {
-  box-shadow: none;
-  margin: 5px 0;
-  width: 30%;
 }
 </style>
