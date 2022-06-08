@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "start vite && start tauri dev",
+    "dev": "start vite --mode tauri && start tauri dev",
+    "web": "vite --mode web",
     "build": "vue-tsc --noEmit && vite build",
     "build:tauri": "tauri build",
     "preview": "vite preview",
@@ -13,12 +14,15 @@
     "@quasar/extras": "^1.14.0",
     "@tauri-apps/api": "^1.0.0-rc.5",
     "date-fns": "^2.28.0",
+    "flag-icons": "^6.4.4",
     "pinia": "^2.0.14",
     "quasar": "^2.7.0",
     "vue": "^3.2.25",
+    "vue-i18n": "^9.2.0-beta.35",
     "vue-router": "^4.0.15"
   },
   "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^3.4.0",
     "@quasar/app": "^3.3.3",
     "@quasar/vite-plugin": "^1.0.9",
     "@tauri-apps/cli": "^1.0.0-rc.11",
