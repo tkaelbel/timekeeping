@@ -23,3 +23,7 @@ export interface IPopupStore {
   message: string;
   isPositive: boolean;
 }
+
+export interface IDarkMode {
+  isActive: boolean;
+}

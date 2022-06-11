@@ -6,11 +6,12 @@ import { createPinia } from "pinia";
 
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
+import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
 import "@quasar/extras/roboto-font-latin-ext/roboto-font-latin-ext.css";
 
-import "flag-icons";
+// import quasarIconSet from "quasar/icon-set/svg-material-icons";
 
-import quasarIconSet from "quasar/icon-set/svg-material-icons";
+import "flag-icons";
 
 // Import Quasar css
 import "quasar/dist/quasar.css";
@@ -67,7 +68,7 @@ app.use(createPinia());
 
 app.use(Quasar, {
   plugins: {},
-  iconSet: quasarIconSet,
+  // quasarIconSet: quasarIconSet,
 });
 
 app.use(router);

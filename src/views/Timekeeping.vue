@@ -11,17 +11,21 @@
           <q-btn
             :label="t('save')"
             type="submit"
-            color="primary"
             @click="onSave"
+            :class="darkModeStore.isActive ? 'dark-button' : 'light-button'"
           />
         </div>
       </div>
 
       <div class="q-gutter-md col row">
-        <q-markup-table>
+        <q-markup-table
+          :class="darkModeStore.isActive ? 'dark-secondary' : 'primary'"
+        >
           <thead>
             <tr>
-              <th class="text-center">{{ t("calendar_week") }}</th>
+              <th class="text-center">
+                {{ t("calendar_week") }}
+              </th>
               <th class="text-center">{{ t("monday") }}</th>
               <th class="text-center">{{ t("tuesday") }}</th>
               <th class="text-center">{{ t("wednesday") }}</th>
@@ -48,6 +52,7 @@
                       class="day-input"
                       type="number"
                       filled
+                      :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
                       v-model="
                         inputValues[calendarWeek][
                           d(day.day, 'day', 'en').toLowerCase()
@@ -62,6 +67,7 @@
                             d(day.day, 'day', 'en').toLowerCase()
                           ].vacation
                         "
+                        :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
                         :label="t('vacation_short')"
                         class="text-secondary text-weight-bold"
                       />
@@ -96,6 +102,7 @@ import { useI18n } from "vue-i18n";
 
 import MonthPicker from "@/components/MonthPicker.vue";
 import InformationCard from "@/components/InformationCard.vue";
+import useDarkModeStore from "@/stores/useDarkModeStore";
 
 const { t, d, n, locale } = useI18n();
 
@@ -104,6 +111,8 @@ const { currentDate, data } = storeToRefs(useTimekeepingStore());
 const timeKeeperStore = useTimekeepingStore();
 
 const configStore = useConfigurationStore();
+
+const darkModeStore = useDarkModeStore();
 
 const allDaysOfMonth = computed(() => {
   return getAllDaysOfMonth(currentDate.value);
@@ -201,6 +210,10 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.q-table th {
+  font-size: 14px;
 }
 
 .q-field__append {

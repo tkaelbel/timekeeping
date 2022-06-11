@@ -9,6 +9,7 @@
           :label="t('weekly_work_time')"
           style="width: 250px; padding-bottom: 32px"
           mask="###"
+          :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
         />
 
         <q-input
@@ -18,6 +19,7 @@
           :label="t('vacation_days')"
           style="width: 250px; padding-bottom: 32px"
           mask="###"
+          :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
         />
 
         <q-input
@@ -27,13 +29,14 @@
           :label="t('auto_save')"
           style="width: 250px; padding-bottom: 32px"
           mask="#####"
+          :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
         />
 
         <div>
           <q-btn
             :label="t('save')"
             type="submit"
-            color="primary"
+            :class="darkModeStore.isActive ? 'dark-button' : 'light-button'"
             @click="onApply"
           />
         </div>
@@ -44,11 +47,14 @@
 
 <script setup lang="ts">
 import useConfigurationStore from "@/stores/useConfigurationStore";
+import useDarkModeStore from "@/stores/useDarkModeStore";
 import usePopupStore from "@/stores/usePopupStore";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const configurationStore = useConfigurationStore();
+
+const darkModeStore = useDarkModeStore();
 
 const onApply = async () => {
   try {

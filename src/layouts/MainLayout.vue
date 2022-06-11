@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar :class="darkModeStore.isActive ? 'dark-primary' : 'primary'">
         <div class="lt-md">
           <q-btn
             flat
@@ -30,6 +30,11 @@
         </div>
 
         <div class="gt-sm absolute-right">
+          <q-btn
+            flat
+            :icon="darkModeStore.isActive ? 'dark_mode' : 'o_dark_mode'"
+            @click="toggleMode"
+          />
           <language-dropdown></language-dropdown>
           <q-toggle
             color="secondary"
@@ -96,6 +101,8 @@ import useTimekeepingStore from "@/stores/useTimekeepingStore";
 import Popup from "@/components/Popup.vue";
 import LanguageDropdown from "@/components/LanguageDropdown.vue";
 import { useI18n } from "vue-i18n";
+import { useQuasar } from "quasar";
+import useDarkModeStore from "@/stores/useDarkModeStore";
 
 const leftDrawerOpen = ref(false);
 
@@ -104,6 +111,15 @@ const configurationStore = useConfigurationStore();
 const { isAutoSave } = storeToRefs(configurationStore);
 
 const timekeeperStore = useTimekeepingStore();
+
+const darkModeStore = useDarkModeStore();
+
+const q = useQuasar();
+
+const toggleMode = () => {
+  q.dark.toggle();
+  darkModeStore.isActive = q.dark.isActive;
+};
 
 const { t } = useI18n();
 

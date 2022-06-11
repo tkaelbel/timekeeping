@@ -16,7 +16,8 @@ export default defineConfig({
       template: { transformAssetUrls },
     }),
     quasar({
-      sassVariables: "src/quasar-variables.sass",
+      runMode: "web-client",
+      // sassVariables: "src/quasar.variables.sass",
     }),
     vueI18n({
       // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
