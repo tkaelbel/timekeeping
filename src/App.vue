@@ -14,7 +14,7 @@ body.body--dark {
 }
 
 .dark-primary {
-  background-color: #354348;
+  background-color: #354348 !important;
 }
 
 .dark-primary-color {
@@ -23,6 +23,10 @@ body.body--dark {
 
 .light-primary-color {
   color: $primary !important;
+}
+
+.dark-bg-negative {
+  background-color: #831e02 !important;
 }
 
 .dark-button {
