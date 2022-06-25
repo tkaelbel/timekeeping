@@ -26,14 +26,14 @@
         no-outline
         no-ripple
         rounded
-        :class="darkModeStore.isActive ? 'dark-button' : 'light-button'"
+        :class="isDarkMode ? 'dark-button' : 'light-button'"
         @click="selectMonth(month)"
       ></q-btn>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import useDarkModeStore from "@/stores/useDarkModeStore";
+import useConfigurationStore from "@/stores/useConfigurationStore";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
@@ -41,7 +41,7 @@ import { useI18n } from "vue-i18n";
 
 const { d, locale } = useI18n();
 
-const darkModeStore = useDarkModeStore();
+const { isDarkMode } = storeToRefs(useConfigurationStore());
 
 const { currentDate } = storeToRefs(useTimekeepingStore());
 

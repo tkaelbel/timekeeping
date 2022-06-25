@@ -64,15 +64,6 @@ const numberFormats = {
 
 const app = createApp(App);
 
-app.use(createPinia());
-
-app.use(Quasar, {
-  plugins: {},
-  // quasarIconSet: quasarIconSet,
-});
-
-app.use(router);
-
 const i18n = createI18n({
   locale: "en",
   datetimeFormats,
@@ -84,5 +75,14 @@ const i18n = createI18n({
 });
 
 app.use(i18n);
+
+app.use(createPinia());
+
+app.use(Quasar, {
+  plugins: {},
+  // quasarIconSet: quasarIconSet,
+});
+
+app.use(router);
 
 app.mount("#app");

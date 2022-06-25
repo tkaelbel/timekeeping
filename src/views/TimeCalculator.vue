@@ -7,7 +7,7 @@
         v-model="store.startTime"
         :label="t('work_time_start')"
         mask="##:##"
-        :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
       ></q-input>
       <q-input
         type="text"
@@ -15,7 +15,7 @@
         v-model="store.breakTime"
         :label="t('break')"
         mask="##:##"
-        :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
       ></q-input>
       <q-input
         type="text"
@@ -23,7 +23,7 @@
         v-model="store.endTime"
         :label="t('work_time_end')"
         mask="##:##"
-        :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
       ></q-input>
       <div class="q-pt-md">
         <span class="q-pr-sm text-h6"
@@ -40,13 +40,14 @@ import { computed } from "vue";
 import { subHours, subMinutes } from "date-fns";
 import useTimeCalculatorStore from "@/stores/useTimeCalculatorStore";
 import { useI18n } from "vue-i18n";
-import useDarkModeStore from "@/stores/useDarkModeStore";
+import useConfigurationStore from "@/stores/useConfigurationStore";
+import { storeToRefs } from "pinia";
 
 const { t, n, locale } = useI18n();
 
 const store = useTimeCalculatorStore();
 
-const darkModeStore = useDarkModeStore();
+const { isDarkMode } = storeToRefs(useConfigurationStore());
 
 const getDateFromInput = (time: string): Date => {
   const date = new Date();

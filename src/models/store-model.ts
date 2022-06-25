@@ -16,6 +16,8 @@ export interface IConfigurationStore {
   yearlyVacationDays: number;
   isAutoSave: boolean;
   autoSaveTimeSeconds: number;
+  isDarkMode: boolean;
+  locale: string;
 }
 
 export interface IPopupStore {

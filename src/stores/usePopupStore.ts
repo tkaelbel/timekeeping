@@ -1,6 +1,6 @@
 import { IPopupStore } from "@/models/store-model";
 import { defineStore } from "pinia";
-import { useI18n } from "vue-i18n";
+import { ComposerTranslation } from "vue-i18n";
 
 export default defineStore("popup", {
   state: () =>
@@ -10,9 +10,7 @@ export default defineStore("popup", {
       show: false,
     } as IPopupStore),
   actions: {
-    showPopup(isPositive?: boolean) {
-      const { t } = useI18n();
-
+    showPopup(t: ComposerTranslation, isPositive?: boolean) {
       this.show = true;
       this.message = isPositive ? t("saved") : t("not_saved");
       this.isPositive = isPositive ? isPositive : false;

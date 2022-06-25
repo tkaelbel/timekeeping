@@ -18,12 +18,15 @@
   </q-btn-dropdown>
 </template>
 <script setup lang="ts">
+import useConfigurationStore from "@/stores/useConfigurationStore";
 import { useI18n } from "vue-i18n";
 
+const configurationStore = useConfigurationStore();
 const { locale } = useI18n();
 
 const changeLanguage = (selected: string) => {
   locale.value = selected;
+  configurationStore.locale = selected;
 };
 
 const localeOptions = [

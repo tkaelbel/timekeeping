@@ -9,7 +9,7 @@
           :label="t('weekly_work_time')"
           style="width: 250px; padding-bottom: 32px"
           mask="###"
-          :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
+          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
         />
 
         <q-input
@@ -19,7 +19,7 @@
           :label="t('vacation_days')"
           style="width: 250px; padding-bottom: 32px"
           mask="###"
-          :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
+          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
         />
 
         <q-input
@@ -29,14 +29,16 @@
           :label="t('auto_save')"
           style="width: 250px; padding-bottom: 32px"
           mask="#####"
-          :color="darkModeStore.isActive ? 'blue-grey' : 'blue'"
+          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
         />
 
         <div>
           <q-btn
             :label="t('save')"
             type="submit"
-            :class="darkModeStore.isActive ? 'dark-button' : 'light-button'"
+            :class="
+              configurationStore.isDarkMode ? 'dark-button' : 'light-button'
+            "
             @click="onApply"
           />
         </div>
@@ -47,22 +49,19 @@
 
 <script setup lang="ts">
 import useConfigurationStore from "@/stores/useConfigurationStore";
-import useDarkModeStore from "@/stores/useDarkModeStore";
 import usePopupStore from "@/stores/usePopupStore";
 import { useI18n } from "vue-i18n";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const configurationStore = useConfigurationStore();
-
-const darkModeStore = useDarkModeStore();
 
 const onApply = async () => {
   try {
     await configurationStore.saveConfiguration();
-    usePopupStore().showPopup(true);
+    usePopupStore().showPopup(t, true);
   } catch (error) {
     console.error("Could not write configuration.json.");
-    usePopupStore().showPopup();
+    usePopupStore().showPopup(t);
   }
 };
 </script>

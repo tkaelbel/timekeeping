@@ -1,6 +1,7 @@
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
+import { ComposerTranslation } from "vue-i18n";
 
 let timer: NodeJS.Timeout;
 
@@ -8,9 +9,9 @@ const configurationStore = useConfigurationStore();
 const timekeeperStore = useTimekeepingStore();
 const popupStore = usePopupStore();
 
-const handleAutoSave = () => {
+const handleAutoSave = (t: ComposerTranslation) => {
   if (configurationStore.isAutoSave === true) {
-    timer = autoSave();
+    timer = autoSave(t);
   } else {
     clearInterval(timer);
     // save the false
@@ -23,18 +24,18 @@ const handleAutoSave = () => {
   }
 };
 
-const autoSave = () => {
+const autoSave = (t: ComposerTranslation) => {
   return setInterval(() => {
     Promise.all([
       configurationStore.saveConfiguration(),
       timekeeperStore.saveData(),
     ])
       .then(() => {
-        popupStore.showPopup(true);
+        popupStore.showPopup(t, true);
       })
       .catch(() => {
         console.error("Could not write configuration.json.");
-        popupStore.showPopup();
+        popupStore.showPopup(t);
       });
   }, configurationStore.convertAutoSaveTimeToSeconds);
 };

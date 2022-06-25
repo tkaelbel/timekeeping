@@ -1,7 +1,9 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar :class="darkModeStore.isActive ? 'dark-primary' : 'primary'">
+      <q-toolbar
+        :class="configurationStore.isDarkMode ? 'dark-primary' : 'primary'"
+      >
         <div class="lt-md">
           <q-btn
             flat
@@ -32,7 +34,7 @@
         <div class="gt-sm absolute-right">
           <q-btn
             flat
-            :icon="darkModeStore.isActive ? 'dark_mode' : 'o_dark_mode'"
+            :icon="configurationStore.isDarkMode ? 'dark_mode' : 'o_dark_mode'"
             @click="toggleMode"
           />
           <language-dropdown></language-dropdown>
@@ -86,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 import { IConfigurationStore } from "@/models/store-model";
 import { IData } from "@/models/month-model";
@@ -102,67 +104,78 @@ import Popup from "@/components/Popup.vue";
 import LanguageDropdown from "@/components/LanguageDropdown.vue";
 import { useI18n } from "vue-i18n";
 import { useQuasar } from "quasar";
-import useDarkModeStore from "@/stores/useDarkModeStore";
 
 const leftDrawerOpen = ref(false);
 
 const configurationStore = useConfigurationStore();
-
 const { isAutoSave } = storeToRefs(configurationStore);
 
 const timekeeperStore = useTimekeepingStore();
-
-const darkModeStore = useDarkModeStore();
 
 const q = useQuasar();
 
 const toggleMode = () => {
   q.dark.toggle();
-  darkModeStore.isActive = q.dark.isActive;
+  configurationStore.isDarkMode = q.dark.isActive;
 };
 
 const { t } = useI18n();
 
-if (import.meta.env.VITE_APP_MODE === "tauri") {
-  // create data dir
-  await createDataFolder();
+const localeI18n = useI18n().locale;
 
-  const config = (await readFile("configuration.json")) as IConfigurationStore;
-  // check for existing config file
-  if (config) {
-    console.debug("Loaded configuration.json successfully");
-    const {
-      yearlyVacationDays,
-      weeklyHoursWorking,
-      isAutoSave,
-      autoSaveTimeSeconds,
-    } = config;
-    configurationStore.yearlyVacationDays = yearlyVacationDays
-      ? yearlyVacationDays
-      : configurationStore.yearlyVacationDays;
-    configurationStore.weeklyHoursWorking = weeklyHoursWorking
-      ? weeklyHoursWorking
-      : configurationStore.weeklyHoursWorking;
-    configurationStore.isAutoSave = isAutoSave
-      ? isAutoSave
-      : configurationStore.isAutoSave;
-    configurationStore.autoSaveTimeSeconds = autoSaveTimeSeconds
-      ? autoSaveTimeSeconds
-      : configurationStore.autoSaveTimeSeconds;
-  }
+// if (import.meta.env.VITE_APP_MODE === "tauri") {
+// create data dir
+await createDataFolder();
 
-  const dataFile = (await readFile("data.json")) as IData;
-  if (dataFile) {
-    console.debug("Loaded data.json successfully");
-    timekeeperStore.data = dataFile;
-  }
+const config = (await readFile("configuration.json")) as IConfigurationStore;
+// check for existing config file
+if (config) {
+  console.debug("Loaded configuration.json successfully");
+  const {
+    yearlyVacationDays,
+    weeklyHoursWorking,
+    isAutoSave,
+    autoSaveTimeSeconds,
+    isDarkMode,
+    locale,
+  } = config;
+
+  configurationStore.yearlyVacationDays = yearlyVacationDays
+    ? yearlyVacationDays
+    : configurationStore.yearlyVacationDays;
+
+  configurationStore.weeklyHoursWorking = weeklyHoursWorking
+    ? weeklyHoursWorking
+    : configurationStore.weeklyHoursWorking;
+
+  configurationStore.isAutoSave = isAutoSave
+    ? isAutoSave
+    : configurationStore.isAutoSave;
+
+  configurationStore.autoSaveTimeSeconds = autoSaveTimeSeconds
+    ? autoSaveTimeSeconds
+    : configurationStore.autoSaveTimeSeconds;
+
+  configurationStore.isDarkMode = isDarkMode
+    ? isDarkMode
+    : configurationStore.isDarkMode;
+
+  if (configurationStore.isDarkMode) q.dark.toggle();
+
+  configurationStore.locale = locale ? locale : configurationStore.locale;
+  localeI18n.value = configurationStore.locale;
 }
 
-if (configurationStore.isAutoSave === true) handleAutoSave();
+const dataFile = (await readFile("data.json")) as IData;
+if (dataFile) {
+  console.debug("Loaded data.json successfully");
+  timekeeperStore.data = dataFile;
+}
 
-// auto save
-configurationStore.$subscribe(() => {
-  handleAutoSave();
+if (configurationStore.isAutoSave === true) handleAutoSave(t);
+
+watch(isAutoSave, (_newIsAutoSave) => {
+  handleAutoSave(t);
 });
 
 const toggleLeftDrawer = () => {
