@@ -49,7 +49,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-latest, windows-latest]
+        platform: [macos-latest, windows-latest]
 
     # The type of runner that the job will run on
     runs-on: ${{ matrix.platform }}
@@ -82,7 +82,7 @@ jobs:
       - name: install app dependencies and build it
         run: yarn && yarn build
 
-      - uses: tauri-apps/tauri-action@v0.2
+      - uses: tauri-apps/tauri-action@v0.1.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
