@@ -52,7 +52,7 @@ import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 const configurationStore = useConfigurationStore();
 
 const onApply = async () => {

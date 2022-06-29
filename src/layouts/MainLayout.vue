@@ -123,6 +123,7 @@ const { t } = useI18n();
 
 const localeI18n = useI18n().locale;
 
+console.log(import.meta.env.VITE_APP_MODE);
 // if (import.meta.env.VITE_APP_MODE === "tauri") {
 // create data dir
 await createDataFolder();

@@ -28,11 +28,17 @@ export default defineStore("configurationStore", {
           isDarkMode,
           locale,
         } = this;
+
+        // quasar always returns values of fields as string...
+        const numYearlyVacationDays = Number(yearlyVacationDays);
+        const numWeeklyHoursWorking = Number(weeklyHoursWorking);
+        const numAutoSaveTimeSeconds = Number(autoSaveTimeSeconds);
+
         const output = JSON.stringify({
-          weeklyHoursWorking,
-          yearlyVacationDays,
+          weeklyHoursWorking: numWeeklyHoursWorking,
+          yearlyVacationDays: numYearlyVacationDays,
           isAutoSave,
-          autoSaveTimeSeconds,
+          autoSaveTimeSeconds: numAutoSaveTimeSeconds,
           isDarkMode,
           locale,
         });

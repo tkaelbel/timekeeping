@@ -1,14 +1,15 @@
 {
   "name": "timekeeping_tauri",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "web": "vite --mode web",
     "build": "vue-tsc --noEmit && vite build",
     "build:tauri": "tauri build",
     "preview": "vite preview",
     "build:debug": "vite build && tauri build --debug",
-    "dev": "vite-tauri dev"
+    "dev": "vite-tauri dev --mode tauri",
+    "tauridev": "start vite --mode tauri && start tauri dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.14.0",
@@ -36,7 +37,6 @@
     "sass": "1.32.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
-    "vite-plugin-tauri": "^2.0.0",
     "vue-tsc": "^0.34.7"
   }
 }
