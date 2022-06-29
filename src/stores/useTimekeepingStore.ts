@@ -33,9 +33,10 @@ export default defineStore("timekeepingStore", {
       const { calculatedRestVacation } = calculateAdditionalInfos(this.data);
       if (calculatedRestVacation === 0) return 0;
 
-      const dayHoursMustWork = useConfigurationStore().weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        useConfigurationStore().getWeeklyHoursWorkingAsNumber / 5;
       const daysRest =
-        useConfigurationStore().yearlyVacationDays -
+        useConfigurationStore().getYearlyVacationDaysAsNumber -
         calculatedRestVacation / dayHoursMustWork;
 
       return daysRest;
@@ -93,7 +94,7 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
         weekSumOvertime === 0
           ? 0
           : weekSumOvertime -
-            (useConfigurationStore().weeklyHoursWorking / 5) *
+            (useConfigurationStore().getWeeklyHoursWorkingAsNumber / 5) *
               daysWithoutWeekend.length,
       weekSumVacation,
     };
@@ -103,7 +104,8 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
     weekSumOvertime:
       weekSumOvertime === 0
         ? 0
-        : weekSumOvertime - useConfigurationStore().weeklyHoursWorking,
+        : weekSumOvertime -
+          useConfigurationStore().getWeeklyHoursWorkingAsNumber,
     weekSumVacation,
   };
 };

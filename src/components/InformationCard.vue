@@ -6,7 +6,7 @@
 
     <q-card-section class="q-pt-none">
       {{ t("week_time_debit") }}:
-      {{ n(configStore.weeklyHoursWorking, "decimal", locale) }}
+      {{ n(configStore.getWeeklyHoursWorkingAsNumber, "decimal", locale) }}
     </q-card-section>
 
     <q-card-section>
@@ -16,7 +16,9 @@
 
     <q-card-section>
       {{ t("vacation_days") }}:
-      {{ n(configStore.yearlyVacationDays, "decimal", locale) }}</q-card-section
+      {{
+        n(configStore.getYearlyVacationDaysAsNumber, "decimal", locale)
+      }}</q-card-section
     >
 
     <q-card-section>

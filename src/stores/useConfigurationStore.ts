@@ -16,6 +16,15 @@ export default defineStore("configurationStore", {
     convertAutoSaveTimeToSeconds(): number {
       return this.autoSaveTimeSeconds * 1000;
     },
+    getYearlyVacationDaysAsNumber(): number {
+      return Number(this.yearlyVacationDays);
+    },
+    getWeeklyHoursWorkingAsNumber(): number {
+      return Number(this.weeklyHoursWorking);
+    },
+    getAutoSaveTimeSecondsAsNumber(): number {
+      return Number(this.autoSaveTimeSeconds);
+    },
   },
   actions: {
     async saveConfiguration() {
