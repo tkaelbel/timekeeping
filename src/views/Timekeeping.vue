@@ -47,10 +47,11 @@
               <td class="text-center" v-for="day in weekday">
                 <div v-if="day?.day">
                   {{ d(day.day, "weekday", locale) }}
+
                   <div class="q-gutter-md row">
                     <q-input
                       class="day-input"
-                      type="number"
+                      type="text"
                       filled
                       :color="configStore.isDarkMode ? 'blue-grey' : 'blue'"
                       v-model="
@@ -92,7 +93,7 @@
   </q-page>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { getAllDaysOfMonth } from "@/utils/date-utils";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
@@ -102,6 +103,7 @@ import { useI18n } from "vue-i18n";
 
 import MonthPicker from "@/components/MonthPicker.vue";
 import InformationCard from "@/components/InformationCard.vue";
+import { I18n } from "vue-i18n";
 
 const { t, d, n, locale } = useI18n();
 

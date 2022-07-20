@@ -32,6 +32,24 @@
           :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
         />
 
+        <q-input
+          type="text"
+          filled
+          v-model="configurationStore.country"
+          :label="t('country')"
+          style="width: 250px; padding-bottom: 32px"
+          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+        />
+
+        <q-input
+          type="text"
+          filled
+          v-model="configurationStore.state"
+          :label="t('state')"
+          style="width: 250px; padding-bottom: 32px"
+          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+        />
+
         <div>
           <q-btn
             :label="t('save')"

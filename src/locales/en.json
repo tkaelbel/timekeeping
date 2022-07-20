@@ -27,5 +27,7 @@
   "sunday": "Sunday",
   "week": "Week",
   "overtime": "Overtime",
-  "vacation_short": "V"
+  "vacation_short": "V",
+  "country": "Country",
+  "state": "State"
 }

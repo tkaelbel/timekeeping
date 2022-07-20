@@ -139,6 +139,8 @@ if (config) {
     autoSaveTimeSeconds,
     isDarkMode,
     locale,
+    country,
+    state,
   } = config;
 
   configurationStore.yearlyVacationDays = yearlyVacationDays
@@ -165,6 +167,9 @@ if (config) {
 
   configurationStore.locale = locale ? locale : configurationStore.locale;
   localeI18n.value = configurationStore.locale;
+
+  configurationStore.country = country ? country : configurationStore.country;
+  configurationStore.state = state ? state : configurationStore.state;
 }
 
 const dataFile = (await readFile("data.json")) as IData;

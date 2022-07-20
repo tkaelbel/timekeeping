@@ -18,6 +18,8 @@ export interface IConfigurationStore {
   autoSaveTimeSeconds: number;
   isDarkMode: boolean;
   locale: string;
+  country: string;
+  state: string;
 }
 
 export interface IPopupStore {

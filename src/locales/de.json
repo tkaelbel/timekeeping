@@ -27,5 +27,7 @@
   "sunday": "Sonntag",
   "week": "Woche",
   "overtime": "Überstunden",
-  "vacation_short": "U"
+  "vacation_short": "U",
+  "country": "Land",
+  "state": "Bundesland"
 }

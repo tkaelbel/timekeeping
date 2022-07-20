@@ -11,6 +11,8 @@ export default defineStore("configurationStore", {
       autoSaveTimeSeconds: 15,
       isDarkMode: false,
       locale: "en",
+      country: "DE",
+      state: "HE",
     } as IConfigurationStore),
   getters: {
     convertAutoSaveTimeToSeconds(): number {
@@ -36,6 +38,8 @@ export default defineStore("configurationStore", {
           autoSaveTimeSeconds,
           isDarkMode,
           locale,
+          country,
+          state,
         } = this;
 
         // quasar always returns values of fields as string...
@@ -50,6 +54,8 @@ export default defineStore("configurationStore", {
           autoSaveTimeSeconds: numAutoSaveTimeSeconds,
           isDarkMode,
           locale,
+          country,
+          state,
         });
         await createFile("configuration", output);
         console.debug("Wrote configuration.json successfully");
