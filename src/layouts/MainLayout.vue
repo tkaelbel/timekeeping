@@ -31,7 +31,7 @@
           />
         </div>
 
-        <div class="gt-sm absolute-right">
+        <div class="absolute-right">
           <q-btn
             flat
             :icon="configurationStore.isDarkMode ? 'dark_mode' : 'o_dark_mode'"
