@@ -51,10 +51,10 @@
                   <div class="q-gutter-md row">
                     <q-input
                       class="day-input"
-                      type="text"
+                      type="number"
                       filled
                       :color="configStore.isDarkMode ? 'blue-grey' : 'blue'"
-                      v-model="
+                      v-model.number="
                         inputValues[calendarWeek][
                           d(day.day, 'day', 'en').toLowerCase()
                         ].hours

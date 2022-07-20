@@ -1,66 +1,80 @@
 <template>
   <q-page padding>
-    <div class="q-gutter-md column">
-      <div class="q-gutter-md">
-        <q-input
-          type="text"
-          filled
-          v-model="configurationStore.weeklyHoursWorking"
-          :label="t('weekly_work_time')"
-          style="width: 250px; padding-bottom: 32px"
-          mask="###"
-          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-        />
+    <div class="q-gutter-md row">
+      <q-card :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'">
+        <q-card-section>
+          <div class="text-h6">General</div>
+        </q-card-section>
 
-        <q-input
-          type="text"
-          filled
-          v-model="configurationStore.yearlyVacationDays"
-          :label="t('vacation_days')"
-          style="width: 250px; padding-bottom: 32px"
-          mask="###"
-          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-        />
-
-        <q-input
-          type="text"
-          filled
-          v-model="configurationStore.autoSaveTimeSeconds"
-          :label="t('auto_save')"
-          style="width: 250px; padding-bottom: 32px"
-          mask="#####"
-          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-        />
-
-        <q-input
-          type="text"
-          filled
-          v-model="configurationStore.country"
-          :label="t('country')"
-          style="width: 250px; padding-bottom: 32px"
-          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-        />
-
-        <q-input
-          type="text"
-          filled
-          v-model="configurationStore.state"
-          :label="t('state')"
-          style="width: 250px; padding-bottom: 32px"
-          :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-        />
-
-        <div>
-          <q-btn
-            :label="t('save')"
-            type="submit"
-            :class="
-              configurationStore.isDarkMode ? 'dark-button' : 'light-button'
-            "
-            @click="onApply"
+        <q-card-section class="q-pt-none">
+          <q-input
+            type="text"
+            filled
+            v-model="configurationStore.weeklyHoursWorking"
+            :label="t('weekly_work_time')"
+            mask="###"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
           />
-        </div>
-      </div>
+
+          <q-input
+            type="text"
+            filled
+            v-model="configurationStore.yearlyVacationDays"
+            :label="t('vacation_days')"
+            mask="###"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+          />
+        </q-card-section>
+      </q-card>
+
+      <q-card :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'">
+        <q-card-section>
+          <div class="text-h6">Location</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-input
+            type="text"
+            filled
+            v-model="configurationStore.country"
+            :label="t('country')"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+          />
+
+          <q-input
+            type="text"
+            filled
+            v-model="configurationStore.state"
+            :label="t('state')"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+          />
+        </q-card-section>
+      </q-card>
+
+      <q-card :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'">
+        <q-card-section>
+          <div class="text-h6">Technical</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input
+            type="text"
+            filled
+            v-model="configurationStore.autoSaveTimeSeconds"
+            :label="t('auto_save')"
+            mask="#####"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+          />
+        </q-card-section>
+      </q-card>
+    </div>
+
+    <div class="q-pt-md">
+      <q-btn
+        :label="t('save')"
+        type="submit"
+        :class="configurationStore.isDarkMode ? 'dark-button' : 'light-button'"
+        @click="onApply"
+      />
     </div>
   </q-page>
 </template>
@@ -83,3 +97,10 @@ const onApply = async () => {
   }
 };
 </script>
+
+<style lang="scss">
+.q-input {
+  width: 250px;
+  padding-bottom: 32px;
+}
+</style>

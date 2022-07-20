@@ -14,10 +14,7 @@
     "allowlist": {
       "fs": {
         "all": true,
-        "scope": ["$APP", "$APP/*", "$DESKTOP", "$DESKTOP/*"]
-      },
-      "path": {
-        "all": true
+        "scope": ["$APP", "$APP/*"]
       }
     },
     "bundle": {
