@@ -187,14 +187,11 @@ const calculateOvertime = (cw: number) => {
       return weekSum === 0
         ? 0
         : weekSum -
-            (configStore.getWeeklyHoursWorkingAsNumber / 5) *
-              daysWithoutWeekend.length;
+            (configStore.weeklyHoursWorking / 5) * daysWithoutWeekend.length;
     }
   }
 
-  return weekSum === 0
-    ? 0
-    : weekSum - configStore.getWeeklyHoursWorkingAsNumber;
+  return weekSum === 0 ? 0 : weekSum - configStore.weeklyHoursWorking;
 };
 
 const onSave = async () => {

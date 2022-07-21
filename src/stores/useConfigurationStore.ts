@@ -14,20 +14,6 @@ export default defineStore("configurationStore", {
       country: "DE",
       state: "HE",
     } as IConfigurationStore),
-  getters: {
-    convertAutoSaveTimeToSeconds(): number {
-      return this.autoSaveTimeSeconds * 1000;
-    },
-    getYearlyVacationDaysAsNumber(): number {
-      return Number(this.yearlyVacationDays);
-    },
-    getWeeklyHoursWorkingAsNumber(): number {
-      return Number(this.weeklyHoursWorking);
-    },
-    getAutoSaveTimeSecondsAsNumber(): number {
-      return Number(this.autoSaveTimeSeconds);
-    },
-  },
   actions: {
     async saveConfiguration() {
       try {
@@ -42,16 +28,11 @@ export default defineStore("configurationStore", {
           state,
         } = this;
 
-        // quasar always returns values of fields as string...
-        const numYearlyVacationDays = Number(yearlyVacationDays);
-        const numWeeklyHoursWorking = Number(weeklyHoursWorking);
-        const numAutoSaveTimeSeconds = Number(autoSaveTimeSeconds);
-
         const output = JSON.stringify({
-          weeklyHoursWorking: numWeeklyHoursWorking,
-          yearlyVacationDays: numYearlyVacationDays,
+          weeklyHoursWorking,
+          yearlyVacationDays,
           isAutoSave,
-          autoSaveTimeSeconds: numAutoSaveTimeSeconds,
+          autoSaveTimeSeconds,
           isDarkMode,
           locale,
           country,
