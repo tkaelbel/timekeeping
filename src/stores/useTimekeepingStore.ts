@@ -40,12 +40,31 @@ export default defineStore("timekeepingStore", {
 
       return daysRest;
     },
+    calculateOverallSickDays() {
+      const { calculatedOverallSick } = calculateAdditionalInfos(this.data);
+      if (calculatedOverallSick === 0) return 0;
+
+      const dayHoursMustWork = useConfigurationStore().weeklyHoursWorking / 5;
+      return calculatedOverallSick / dayHoursMustWork;
+    },
+    calculateMonthSickDays() {
+      const { calculatedMonthSick } = calculateAdditionalInfos(
+        this.data,
+        this.currentDate
+      );
+      if (calculatedMonthSick === 0) return 0;
+
+      const dayHoursMustWork = useConfigurationStore().weeklyHoursWorking / 5;
+      return calculatedMonthSick / dayHoursMustWork;
+    },
   },
 });
 
-const calculateAdditionalInfos = (data: IData) => {
+const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
   let calculatedWeekOvertime = 0;
   let calculatedRestVacation = 0;
+  let calculatedOverallSick = 0;
+  let calculatedMonthSick = 0;
 
   const keyYears = Object.keys(data);
   keyYears.forEach((year: string) => {
@@ -59,19 +78,47 @@ const calculateAdditionalInfos = (data: IData) => {
         const calculatedWeek = calculateWeek(cwData);
         calculatedWeekOvertime += calculatedWeek.weekSumOvertime;
         calculatedRestVacation += calculatedWeek.weekSumVacation;
+        calculatedOverallSick += calculatedWeek.weekSumSick;
+
+        console.log(
+          currentDate?.toLocaleDateString("en-US", { month: "short" })
+        );
+
+        if (
+          currentDate?.toLocaleDateString("en-US", { month: "short" }) === month
+        ) {
+          calculatedMonthSick += calculatedWeek.weekSumSick;
+        }
       });
     });
   });
 
-  return { calculatedWeekOvertime, calculatedRestVacation };
+  return {
+    calculatedWeekOvertime,
+    calculatedRestVacation,
+    calculatedOverallSick,
+    calculatedMonthSick,
+  };
 };
 
+/**
+ * TODO: optimize
+ * @param cw
+ * @returns
+ */
 const calculateWeek = (cw: { [key: string]: IDayModel }) => {
   let weekSumOvertime = 0;
   let weekSumVacation = 0;
+  let weekSumSick = 0;
 
   const dayKeys = Object.keys(cw);
   dayKeys.forEach((day: string) => {
+    if (cw[day].sickness === true) {
+      weekSumSick += cw[day].hours
+        ? parseFloat(cw[day].hours as unknown as string)
+        : 0;
+    }
+
     if (cw[day].vacation === true) {
       weekSumVacation += cw[day].hours
         ? parseFloat(cw[day].hours as unknown as string)
@@ -96,6 +143,7 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
             (useConfigurationStore().weeklyHoursWorking / 5) *
               daysWithoutWeekend.length,
       weekSumVacation,
+      weekSumSick,
     };
   }
 
@@ -105,5 +153,6 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
         ? 0
         : weekSumOvertime - useConfigurationStore().weeklyHoursWorking,
     weekSumVacation,
+    weekSumSick,
   };
 };

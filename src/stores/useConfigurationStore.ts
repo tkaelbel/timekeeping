@@ -13,6 +13,7 @@ export default defineStore("configurationStore", {
       locale: "en",
       country: "DE",
       state: "HE",
+      isSicknessMode: true,
     } as IConfigurationStore),
   actions: {
     async saveConfiguration() {
@@ -26,6 +27,7 @@ export default defineStore("configurationStore", {
           locale,
           country,
           state,
+          isSicknessMode,
         } = this;
 
         const output = JSON.stringify({
@@ -37,6 +39,7 @@ export default defineStore("configurationStore", {
           locale,
           country,
           state,
+          isSicknessMode,
         });
         await createFile("configuration", output);
         console.debug("Wrote configuration.json successfully");

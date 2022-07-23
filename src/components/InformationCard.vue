@@ -1,7 +1,7 @@
 <template>
   <q-card :class="configStore.isDarkMode ? 'dark-secondary' : 'primary'">
     <q-card-section>
-      <div class="text-h6">Information</div>
+      <div class="text-h6">{{ t("statistics") }}</div>
     </q-card-section>
 
     <q-card-section class="q-pt-none">
@@ -14,17 +14,29 @@
       {{ n(calculateOverallOvertime, "decimal", locale) }}
     </q-card-section>
 
+    <q-separator />
+
     <q-card-section>
       {{ t("vacation_days") }}:
-      {{
-        n(configStore.yearlyVacationDays, "decimal", locale)
-      }}</q-card-section
-    >
+      {{ n(configStore.yearlyVacationDays, "decimal", locale) }}
+    </q-card-section>
 
     <q-card-section>
       {{ t("vacation_days_rest") }}:
-      {{ n(calculateRestVactionDays, "decimal", locale) }}</q-card-section
-    >
+      {{ n(calculateRestVactionDays, "decimal", locale) }}
+    </q-card-section>
+
+    <q-separator />
+
+    <q-card-section v-if="configStore.isSicknessMode === true">
+      {{ t("days_sick_month") }}:
+      {{ n(calculateMonthSickDays, "decimal", locale) }}
+    </q-card-section>
+
+    <q-card-section v-if="configStore.isSicknessMode === true">
+      {{ t("overall_sick_days") }}:
+      {{ n(calculateOverallSickDays, "decimal", locale) }}
+    </q-card-section>
   </q-card>
 </template>
 <script setup lang="ts">
@@ -35,9 +47,12 @@ import { useI18n } from "vue-i18n";
 
 const configStore = useConfigurationStore();
 
-const { calculateOverallOvertime, calculateRestVactionDays } = storeToRefs(
-  useTimekeepingStore()
-);
+const {
+  calculateOverallOvertime,
+  calculateRestVactionDays,
+  calculateOverallSickDays,
+  calculateMonthSickDays,
+} = storeToRefs(useTimekeepingStore());
 
 const { t, n, locale } = useI18n();
 </script>

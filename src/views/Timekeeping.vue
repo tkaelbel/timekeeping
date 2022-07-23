@@ -42,12 +42,15 @@
               v-for="[calendarWeek, weekday] in allDaysOfMonth"
               :key="calendarWeek"
             >
-              <td class="text-left">{{ calendarWeek }}</td>
+              <td class="text-left text-weight-medium">
+                {{ calendarWeek }}
+              </td>
 
               <td class="text-center" v-for="day in weekday">
-                <div v-if="day?.day">
-                  {{ d(day.day, "weekday", locale) }}
-
+                <div v-if="day?.day" class="text-center">
+                  <div class="text-weight-medium">
+                    {{ d(day.day, "weekday", locale) }}
+                  </div>
                   <div class="q-gutter-md row">
                     <q-input
                       class="day-input"
@@ -60,18 +63,53 @@
                         ].hours
                       "
                     >
-                      <q-checkbox
-                        dense
-                        size="xs"
-                        v-model="
-                          inputValues[calendarWeek][
-                            d(day.day, 'day', 'en').toLowerCase()
-                          ].vacation
-                        "
-                        :color="configStore.isDarkMode ? 'blue-grey' : 'blue'"
-                        :label="t('vacation_short')"
-                        class="text-secondary text-weight-bold"
-                      />
+                      <div class="row">
+                        <q-checkbox
+                          dense
+                          checked-icon="beach_access"
+                          unchecked-icon="o_beach_access"
+                          size="xl"
+                          @click="
+                            validateCheckboxes(
+                              'vacation',
+                              inputValues[calendarWeek][
+                                d(day.day, 'day', 'en').toLowerCase()
+                              ]
+                            )
+                          "
+                          v-model="
+                            inputValues[calendarWeek][
+                              d(day.day, 'day', 'en').toLowerCase()
+                            ].vacation
+                          "
+                          :color="
+                            configStore.isDarkMode ? 'blue-grey' : 'secondary'
+                          "
+                        />
+                        <q-checkbox
+                          v-if="configStore.isSicknessMode === true"
+                          dense
+                          size="xl"
+                          checked-icon="sick"
+                          unchecked-icon="o_sick"
+                          @click="
+                            validateCheckboxes(
+                              'sick',
+                              inputValues[calendarWeek][
+                                d(day.day, 'day', 'en').toLowerCase()
+                              ]
+                            )
+                          "
+                          v-model="
+                            inputValues[calendarWeek][
+                              d(day.day, 'day', 'en').toLowerCase()
+                            ].sickness
+                          "
+                          :color="
+                            configStore.isDarkMode ? 'blue-grey' : 'secondary'
+                          "
+                        />
+                      </div>
                     </q-input>
                   </div>
                 </div>
@@ -93,7 +131,7 @@
   </q-page>
 </template>
 <script setup lang="ts">
-import { computed, watch } from "vue";
+import { computed } from "vue";
 import { storeToRefs } from "pinia";
 import { getAllDaysOfMonth } from "@/utils/date-utils";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
@@ -103,7 +141,7 @@ import { useI18n } from "vue-i18n";
 
 import MonthPicker from "@/components/MonthPicker.vue";
 import InformationCard from "@/components/InformationCard.vue";
-import { I18n } from "vue-i18n";
+import { IDayModel } from "@/models/month-model";
 
 const { t, d, n, locale } = useI18n();
 
@@ -116,6 +154,13 @@ const configStore = useConfigurationStore();
 const allDaysOfMonth = computed(() => {
   return getAllDaysOfMonth(currentDate.value);
 });
+
+const validateCheckboxes = (checkbox: string, currentDay: IDayModel) => {
+  if (currentDay.sickness === true && currentDay.vacation === true) {
+    if (checkbox === "vacation") currentDay.sickness = false;
+    if (checkbox === "sick") currentDay.vacation = false;
+  }
+};
 
 const inputValues = computed(() => {
   const year = currentDate.value.getFullYear();
@@ -143,13 +188,19 @@ const inputValues = computed(() => {
         if (weekDay) {
           if (!month[index]) {
             month[index] = {
-              [day]: { day: weekDay.day, hours: 0, vacation: false },
+              [day]: {
+                day: weekDay.day,
+                hours: 0,
+                vacation: false,
+                sickness: false,
+              },
             };
           } else {
             month[index][day] = {
               day: weekDay.day,
               hours: 0,
               vacation: false,
+              sickness: false,
             };
           }
         }
@@ -211,6 +262,9 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+tr {
+  height: 125px;
+}
 .q-table th {
   font-size: 14px;
 }
@@ -220,8 +274,15 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .day-input {
-  width: 100px !important;
-  height: 70px !important;
+  width: 120px !important;
+}
+
+.q-field__control {
+  height: 80px !important;
+}
+
+.q-input {
+  height: 100px !important;
 }
 
 .flex-break {

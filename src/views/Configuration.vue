@@ -1,7 +1,9 @@
 <template>
   <q-page padding>
     <div class="q-gutter-md row">
-      <q-card :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'">
+      <q-card
+        :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
+      >
         <q-card-section>
           <div class="text-h6">General</div>
         </q-card-section>
@@ -24,10 +26,20 @@
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
           />
+
+          <q-checkbox
+            dense
+            size="md"
+            v-model="configurationStore.isSicknessMode"
+            label="Allow sickness mode?"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'primary'"
+          />
         </q-card-section>
       </q-card>
 
-      <q-card :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'">
+      <q-card
+        :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
+      >
         <q-card-section>
           <div class="text-h6">Location</div>
         </q-card-section>
@@ -50,7 +62,9 @@
         </q-card-section>
       </q-card>
 
-      <q-card :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'">
+      <q-card
+        :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
+      >
         <q-card-section>
           <div class="text-h6">Technical</div>
         </q-card-section>

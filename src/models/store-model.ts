@@ -20,6 +20,7 @@ export interface IConfigurationStore {
   locale: string;
   country: string;
   state: string;
+  isSicknessMode: boolean;
 }
 
 export interface IPopupStore {

@@ -59,10 +59,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 850,
+        "height": 1000,
         "resizable": true,
         "title": "timekeeping_tauri",
-        "width": 1600
+        "width": 1700
       }
     ]
   }
