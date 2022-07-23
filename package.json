@@ -8,13 +8,13 @@
     "build:tauri": "tauri build",
     "preview": "vite preview",
     "build:debug": "vite build && tauri build --debug",
-    "dev": "vite-tauri dev --mode tauri",
-    "tauridev": "start vite --mode tauri && start tauri dev"
+    "dev": "start vite --mode tauri && start tauri dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.14.3",
     "@tauri-apps/api": "^1.0.2",
     "date-fns": "^2.28.0",
+    "date-holidays": "^3.16.2",
     "flag-icons": "^6.6.4",
     "pinia": "^2.0.16",
     "quasar": "^2.7.5",

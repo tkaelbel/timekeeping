@@ -29,5 +29,8 @@
   "overtime": "Überstunden",
   "vacation_short": "U",
   "country": "Land",
-  "state": "Bundesland"
+  "state": "Bundesland",
+  "overall_sick_days": "Gesamtkranktage",
+  "days_sick_month": "Kranktage",
+  "statistics": "Statistiken"
 }

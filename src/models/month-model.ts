@@ -1,4 +1,4 @@
-import { Ref } from 'vue';
+import { Ref } from "vue";
 
 export interface IWeekModel {
   monday: IDayModelRef | undefined;
@@ -19,7 +19,8 @@ export interface IDayModelRef {
 export interface IDayModel {
   day: Date;
   hours: number;
-  vacation: boolean,
+  vacation: boolean;
+  sickness: boolean;
 }
 
 export interface IWeek {

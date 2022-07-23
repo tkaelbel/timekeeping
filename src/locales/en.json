@@ -29,5 +29,8 @@
   "overtime": "Overtime",
   "vacation_short": "V",
   "country": "Country",
-  "state": "State"
+  "state": "State",
+  "overall_sick_days": "Days sick overall",
+  "days_sick_month": "Days sick",
+  "statistics": "Statistics"
 }

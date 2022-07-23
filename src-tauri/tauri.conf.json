@@ -7,8 +7,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "timekeeping_tauri",
-    "version": "0.0.2"
+    "productName": "timekeeping",
+    "version": "0.0.3"
   },
   "tauri": {
     "allowlist": {
@@ -32,7 +32,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "timekeeping_tauri",
+      "identifier": "timekeeping",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -59,10 +59,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 850,
+        "height": 1000,
         "resizable": true,
-        "title": "timekeeping_tauri",
-        "width": 1600
+        "title": "timekeeping",
+        "width": 1700
       }
     ]
   }
