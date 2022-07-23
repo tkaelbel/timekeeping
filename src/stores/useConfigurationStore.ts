@@ -15,6 +15,11 @@ export default defineStore("configurationStore", {
       state: "HE",
       isSicknessMode: true,
     } as IConfigurationStore),
+  getters: {
+    convertAutoSaveTimeToSeconds(): number {
+      return this.autoSaveTimeSeconds * 1000;
+    },
+  },
   actions: {
     async saveConfiguration() {
       try {
