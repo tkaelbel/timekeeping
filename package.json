@@ -8,8 +8,7 @@
     "build:tauri": "tauri build",
     "preview": "vite preview",
     "build:debug": "vite build && tauri build --debug",
-    "dev": "vite-tauri dev --mode tauri",
-    "tauridev": "start vite --mode tauri && start tauri dev"
+    "dev": "start vite --mode tauri && start tauri dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.14.3",
