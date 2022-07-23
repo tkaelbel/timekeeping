@@ -45,7 +45,7 @@
             unchecked-icon="clear"
             size="lg"
           >
-            <q-tooltip>
+            <q-tooltip class="tooltip">
               {{ isAutoSave ? t("auto_save_on") : t("auto_save_off") }}
             </q-tooltip>
           </q-toggle>
@@ -188,3 +188,8 @@ const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 };
 </script>
+<style lang="scss">
+.tooltip {
+  font-size: 14px;
+}
+</style>
