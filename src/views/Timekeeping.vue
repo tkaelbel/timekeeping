@@ -267,15 +267,15 @@ const calculateOvertime = (cw: number) => {
   const weekSum = weekSums(cw);
   const wholeWeek = inputValues.value[cw];
   if (wholeWeek) {
-    const daysToWork = Object.keys(wholeWeek).filter(
-      (day) =>
-        day !== "sunday" &&
-        day !== "saturday" &&
-        !wholeWeek[day].holiday.isHoliday
+    const holidays = Object.keys(wholeWeek).filter(
+      (day) => wholeWeek[day].holiday.isHoliday
     );
+
     return weekSum === 0
       ? 0
-      : weekSum - (configStore.weeklyHoursWorking / 5) * daysToWork.length;
+      : weekSum -
+          (configStore.weeklyHoursWorking / configStore.weeklyWorkingDays) *
+            (configStore.weeklyWorkingDays - holidays.length);
   }
 
   return weekSum === 0 ? 0 : weekSum - configStore.weeklyHoursWorking;

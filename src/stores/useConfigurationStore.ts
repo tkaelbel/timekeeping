@@ -10,7 +10,7 @@ export default defineStore("configurationStore", {
       isAutoSave: false,
       autoSaveTimeSeconds: 15,
       isDarkMode: false,
-      locale: "en",
+      locale: "de",
       country: "DE",
       state: "HE",
       isSicknessMode: true,

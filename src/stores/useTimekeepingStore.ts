@@ -35,7 +35,9 @@ export default defineStore("timekeepingStore", {
       const { calculatedRestVacation } = calculateAdditionalInfos(this.data);
       if (calculatedRestVacation === 0) return 0;
 
-      const dayHoursMustWork = configurationStore.weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        configurationStore.weeklyHoursWorking /
+        configurationStore.weeklyWorkingDays;
       const daysRest =
         configurationStore.yearlyVacationDays -
         calculatedRestVacation / dayHoursMustWork;
@@ -46,7 +48,9 @@ export default defineStore("timekeepingStore", {
       const { calculatedOverallSick } = calculateAdditionalInfos(this.data);
       if (calculatedOverallSick === 0) return 0;
 
-      const dayHoursMustWork = configurationStore.weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        configurationStore.weeklyHoursWorking /
+        configurationStore.weeklyWorkingDays;
       return calculatedOverallSick / dayHoursMustWork;
     },
     calculateMonthSickDays() {
@@ -56,7 +60,9 @@ export default defineStore("timekeepingStore", {
       );
       if (calculatedMonthSick === 0) return 0;
 
-      const dayHoursMustWork = configurationStore.weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        configurationStore.weeklyHoursWorking /
+        configurationStore.weeklyWorkingDays;
       return calculatedMonthSick / dayHoursMustWork;
     },
   },
@@ -142,7 +148,8 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
       weekSumOvertime === 0
         ? 0
         : weekSumOvertime -
-          (configurationStore.weeklyHoursWorking / 5) *
+          (configurationStore.weeklyHoursWorking /
+            configurationStore.weeklyWorkingDays) *
             (configurationStore.weeklyWorkingDays - holidays.length),
     weekSumVacation,
     weekSumSick,

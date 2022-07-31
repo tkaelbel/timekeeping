@@ -2,6 +2,7 @@
   <q-page padding>
     <div class="q-gutter-md row">
       <q-card
+        class="cards"
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
@@ -62,7 +63,7 @@
             v-model="configurationStore.isHolidayMode"
             checked-icon="beach_access"
             unchecked-icon="clear"
-            size="xl"
+            size="lg"
             style="padding-left: 125px"
           >
             <q-tooltip class="tooltip">
@@ -98,6 +99,7 @@
       </q-card>
 
       <q-card
+        class="cards"
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
@@ -147,7 +149,14 @@ const onApply = async () => {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+.cards {
+  padding-top: 5px;
+}
+
+.q-card__section {
+  min-height: 75px;
+}
 .q-card-section {
   min-width: 300px;
 }
