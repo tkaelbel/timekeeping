@@ -4,6 +4,8 @@ import { createFile } from "@/utils/fs-handler";
 import { defineStore } from "pinia";
 import useConfigurationStore from "./useConfigurationStore";
 
+const configurationStore = useConfigurationStore();
+
 export default defineStore("timekeepingStore", {
   state: () =>
     ({
@@ -33,9 +35,11 @@ export default defineStore("timekeepingStore", {
       const { calculatedRestVacation } = calculateAdditionalInfos(this.data);
       if (calculatedRestVacation === 0) return 0;
 
-      const dayHoursMustWork = useConfigurationStore().weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        configurationStore.weeklyHoursWorking /
+        configurationStore.weeklyWorkingDays;
       const daysRest =
-        useConfigurationStore().yearlyVacationDays -
+        configurationStore.yearlyVacationDays -
         calculatedRestVacation / dayHoursMustWork;
 
       return daysRest;
@@ -44,7 +48,9 @@ export default defineStore("timekeepingStore", {
       const { calculatedOverallSick } = calculateAdditionalInfos(this.data);
       if (calculatedOverallSick === 0) return 0;
 
-      const dayHoursMustWork = useConfigurationStore().weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        configurationStore.weeklyHoursWorking /
+        configurationStore.weeklyWorkingDays;
       return calculatedOverallSick / dayHoursMustWork;
     },
     calculateMonthSickDays() {
@@ -54,7 +60,9 @@ export default defineStore("timekeepingStore", {
       );
       if (calculatedMonthSick === 0) return 0;
 
-      const dayHoursMustWork = useConfigurationStore().weeklyHoursWorking / 5;
+      const dayHoursMustWork =
+        configurationStore.weeklyHoursWorking /
+        configurationStore.weeklyWorkingDays;
       return calculatedMonthSick / dayHoursMustWork;
     },
   },
@@ -79,10 +87,6 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
         calculatedWeekOvertime += calculatedWeek.weekSumOvertime;
         calculatedRestVacation += calculatedWeek.weekSumVacation;
         calculatedOverallSick += calculatedWeek.weekSumSick;
-
-        console.log(
-          currentDate?.toLocaleDateString("en-US", { month: "short" })
-        );
 
         if (
           currentDate?.toLocaleDateString("en-US", { month: "short" }) === month
@@ -111,6 +115,8 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
   let weekSumVacation = 0;
   let weekSumSick = 0;
 
+  const holidays: IDayModel[] = [];
+
   const dayKeys = Object.keys(cw);
   dayKeys.forEach((day: string) => {
     if (cw[day].sickness === true) {
@@ -125,33 +131,26 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
         : 0;
     }
 
-    weekSumOvertime += cw[day].hours
-      ? parseFloat(cw[day].hours as unknown as string)
-      : 0;
+    if (cw[day].holiday.isHoliday) {
+      holidays.push(cw[day]);
+      return;
+    }
+
+    if (!cw[day].holiday.isHoliday) {
+      weekSumOvertime += cw[day].hours
+        ? parseFloat(cw[day].hours as unknown as string)
+        : 0;
+    }
   });
-
-  const daysWithoutWeekend = dayKeys.filter(
-    (day) => day !== "sunday" && day !== "saturday"
-  );
-
-  if (daysWithoutWeekend.length < 5) {
-    return {
-      weekSumOvertime:
-        weekSumOvertime === 0
-          ? 0
-          : weekSumOvertime -
-            (useConfigurationStore().weeklyHoursWorking / 5) *
-              daysWithoutWeekend.length,
-      weekSumVacation,
-      weekSumSick,
-    };
-  }
 
   return {
     weekSumOvertime:
       weekSumOvertime === 0
         ? 0
-        : weekSumOvertime - useConfigurationStore().weeklyHoursWorking,
+        : weekSumOvertime -
+          (configurationStore.weeklyHoursWorking /
+            configurationStore.weeklyWorkingDays) *
+            (configurationStore.weeklyWorkingDays - holidays.length),
     weekSumVacation,
     weekSumSick,
   };
