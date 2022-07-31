@@ -12,6 +12,15 @@
           <q-input
             type="text"
             filled
+            v-model="configurationStore.weeklyWorkingDays"
+            :label="t('weekly_working_days')"
+            mask="#"
+            :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+          />
+
+          <q-input
+            type="text"
+            filled
             v-model="configurationStore.weeklyHoursWorking"
             :label="t('weekly_work_time')"
             mask="###"
@@ -27,12 +36,17 @@
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
           />
 
-          <q-checkbox
-            dense
-            size="md"
+          <q-toggle
+            color="secondary"
             v-model="configurationStore.isSicknessMode"
-            label="Allow sickness mode?"
-            :color="configurationStore.isDarkMode ? 'blue-grey' : 'primary'"
+            checked-icon="sick"
+            unchecked-icon="clear"
+            size="xl"
+            :label="
+              configurationStore.isSicknessMode
+                ? t('sickness_mode_active')
+                : t('sickness_mode_inactive')
+            "
           />
         </q-card-section>
       </q-card>
@@ -41,9 +55,30 @@
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <div class="text-h6">Location</div>
+          <span class="text-h6">Holiday</span>
+
+          <q-toggle
+            color="secondary"
+            v-model="configurationStore.isHolidayMode"
+            checked-icon="beach_access"
+            unchecked-icon="clear"
+            size="xl"
+            style="padding-left: 125px"
+          >
+            <q-tooltip class="tooltip">
+              {{
+                configurationStore.isHolidayMode
+                  ? t("holiday_mode_active")
+                  : t("holiday_mode_inactive")
+              }}
+            </q-tooltip>
+          </q-toggle>
         </q-card-section>
-        <q-card-section class="q-pt-none">
+
+        <q-card-section
+          class="q-pt-none"
+          v-if="configurationStore.isHolidayMode"
+        >
           <q-input
             type="text"
             filled
@@ -113,6 +148,10 @@ const onApply = async () => {
 </script>
 
 <style lang="scss">
+.q-card-section {
+  min-width: 300px;
+}
+
 .q-input {
   width: 250px;
   padding-bottom: 32px;

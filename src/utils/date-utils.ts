@@ -1,5 +1,10 @@
+import { IHolidayModel } from "./../models/month-model";
+import useConfigurationStore from "@/stores/useConfigurationStore";
 import { IWeekModel } from "@/models/month-model";
 import { ref } from "vue";
+import Holidays from "date-holidays";
+
+const configurationStore = useConfigurationStore();
 
 const getAllDaysOfMonth = (date: Date) => {
   const tempDate = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -49,4 +54,18 @@ const getWeekNumber = (date: Date) => {
   return 1 + Math.ceil((firstThursday - tdt.valueOf()) / 604800000);
 };
 
-export { getAllDaysOfMonth };
+const isHoliday = (date: Date): IHolidayModel => {
+  const hd = new Holidays();
+  hd.init(configurationStore.country, configurationStore.state);
+
+  const holiday = hd.isHoliday(date);
+
+  if (!holiday) return { holidayName: "", isHoliday: false };
+
+  if (holiday[0].type !== "public")
+    return { holidayName: holiday[0].name, isHoliday: false };
+
+  return { holidayName: holiday[0].name, isHoliday: true };
+};
+
+export { getAllDaysOfMonth, isHoliday };

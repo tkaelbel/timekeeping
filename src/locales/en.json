@@ -32,5 +32,10 @@
   "state": "State",
   "overall_sick_days": "Days sick overall",
   "days_sick_month": "Days sick",
-  "statistics": "Statistics"
+  "statistics": "Statistics",
+  "sickness_mode_active": "Sickness days are active",
+  "sickness_mode_inactive": "Sickness days are inactive",
+  "holiday_mode_active": "Holidays are activated",
+  "holiday_mode_inactive": "Holidays are inactived",
+  "weekly_working_days": "Weekly working days"
 }

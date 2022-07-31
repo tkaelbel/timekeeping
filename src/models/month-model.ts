@@ -1,3 +1,4 @@
+import { HolidaysTypes } from "date-holidays";
 import { Ref } from "vue";
 
 export interface IWeekModel {
@@ -21,6 +22,12 @@ export interface IDayModel {
   hours: number;
   vacation: boolean;
   sickness: boolean;
+  holiday: IHolidayModel;
+}
+
+export interface IHolidayModel {
+  isHoliday: boolean;
+  holidayName: string;
 }
 
 export interface IWeek {

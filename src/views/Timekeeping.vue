@@ -50,13 +50,46 @@
                 <div v-if="day?.day" class="text-center">
                   <div class="text-weight-medium">
                     {{ d(day.day, "weekday", locale) }}
+                    <q-icon
+                      v-if="
+                        configStore.isHolidayMode &&
+                        inputValues[calendarWeek][
+                          d(day.day, 'day', 'en').toLowerCase()
+                        ].holiday.holidayName
+                      "
+                      name="o_star"
+                      size="18px"
+                    ></q-icon>
                   </div>
+
+                  <q-tooltip
+                    v-if="
+                      configStore.isHolidayMode &&
+                      inputValues[calendarWeek][
+                        d(day.day, 'day', 'en').toLowerCase()
+                      ].holiday.holidayName
+                    "
+                    class="tooltip"
+                  >
+                    {{
+                      inputValues[calendarWeek][
+                        d(day.day, "day", "en").toLowerCase()
+                      ].holiday.holidayName
+                    }}
+                  </q-tooltip>
+
                   <div class="q-gutter-md row">
                     <q-input
                       class="day-input"
                       type="number"
                       filled
                       :color="configStore.isDarkMode ? 'blue-grey' : 'blue'"
+                      :disable="
+                        configStore.isHolidayMode &&
+                        inputValues[calendarWeek][
+                          d(day.day, 'day', 'en').toLowerCase()
+                        ].holiday.isHoliday
+                      "
                       v-model.number="
                         inputValues[calendarWeek][
                           d(day.day, 'day', 'en').toLowerCase()
@@ -133,7 +166,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { storeToRefs } from "pinia";
-import { getAllDaysOfMonth } from "@/utils/date-utils";
+import { getAllDaysOfMonth, isHoliday } from "@/utils/date-utils";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
@@ -193,6 +226,7 @@ const inputValues = computed(() => {
                 hours: 0,
                 vacation: false,
                 sickness: false,
+                holiday: isHoliday(weekDay.day),
               },
             };
           } else {
@@ -201,6 +235,7 @@ const inputValues = computed(() => {
               hours: 0,
               vacation: false,
               sickness: false,
+              holiday: isHoliday(weekDay.day),
             };
           }
         }
@@ -227,19 +262,20 @@ const weekSums = (cw: number) => {
   return weekSum;
 };
 
+//TODO: Change
 const calculateOvertime = (cw: number) => {
   const weekSum = weekSums(cw);
   const wholeWeek = inputValues.value[cw];
   if (wholeWeek) {
-    const daysWithoutWeekend = Object.keys(wholeWeek).filter(
-      (day) => day !== "sunday" && day !== "saturday"
+    const daysToWork = Object.keys(wholeWeek).filter(
+      (day) =>
+        day !== "sunday" &&
+        day !== "saturday" &&
+        !wholeWeek[day].holiday.isHoliday
     );
-    if (daysWithoutWeekend.length < 5) {
-      return weekSum === 0
-        ? 0
-        : weekSum -
-            (configStore.weeklyHoursWorking / 5) * daysWithoutWeekend.length;
-    }
+    return weekSum === 0
+      ? 0
+      : weekSum - (configStore.weeklyHoursWorking / 5) * daysToWork.length;
   }
 
   return weekSum === 0 ? 0 : weekSum - configStore.weeklyHoursWorking;
