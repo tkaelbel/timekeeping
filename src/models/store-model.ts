@@ -21,6 +21,7 @@ export interface IConfigurationStore {
   country: string;
   state: string;
   isSicknessMode: boolean;
+  isSicknessWorkTime: boolean;
   isHolidayMode: boolean;
   weeklyWorkingDays: number;
 }

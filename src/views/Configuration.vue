@@ -6,7 +6,7 @@
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <div class="text-h6">General</div>
+          <div class="text-h6">{{ t("general") }}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -36,19 +36,6 @@
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
           />
-
-          <q-toggle
-            color="secondary"
-            v-model="configurationStore.isSicknessMode"
-            checked-icon="sick"
-            unchecked-icon="clear"
-            size="xl"
-            :label="
-              configurationStore.isSicknessMode
-                ? t('sickness_mode_active')
-                : t('sickness_mode_inactive')
-            "
-          />
         </q-card-section>
       </q-card>
 
@@ -56,13 +43,13 @@
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <span class="text-h6">Holiday</span>
+          <span class="text-h6">{{ t("holiday") }}</span>
 
           <q-toggle
             color="secondary"
             v-model="configurationStore.isHolidayMode"
             checked-icon="beach_access"
-            unchecked-icon="clear"
+            unchecked-icon="o_beach_access"
             size="lg"
             style="padding-left: 125px"
           >
@@ -99,11 +86,61 @@
       </q-card>
 
       <q-card
+        :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
+      >
+        <q-card-section>
+          <div class="text-h6">
+            {{ t("sickness") }}
+
+            <q-toggle
+              color="secondary"
+              v-model="configurationStore.isSicknessMode"
+              checked-icon="sick"
+              unchecked-icon="o_sick"
+              size="lg"
+              style="padding-left: 115px"
+            >
+              <q-tooltip class="tooltip">
+                {{
+                  configurationStore.isSicknessMode
+                    ? t("sickness_mode_active")
+                    : t("sickness_mode_inactive")
+                }}
+              </q-tooltip>
+            </q-toggle>
+          </div>
+        </q-card-section>
+
+        <q-card-section
+          class="q-pt-none"
+          v-if="configurationStore.isSicknessMode"
+        >
+          <q-toggle
+            color="secondary"
+            v-model="configurationStore.isSicknessWorkTime"
+            checked-icon="schedule"
+            unchecked-icon="o_schedule"
+            size="lg"
+            :label="t('sickness_time')"
+            left-label
+          >
+            <q-tooltip class="tooltip">
+              {{
+                configurationStore.isSicknessWorkTime
+                  ? t("sickness_time_active")
+                  : t("sickness_time_inactive")
+              }}
+            </q-tooltip>
+          </q-toggle>
+        </q-card-section>
+      </q-card>
+
+      <q-card
         class="cards"
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <div class="text-h6">Technical</div>
+          <div class="text-h6">{{ t("application") }}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">

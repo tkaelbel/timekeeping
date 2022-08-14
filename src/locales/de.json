@@ -37,5 +37,15 @@
   "sickness_mode_inactive": "Kranktage sind deaktiviert",
   "holiday_mode_active": "Feiertage sind aktiviert",
   "holiday_mode_inactive": "Feiertage sind deaktiviert",
-  "weekly_working_days": "Arbeitstage pro Woche"
+  "weekly_working_days": "Arbeitstage pro Woche",
+  "general": "Allgemein",
+  "holiday": "Feiertage",
+  "application": "Anwendung",
+  "sickness": "Krankheit",
+  "sick": "Krank",
+  "vacation": "Urlaub",
+  "work": "Arbeit",
+  "sickness_time_active": "Krankheitszeit wird als Arbeitszeit interpretiert",
+  "sickness_time_inactive": "Krankheitszeit wird nicht als Arbeitszeit interpretiert",
+  "sickness_time": "Krankheitszeit"
 }

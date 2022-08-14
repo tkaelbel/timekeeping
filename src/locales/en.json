@@ -37,5 +37,15 @@
   "sickness_mode_inactive": "Sickness days are inactive",
   "holiday_mode_active": "Holidays are activated",
   "holiday_mode_inactive": "Holidays are inactived",
-  "weekly_working_days": "Weekly working days"
+  "weekly_working_days": "Weekly working days",
+  "general": "General",
+  "holiday": "Holiday",
+  "application": "Application",
+  "sickness": "Sickness",
+  "sick": "Sick",
+  "vacation": "Vacation",
+  "work": "Work",
+  "sickness_time_active": "Sickness hours interpreted as work time",
+  "sickness_time_inactive": "Sickness hours not interpreted as work time",
+  "sickness_time": "Sickness hours"
 }

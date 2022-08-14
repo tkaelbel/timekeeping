@@ -141,6 +141,10 @@ if (config) {
     locale,
     country,
     state,
+    isHolidayMode,
+    isSicknessMode,
+    isSicknessWorkTime,
+    weeklyWorkingDays,
   } = config;
 
   configurationStore.yearlyVacationDays = yearlyVacationDays
@@ -168,8 +172,20 @@ if (config) {
   configurationStore.locale = locale ? locale : configurationStore.locale;
   localeI18n.value = configurationStore.locale;
 
+  configurationStore.isHolidayMode = isHolidayMode
+    ? isHolidayMode
+    : configurationStore.isHolidayMode;
   configurationStore.country = country ? country : configurationStore.country;
   configurationStore.state = state ? state : configurationStore.state;
+  configurationStore.isSicknessMode = isSicknessMode
+    ? isSicknessMode
+    : configurationStore.isSicknessMode;
+  configurationStore.isSicknessWorkTime = isSicknessWorkTime
+    ? isSicknessWorkTime
+    : configurationStore.isSicknessWorkTime;
+  configurationStore.weeklyWorkingDays = weeklyWorkingDays
+    ? weeklyWorkingDays
+    : configurationStore.weeklyWorkingDays;
 }
 
 const dataFile = (await readFile("data.json")) as IData;

@@ -1,5 +1,5 @@
 <template>
-  <q-btn-dropdown flat :label="locale" class="change_history">
+  <q-btn-dropdown flat :label="locale">
     <q-list>
       <q-item
         v-for="loc in localeOptions"
@@ -40,4 +40,3 @@ const localeOptions = [
   },
 ];
 </script>
-<style scoped lang="scss"></style>
