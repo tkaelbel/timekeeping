@@ -13,7 +13,7 @@
           <q-input
             type="text"
             filled
-            v-model="configurationStore.weeklyWorkingDays"
+            v-model.number="configurationStore.weeklyWorkingDays"
             :label="t('weekly_working_days')"
             mask="#"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
@@ -22,7 +22,7 @@
           <q-input
             type="text"
             filled
-            v-model="configurationStore.weeklyHoursWorking"
+            v-model.number="configurationStore.weeklyHoursWorking"
             :label="t('weekly_work_time')"
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
@@ -31,7 +31,7 @@
           <q-input
             type="text"
             filled
-            v-model="configurationStore.yearlyVacationDays"
+            v-model.number="configurationStore.yearlyVacationDays"
             :label="t('vacation_days')"
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
@@ -51,7 +51,7 @@
             checked-icon="beach_access"
             unchecked-icon="o_beach_access"
             size="lg"
-            style="padding-left: 125px"
+            style="padding-left: 100px"
           >
             <q-tooltip class="tooltip">
               {{
@@ -98,7 +98,7 @@
               checked-icon="sick"
               unchecked-icon="o_sick"
               size="lg"
-              style="padding-left: 115px"
+              style="padding-left: 100px"
             >
               <q-tooltip class="tooltip">
                 {{
@@ -136,21 +136,36 @@
       </q-card>
 
       <q-card
-        class="cards"
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <div class="text-h6">{{ t("application") }}</div>
+          <div class="text-h6">
+            {{ t("application") }}
+
+            <q-toggle
+              color="secondary"
+              v-model="isAutoSave"
+              checked-icon="save"
+              unchecked-icon="o_save"
+              size="lg"
+              style="padding-left: 80px"
+            >
+              <q-tooltip class="tooltip">
+                {{ isAutoSave ? t("auto_save_on") : t("auto_save_off") }}
+              </q-tooltip>
+            </q-toggle>
+          </div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
+        <q-card-section class="q-pt-none" v-if="configurationStore.isAutoSave">
           <q-input
             type="text"
             filled
-            v-model="configurationStore.autoSaveTimeSeconds"
+            v-model.number="configurationStore.autoSaveTimeSeconds"
             :label="t('auto_save')"
             mask="#####"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+            :rules="[ (val: number | any[]) => val >= 10 || t('invalid_save_time')]"
           />
         </q-card-section>
       </q-card>
@@ -170,10 +185,14 @@
 <script setup lang="ts">
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
+import { handleAutoSave } from "@/utils/auto-save-handler";
+import { storeToRefs } from "pinia";
+import { watch } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const configurationStore = useConfigurationStore();
+const { isAutoSave } = storeToRefs(configurationStore);
 
 const onApply = async () => {
   try {
@@ -184,6 +203,12 @@ const onApply = async () => {
     usePopupStore().showPopup(t);
   }
 };
+
+if (configurationStore.isAutoSave === true) handleAutoSave(t);
+
+watch(isAutoSave, (_newIsAutoSave) => {
+  handleAutoSave(t);
+});
 </script>
 
 <style scoped lang="scss">
@@ -199,7 +224,7 @@ const onApply = async () => {
 }
 
 .q-input {
-  width: 250px;
+  width: 200px;
   padding-bottom: 32px;
 }
 </style>

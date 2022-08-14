@@ -31,24 +31,15 @@
           />
         </div>
 
-        <div class="absolute-right">
+        <q-space />
+
+        <div class="gt-sm">
           <q-btn
             flat
             :icon="configurationStore.isDarkMode ? 'dark_mode' : 'o_dark_mode'"
             @click="toggleMode"
           />
           <language-dropdown></language-dropdown>
-          <q-toggle
-            color="secondary"
-            v-model="isAutoSave"
-            checked-icon="save"
-            unchecked-icon="clear"
-            size="lg"
-          >
-            <q-tooltip class="tooltip">
-              {{ isAutoSave ? t("auto_save_on") : t("auto_save_off") }}
-            </q-tooltip>
-          </q-toggle>
         </div>
       </q-toolbar>
     </q-header>
@@ -108,8 +99,6 @@ import { useQuasar } from "quasar";
 const leftDrawerOpen = ref(false);
 
 const configurationStore = useConfigurationStore();
-const { isAutoSave } = storeToRefs(configurationStore);
-
 const timekeeperStore = useTimekeepingStore();
 
 const q = useQuasar();
@@ -193,12 +182,6 @@ if (dataFile) {
   console.debug("Loaded data.json successfully");
   timekeeperStore.data = dataFile;
 }
-
-if (configurationStore.isAutoSave === true) handleAutoSave(t);
-
-watch(isAutoSave, (_newIsAutoSave) => {
-  handleAutoSave(t);
-});
 
 const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
