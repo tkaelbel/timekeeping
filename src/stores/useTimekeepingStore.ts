@@ -124,15 +124,11 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
   const dayKeys = Object.keys(cw);
   dayKeys.forEach((day: string) => {
     if (cw[day].sicknessHours) {
-      weekSumSick += cw[day].sicknessHours
-        ? parseFloat(cw[day].sicknessHours as unknown as string)
-        : 0;
+      weekSumSick += cw[day].sicknessHours ? cw[day].sicknessHours : 0;
     }
 
     if (cw[day].vacationHours) {
-      weekSumVacation += cw[day].vacationHours
-        ? parseFloat(cw[day].vacationHours as unknown as string)
-        : 0;
+      weekSumVacation += cw[day].vacationHours ? cw[day].vacationHours : 0;
     }
 
     if (cw[day].holiday?.isHoliday) {
@@ -141,9 +137,17 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
     }
 
     if (!cw[day].holiday?.isHoliday) {
-      weekSumOvertime += cw[day].hours
-        ? parseFloat(cw[day].hours as unknown as string)
-        : 0;
+      weekSumOvertime += cw[day].hours ? cw[day].hours : 0;
+      // Add sickness if allowed
+      if (
+        configurationStore.isSicknessMode &&
+        configurationStore.isSicknessWorkTime
+      ) {
+        weekSumOvertime += cw[day].sicknessHours ? cw[day].sicknessHours : 0;
+      }
+
+      // Add vacation if set
+      weekSumOvertime += cw[day].vacationHours ? cw[day].vacationHours : 0;
     }
   });
 
