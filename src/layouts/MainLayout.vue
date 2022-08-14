@@ -33,7 +33,7 @@
 
         <q-space />
 
-        <div class="gt-sm">
+        <div>
           <q-btn
             flat
             :icon="configurationStore.isDarkMode ? 'dark_mode' : 'o_dark_mode'"
