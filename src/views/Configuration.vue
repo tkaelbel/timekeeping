@@ -67,20 +67,26 @@
           class="q-pt-none"
           v-if="configurationStore.isHolidayMode"
         >
-          <q-input
-            type="text"
+          <q-select
             filled
-            v-model="configurationStore.country"
+            v-model="country"
+            style="width: 200px"
+            :options="getHolidayCountries()"
             :label="t('country')"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+            emit-value
+            map-options
           />
 
-          <q-input
-            type="text"
+          <q-select
             filled
-            v-model="configurationStore.state"
+            v-model="state"
+            style="width: 200px"
+            :options="stateOptions"
             :label="t('state')"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+            emit-value
+            map-options
           />
         </q-card-section>
       </q-card>
@@ -186,13 +192,23 @@
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
 import { handleAutoSave } from "@/utils/auto-save-handler";
+import { getHolidayCountries, getStates } from "@/utils/date-utils";
 import { storeToRefs } from "pinia";
-import { watch } from "vue";
+import { computed, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const configurationStore = useConfigurationStore();
-const { isAutoSave } = storeToRefs(configurationStore);
+const { isAutoSave, country, state } = storeToRefs(configurationStore);
+
+let lastCountry = country.value;
+const stateOptions = computed(() => {
+  if (lastCountry !== country.value) {
+    state.value = "";
+    lastCountry = country.value;
+  }
+  return getStates(country.value);
+});
 
 const onApply = async () => {
   try {
@@ -224,6 +240,11 @@ watch(isAutoSave, (_newIsAutoSave) => {
 }
 
 .q-input {
+  width: 200px;
+  padding-bottom: 32px;
+}
+
+.q-select {
   width: 200px;
   padding-bottom: 32px;
 }
