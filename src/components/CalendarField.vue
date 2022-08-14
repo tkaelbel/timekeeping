@@ -8,7 +8,7 @@
     v-model.number="day.hours"
     v-if="currentSelected.value === selectOptions[0].value"
   >
-    <q-btn-dropdown flat dense class="button-dropdown" size="sm">
+    <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
         <div class="row items-center no-wrap">
           <q-icon left :name="currentSelected.icon" />
@@ -25,7 +25,7 @@
             <q-icon :name="sel.icon" size="20px" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="q-pt-xs">{{ sel.label }}</q-item-label>
+            <q-item-label class="q-pt-xs">{{ t(sel.label) }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -41,7 +41,7 @@
     v-model.number="day.vacationHours"
     v-if="currentSelected.value === selectOptions[1].value"
   >
-    <q-btn-dropdown flat dense class="button-dropdown" size="sm">
+    <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
         <div class="row items-center no-wrap">
           <q-icon left :name="currentSelected.icon" />
@@ -58,7 +58,7 @@
             <q-icon :name="sel.icon" size="20px" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="q-pt-xs">{{ sel.label }}</q-item-label>
+            <q-item-label class="q-pt-xs">{{ t(sel.label) }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -78,7 +78,7 @@
       configurationStore.isSicknessMode
     "
   >
-    <q-btn-dropdown flat dense class="button-dropdown" size="sm">
+    <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
         <div class="row items-center no-wrap">
           <q-icon left :name="currentSelected.icon" />
@@ -95,7 +95,7 @@
             <q-icon :name="sel.icon" size="20px" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="q-pt-xs">{{ sel.label }}</q-item-label>
+            <q-item-label class="q-pt-xs">{{ t(sel.label) }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -115,9 +115,9 @@ const configurationStore = useConfigurationStore();
 const { t } = useI18n();
 
 const selectOptions = [
-  { label: t("work"), value: "Hours", icon: "o_schedule" },
-  { label: t("vacation"), value: "Vacation", icon: "o_beach_access" },
-  { label: t("sick"), value: "Sickness", icon: "o_sick" },
+  { label: "work", value: "Hours", icon: "o_schedule" },
+  { label: "vacation", value: "Vacation", icon: "o_beach_access" },
+  { label: "sick", value: "Sickness", icon: "o_sick" },
 ];
 
 const selectOptionsRef = computed(() => {
