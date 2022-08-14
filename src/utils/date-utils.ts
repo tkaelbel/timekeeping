@@ -68,4 +68,31 @@ const isHoliday = (date: Date): IHolidayModel => {
   return { holidayName: holiday[0].name, isHoliday: true };
 };
 
-export { getAllDaysOfMonth, isHoliday };
+const getHolidayCountries = (): Array<{
+  value: string;
+  label: string;
+}> => {
+  const countries = new Holidays().getCountries();
+  return Object.keys(countries)
+    .filter((key) => key === "DE" || key === "US")
+    .map((value) => {
+      return {
+        value,
+        label: countries[value],
+      };
+    });
+};
+
+const getStates = (
+  country: string
+): Array<{ value: string; label: string }> => {
+  const states = new Holidays().getStates(country);
+  return Object.keys(states).map((value) => {
+    return {
+      value,
+      label: states[value],
+    };
+  });
+};
+
+export { getAllDaysOfMonth, isHoliday, getHolidayCountries, getStates };

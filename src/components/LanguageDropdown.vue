@@ -1,5 +1,10 @@
 <template>
-  <q-btn-dropdown flat :label="locale" class="change_history">
+  <q-btn-dropdown flat>
+    <template v-slot:label>
+      <div class="row items-center no-wrap">
+        <span :class="selected" />
+      </div>
+    </template>
     <q-list>
       <q-item
         v-for="loc in localeOptions"
@@ -19,14 +24,19 @@
 </template>
 <script setup lang="ts">
 import useConfigurationStore from "@/stores/useConfigurationStore";
+import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 const configurationStore = useConfigurationStore();
 const { locale } = useI18n();
 
-const changeLanguage = (selected: string) => {
-  locale.value = selected;
-  configurationStore.locale = selected;
+const changeLanguage = (newSelected: string) => {
+  locale.value = newSelected;
+  configurationStore.locale = newSelected;
+  const selectedOption = localeOptions.find(
+    (element) => element.lang === newSelected
+  );
+  selected.value = selectedOption ? selectedOption.flag : localeOptions[0].flag;
 };
 
 const localeOptions = [
@@ -39,5 +49,11 @@ const localeOptions = [
     flag: "fi fi-us",
   },
 ];
+
+const selected = ref<string>(localeOptions[0].flag);
 </script>
-<style scoped lang="scss"></style>
+<style lang="scss">
+.q-btn-dropdown--simple * + .q-btn-dropdown__arrow {
+  display: none;
+}
+</style>

@@ -39,7 +39,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="[calendarWeek, weekday] in allDaysOfMonth"
+              v-for="[calendarWeek, weekday] in timeKeeperStore.allDaysOfMonth"
               :key="calendarWeek"
             >
               <td class="text-left text-weight-medium">
@@ -55,8 +55,9 @@
                         configStore.isHolidayMode &&
                         inputValues[calendarWeek][
                           d(day.day, 'day', 'en').toLowerCase()
-                        ].holiday.holidayName
+                        ].holiday?.holidayName
                       "
+                      class="holiday-icon"
                       name="o_star"
                       size="18px"
                     ></q-icon>
@@ -67,83 +68,25 @@
                       configStore.isHolidayMode &&
                       inputValues[calendarWeek][
                         d(day.day, 'day', 'en').toLowerCase()
-                      ].holiday.holidayName
+                      ].holiday?.holidayName
                     "
                     class="tooltip"
                   >
                     {{
                       inputValues[calendarWeek][
                         d(day.day, "day", "en").toLowerCase()
-                      ].holiday.holidayName
+                      ].holiday?.holidayName
                     }}
                   </q-tooltip>
 
-                  <div class="q-gutter-md row">
-                    <q-input
-                      class="day-input"
-                      type="number"
-                      filled
-                      :color="configStore.isDarkMode ? 'blue-grey' : 'blue'"
-                      :disable="
-                        configStore.isHolidayMode &&
+                  <div class="q-gutter-md col">
+                    <calendar-field
+                      :day="
                         inputValues[calendarWeek][
                           d(day.day, 'day', 'en').toLowerCase()
-                        ].holiday.isHoliday
+                        ]
                       "
-                      v-model.number="
-                        inputValues[calendarWeek][
-                          d(day.day, 'day', 'en').toLowerCase()
-                        ].hours
-                      "
-                    >
-                      <div class="row">
-                        <q-checkbox
-                          dense
-                          checked-icon="beach_access"
-                          unchecked-icon="o_beach_access"
-                          size="xl"
-                          @click="
-                            validateCheckboxes(
-                              'vacation',
-                              inputValues[calendarWeek][
-                                d(day.day, 'day', 'en').toLowerCase()
-                              ]
-                            )
-                          "
-                          v-model="
-                            inputValues[calendarWeek][
-                              d(day.day, 'day', 'en').toLowerCase()
-                            ].vacation
-                          "
-                          :color="
-                            configStore.isDarkMode ? 'blue-grey' : 'secondary'
-                          "
-                        />
-                        <q-checkbox
-                          v-if="configStore.isSicknessMode === true"
-                          dense
-                          size="xl"
-                          checked-icon="sick"
-                          unchecked-icon="o_sick"
-                          @click="
-                            validateCheckboxes(
-                              'sick',
-                              inputValues[calendarWeek][
-                                d(day.day, 'day', 'en').toLowerCase()
-                              ]
-                            )
-                          "
-                          v-model="
-                            inputValues[calendarWeek][
-                              d(day.day, 'day', 'en').toLowerCase()
-                            ].sickness
-                          "
-                          :color="
-                            configStore.isDarkMode ? 'blue-grey' : 'secondary'
-                          "
-                        />
-                      </div>
-                    </q-input>
+                    ></calendar-field>
                   </div>
                 </div>
               </td>
@@ -166,7 +109,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { storeToRefs } from "pinia";
-import { getAllDaysOfMonth, isHoliday } from "@/utils/date-utils";
+import { isHoliday } from "@/utils/date-utils";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
@@ -174,7 +117,7 @@ import { useI18n } from "vue-i18n";
 
 import MonthPicker from "@/components/MonthPicker.vue";
 import InformationCard from "@/components/InformationCard.vue";
-import { IDayModel } from "@/models/month-model";
+import CalendarField from "@/components/CalendarField.vue";
 
 const { t, d, n, locale } = useI18n();
 
@@ -184,21 +127,10 @@ const timeKeeperStore = useTimekeepingStore();
 
 const configStore = useConfigurationStore();
 
-const allDaysOfMonth = computed(() => {
-  return getAllDaysOfMonth(currentDate.value);
-});
-
-const validateCheckboxes = (checkbox: string, currentDay: IDayModel) => {
-  if (currentDay.sickness === true && currentDay.vacation === true) {
-    if (checkbox === "vacation") currentDay.sickness = false;
-    if (checkbox === "sick") currentDay.vacation = false;
-  }
-};
-
 const inputValues = computed(() => {
   const year = currentDate.value.getFullYear();
 
-  const monthName = d(currentDate.value, "month", locale.value);
+  const monthName = d(currentDate.value, "month", "en");
 
   // try it with state as data holder
   const overallData = data.value;
@@ -213,7 +145,7 @@ const inputValues = computed(() => {
     yearData[monthName] = {};
     const month = yearData[monthName];
 
-    allDaysOfMonth.value.forEach((value, index) => {
+    timeKeeperStore.allDaysOfMonth.forEach((value, index) => {
       const days = Object.keys(value);
       days.forEach((day) => {
         const weekDay = value[day];
@@ -224,8 +156,8 @@ const inputValues = computed(() => {
               [day]: {
                 day: weekDay.day,
                 hours: 0,
-                vacation: false,
-                sickness: false,
+                sicknessHours: 0,
+                vacationHours: 0,
                 holiday: isHoliday(weekDay.day),
               },
             };
@@ -233,8 +165,8 @@ const inputValues = computed(() => {
             month[index][day] = {
               day: weekDay.day,
               hours: 0,
-              vacation: false,
-              sickness: false,
+              sicknessHours: 0,
+              vacationHours: 0,
               holiday: isHoliday(weekDay.day),
             };
           }
@@ -254,9 +186,18 @@ const weekSums = (cw: number) => {
 
   const keys = Object.keys(wholeWeek);
   keys.forEach((key) => {
-    weekSum += wholeWeek[key].hours
-      ? parseFloat(wholeWeek[key].hours as unknown as string)
-      : 0;
+    // Calculate work time week
+    weekSum += wholeWeek[key].hours ? wholeWeek[key].hours : 0;
+
+    // Add sickness if allowed
+    if (configStore.isSicknessMode && configStore.isSicknessWorkTime) {
+      weekSum += wholeWeek[key].sicknessHours
+        ? wholeWeek[key].sicknessHours
+        : 0;
+    }
+
+    // Add vacation if set
+    weekSum += wholeWeek[key].vacationHours ? wholeWeek[key].vacationHours : 0;
   });
 
   return weekSum;
@@ -268,7 +209,7 @@ const calculateOvertime = (cw: number) => {
   const wholeWeek = inputValues.value[cw];
   if (wholeWeek) {
     const holidays = Object.keys(wholeWeek).filter(
-      (day) => wholeWeek[day].holiday.isHoliday
+      (day) => wholeWeek[day].holiday?.isHoliday
     );
 
     return weekSum === 0
@@ -314,14 +255,14 @@ tr {
 }
 
 .q-field__control {
-  height: 80px !important;
-}
-
-.q-input {
-  height: 100px !important;
+  height: 50px !important;
 }
 
 .flex-break {
   flex: 1 0 100% !important;
+}
+
+.holiday-icon {
+  bottom: 2px;
 }
 </style>

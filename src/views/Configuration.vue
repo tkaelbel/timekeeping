@@ -6,14 +6,14 @@
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <div class="text-h6">General</div>
+          <div class="text-h6">{{ t("general") }}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
           <q-input
             type="text"
             filled
-            v-model="configurationStore.weeklyWorkingDays"
+            v-model.number="configurationStore.weeklyWorkingDays"
             :label="t('weekly_working_days')"
             mask="#"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
@@ -22,7 +22,7 @@
           <q-input
             type="text"
             filled
-            v-model="configurationStore.weeklyHoursWorking"
+            v-model.number="configurationStore.weeklyHoursWorking"
             :label="t('weekly_work_time')"
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
@@ -31,23 +31,10 @@
           <q-input
             type="text"
             filled
-            v-model="configurationStore.yearlyVacationDays"
+            v-model.number="configurationStore.yearlyVacationDays"
             :label="t('vacation_days')"
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-          />
-
-          <q-toggle
-            color="secondary"
-            v-model="configurationStore.isSicknessMode"
-            checked-icon="sick"
-            unchecked-icon="clear"
-            size="xl"
-            :label="
-              configurationStore.isSicknessMode
-                ? t('sickness_mode_active')
-                : t('sickness_mode_inactive')
-            "
           />
         </q-card-section>
       </q-card>
@@ -56,15 +43,15 @@
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <span class="text-h6">Holiday</span>
+          <span class="text-h6">{{ t("holiday") }}</span>
 
           <q-toggle
             color="secondary"
             v-model="configurationStore.isHolidayMode"
             checked-icon="beach_access"
-            unchecked-icon="clear"
+            unchecked-icon="o_beach_access"
             size="lg"
-            style="padding-left: 125px"
+            style="padding-left: 100px"
           >
             <q-tooltip class="tooltip">
               {{
@@ -80,40 +67,111 @@
           class="q-pt-none"
           v-if="configurationStore.isHolidayMode"
         >
-          <q-input
-            type="text"
+          <q-select
             filled
-            v-model="configurationStore.country"
+            v-model="country"
+            style="width: 200px"
+            :options="getHolidayCountries()"
             :label="t('country')"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+            emit-value
+            map-options
           />
 
-          <q-input
-            type="text"
+          <q-select
             filled
-            v-model="configurationStore.state"
+            v-model="state"
+            style="width: 200px"
+            :options="stateOptions"
             :label="t('state')"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+            emit-value
+            map-options
           />
         </q-card-section>
       </q-card>
 
       <q-card
-        class="cards"
         :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
       >
         <q-card-section>
-          <div class="text-h6">Technical</div>
+          <div class="text-h6">
+            {{ t("sickness") }}
+
+            <q-toggle
+              color="secondary"
+              v-model="configurationStore.isSicknessMode"
+              checked-icon="sick"
+              unchecked-icon="o_sick"
+              size="lg"
+              style="padding-left: 100px"
+            >
+              <q-tooltip class="tooltip">
+                {{
+                  configurationStore.isSicknessMode
+                    ? t("sickness_mode_active")
+                    : t("sickness_mode_inactive")
+                }}
+              </q-tooltip>
+            </q-toggle>
+          </div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
+        <q-card-section
+          class="q-pt-none"
+          v-if="configurationStore.isSicknessMode"
+        >
+          <q-toggle
+            color="secondary"
+            v-model="configurationStore.isSicknessWorkTime"
+            checked-icon="schedule"
+            unchecked-icon="o_schedule"
+            size="lg"
+            :label="t('sickness_time')"
+            left-label
+          >
+            <q-tooltip class="tooltip">
+              {{
+                configurationStore.isSicknessWorkTime
+                  ? t("sickness_time_active")
+                  : t("sickness_time_inactive")
+              }}
+            </q-tooltip>
+          </q-toggle>
+        </q-card-section>
+      </q-card>
+
+      <q-card
+        :class="configurationStore.isDarkMode ? 'dark-secondary' : 'primary'"
+      >
+        <q-card-section>
+          <div class="text-h6">
+            {{ t("application") }}
+
+            <q-toggle
+              color="secondary"
+              v-model="isAutoSave"
+              checked-icon="save"
+              unchecked-icon="o_save"
+              size="lg"
+              style="padding-left: 80px"
+            >
+              <q-tooltip class="tooltip">
+                {{ isAutoSave ? t("auto_save_on") : t("auto_save_off") }}
+              </q-tooltip>
+            </q-toggle>
+          </div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none" v-if="configurationStore.isAutoSave">
           <q-input
             type="text"
             filled
-            v-model="configurationStore.autoSaveTimeSeconds"
+            v-model.number="configurationStore.autoSaveTimeSeconds"
             :label="t('auto_save')"
             mask="#####"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+            :rules="[ (val: number | any[]) => val >= 10 || t('invalid_save_time')]"
           />
         </q-card-section>
       </q-card>
@@ -133,10 +191,24 @@
 <script setup lang="ts">
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
+import { handleAutoSave } from "@/utils/auto-save-handler";
+import { getHolidayCountries, getStates } from "@/utils/date-utils";
+import { storeToRefs } from "pinia";
+import { computed, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const configurationStore = useConfigurationStore();
+const { isAutoSave, country, state } = storeToRefs(configurationStore);
+
+let lastCountry = country.value;
+const stateOptions = computed(() => {
+  if (lastCountry !== country.value) {
+    state.value = "";
+    lastCountry = country.value;
+  }
+  return getStates(country.value);
+});
 
 const onApply = async () => {
   try {
@@ -147,6 +219,12 @@ const onApply = async () => {
     usePopupStore().showPopup(t);
   }
 };
+
+if (configurationStore.isAutoSave === true) handleAutoSave(t);
+
+watch(isAutoSave, (_newIsAutoSave) => {
+  handleAutoSave(t);
+});
 </script>
 
 <style scoped lang="scss">
@@ -162,7 +240,12 @@ const onApply = async () => {
 }
 
 .q-input {
-  width: 250px;
+  width: 200px;
+  padding-bottom: 32px;
+}
+
+.q-select {
+  width: 200px;
   padding-bottom: 32px;
 }
 </style>

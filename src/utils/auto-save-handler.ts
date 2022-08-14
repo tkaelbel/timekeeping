@@ -1,6 +1,7 @@
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
+import { DebuggerEventExtraInfo } from "vue";
 import { ComposerTranslation } from "vue-i18n";
 
 let timer: NodeJS.Timeout;
@@ -12,6 +13,30 @@ const popupStore = usePopupStore();
 const handleAutoSave = (t: ComposerTranslation) => {
   if (configurationStore.isAutoSave === true) {
     timer = autoSave(t);
+
+    // Reset the timer if the autoSaveTimeSeconds have changed
+    configurationStore.$subscribe((mutation, state) => {
+      const mutationDeb = mutation.events as DebuggerEventExtraInfo;
+
+      if (
+        mutationDeb.key === "autoSaveTimeSeconds" &&
+        mutationDeb.newValue != mutationDeb.oldValue &&
+        mutationDeb.newValue < 10
+      ) {
+        clearInterval(timer);
+        return;
+      }
+
+      if (
+        mutationDeb.key === "autoSaveTimeSeconds" &&
+        mutationDeb.newValue != mutationDeb.oldValue &&
+        mutationDeb.newValue >= 10
+      ) {
+        console.log("Reseted timer to: ", mutationDeb.newValue);
+        clearInterval(timer);
+        timer = autoSave(t);
+      }
+    });
   } else {
     clearInterval(timer);
     // save the false

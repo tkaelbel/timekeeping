@@ -14,6 +14,7 @@ export default defineStore("configurationStore", {
       country: "DE",
       state: "HE",
       isSicknessMode: true,
+      isSicknessWorkTime: true,
       isHolidayMode: true,
       weeklyWorkingDays: 5,
     } as IConfigurationStore),
@@ -35,6 +36,7 @@ export default defineStore("configurationStore", {
           country,
           state,
           isSicknessMode,
+          isSicknessWorkTime,
           isHolidayMode,
           weeklyWorkingDays,
         } = this;
@@ -49,6 +51,7 @@ export default defineStore("configurationStore", {
           country,
           state,
           isSicknessMode,
+          isSicknessWorkTime,
           isHolidayMode,
           weeklyWorkingDays,
         });

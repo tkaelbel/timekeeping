@@ -1,5 +1,6 @@
-import { IData, IDayModel } from "@/models/month-model";
+import { IData, IDayModel, IWeek, IWeekModel } from "@/models/month-model";
 import { ITimekeeperStore } from "@/models/store-model";
+import { getAllDaysOfMonth } from "@/utils/date-utils";
 import { createFile } from "@/utils/fs-handler";
 import { defineStore } from "pinia";
 import useConfigurationStore from "./useConfigurationStore";
@@ -25,6 +26,9 @@ export default defineStore("timekeepingStore", {
     },
   },
   getters: {
+    allDaysOfMonth(): Map<number, IWeekModel> {
+      return getAllDaysOfMonth(this.currentDate);
+    },
     calculateOverallOvertime() {
       const { calculatedWeekOvertime } = calculateAdditionalInfos(this.data);
       if (calculatedWeekOvertime === 0) return 0;
@@ -119,27 +123,31 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
 
   const dayKeys = Object.keys(cw);
   dayKeys.forEach((day: string) => {
-    if (cw[day].sickness === true) {
-      weekSumSick += cw[day].hours
-        ? parseFloat(cw[day].hours as unknown as string)
-        : 0;
+    if (cw[day].sicknessHours) {
+      weekSumSick += cw[day].sicknessHours ? cw[day].sicknessHours : 0;
     }
 
-    if (cw[day].vacation === true) {
-      weekSumVacation += cw[day].hours
-        ? parseFloat(cw[day].hours as unknown as string)
-        : 0;
+    if (cw[day].vacationHours) {
+      weekSumVacation += cw[day].vacationHours ? cw[day].vacationHours : 0;
     }
 
-    if (cw[day].holiday.isHoliday) {
+    if (cw[day].holiday?.isHoliday) {
       holidays.push(cw[day]);
       return;
     }
 
-    if (!cw[day].holiday.isHoliday) {
-      weekSumOvertime += cw[day].hours
-        ? parseFloat(cw[day].hours as unknown as string)
-        : 0;
+    if (!cw[day].holiday?.isHoliday) {
+      weekSumOvertime += cw[day].hours ? cw[day].hours : 0;
+      // Add sickness if allowed
+      if (
+        configurationStore.isSicknessMode &&
+        configurationStore.isSicknessWorkTime
+      ) {
+        weekSumOvertime += cw[day].sicknessHours ? cw[day].sicknessHours : 0;
+      }
+
+      // Add vacation if set
+      weekSumOvertime += cw[day].vacationHours ? cw[day].vacationHours : 0;
     }
   });
 
