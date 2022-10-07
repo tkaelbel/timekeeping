@@ -151,14 +151,22 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
     }
   });
 
+  // filter weekend
+  // TODO: add configuration property
+  const dayKeysWithoutWeekend = dayKeys.filter(
+    (day: string) => day !== "sunday" && day !== "saturday"
+  );
+
+  const days =
+    dayKeysWithoutWeekend.length < configurationStore.weeklyWorkingDays
+      ? dayKeysWithoutWeekend.length - holidays.length
+      : configurationStore.weeklyWorkingDays - holidays.length;
+
   return {
     weekSumOvertime:
       weekSumOvertime === 0
         ? 0
-        : weekSumOvertime -
-          (configurationStore.weeklyHoursWorking /
-            configurationStore.weeklyWorkingDays) *
-            (configurationStore.weeklyWorkingDays - holidays.length),
+        : weekSumOvertime - configurationStore.getDayWorkingHours * days,
     weekSumVacation,
     weekSumSick,
   };
