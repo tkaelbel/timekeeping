@@ -22,6 +22,9 @@ export default defineStore("configurationStore", {
     convertAutoSaveTimeToSeconds(): number {
       return this.autoSaveTimeSeconds * 1000;
     },
+    getDayWorkingHours(): number {
+      return this.weeklyHoursWorking / this.weeklyWorkingDays;
+    },
   },
   actions: {
     async saveConfiguration() {
