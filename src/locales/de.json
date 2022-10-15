@@ -48,5 +48,11 @@
   "sickness_time_active": "Krankheitszeit wird als Arbeitszeit interpretiert",
   "sickness_time_inactive": "Krankheitszeit wird nicht als Arbeitszeit interpretiert",
   "sickness_time": "Krankheitszeit",
-  "invalid_save_time": "Bitte geben sie Zahlen >= 10 ein"
+  "invalid_save_time": "Bitte geben sie Zahlen >= 10 ein",
+  "data": "Daten",
+  "import": "Import",
+  "export": "Export",
+  "backup": "Backup",
+  "error_file_load": "Datei konnte nicht geladen werden",
+  "import_confirm": "Achtung! Wirklich Daten importieren?"
 }

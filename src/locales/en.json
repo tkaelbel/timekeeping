@@ -48,5 +48,11 @@
   "sickness_time_active": "Sickness hours interpreted as work time",
   "sickness_time_inactive": "Sickness hours not interpreted as work time",
   "sickness_time": "Sickness hours",
-  "invalid_save_time": "Please use numbers >= 10"
+  "invalid_save_time": "Please use numbers >= 10",
+  "data": "Data",
+  "import": "Import",
+  "export": "Export",
+  "backup": "Backup",
+  "error_file_load": "Could not load file",
+  "import_confirm": "Attention! Do you really want to import data?"
 }

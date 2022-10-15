@@ -40,4 +40,16 @@ const readFile = async (
   }
 };
 
-export { createDataFolder, createFile, readFile };
+const readFileElsewhere = async (
+  fileName: string
+): Promise<IData | IConfigurationStore | undefined> => {
+  try {
+    const file = await readTextFile(`${fileName}`, { dir: dir });
+    return JSON.parse(file);
+  } catch (error) {
+    console.error(`Could not read file ${fileName} because of ${error}`);
+    return undefined;
+  }
+};
+
+export { createDataFolder, createFile, readFile, readFileElsewhere };

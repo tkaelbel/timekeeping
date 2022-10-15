@@ -4,6 +4,9 @@ import App from "./App.vue";
 import router from "./router";
 import { createPinia } from "pinia";
 
+// import VuePlugin from "@quasar/quasar-ui-qmarkdown";
+import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
 import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
@@ -84,5 +87,7 @@ app.use(Quasar, {
 });
 
 app.use(router);
+
+// app.use(VuePlugin);
 
 app.mount("#app");

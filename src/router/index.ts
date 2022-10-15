@@ -16,6 +16,10 @@ const router = createRouter({
           path: "timecalculator",
           component: () => import("@/views/TimeCalculator.vue"),
         },
+        {
+          path: "data",
+          component: () => import("@/views/Data.vue"),
+        },
       ],
     },
   ],

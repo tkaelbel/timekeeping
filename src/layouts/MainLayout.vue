@@ -1,36 +1,12 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh LpR fFf">
     <q-header elevated>
       <q-toolbar
         :class="configurationStore.isDarkMode ? 'dark-primary' : 'primary'"
       >
-        <div class="lt-md">
-          <q-btn
-            flat
-            dense
-            round
-            icon="menu"
-            aria-label="Menu"
-            @click="toggleLeftDrawer"
-          />
+        <div>
+          <q-btn flat icon="img:/favicon.ico" size="xl"></q-btn>
         </div>
-
-        <div class="gt-sm">
-          <q-btn flat icon="schedule" :label="t('time_keeper')" to="/" />
-          <q-btn
-            flat
-            icon="calculate"
-            :label="t('time_calculator')"
-            to="/timecalculator"
-          />
-          <q-btn
-            flat
-            icon="build"
-            :label="t('configuration')"
-            to="/configuration"
-          />
-        </div>
-
         <q-space />
 
         <div>
@@ -44,25 +20,41 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" bordered :width="200">
+    <q-drawer
+      v-model="leftDrawerOpen"
+      bordered
+      :width="200"
+      :breakpoint="500"
+      show-if-above
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+    >
       <q-list padding>
-        <q-item clickable to="/">
+        <q-item to="/">
           <q-item-section avatar>
-            <q-icon name="schedule" size="25px" />
+            <q-icon name="schedule" size="25px" color="blue" />
           </q-item-section>
           <q-item-section>{{ t("time_keeper") }}</q-item-section>
         </q-item>
 
-        <q-item clickable to="/timecalculator">
+        <q-item to="/timecalculator">
           <q-item-section avatar>
-            <q-icon name="calculate" size="25px" />
+            <q-icon name="calculate" size="25px" color="blue" />
           </q-item-section>
           <q-item-section>{{ t("time_calculator") }}</q-item-section>
         </q-item>
 
-        <q-item clickable to="/configuration">
+        <q-item to="/data">
           <q-item-section avatar>
-            <q-icon name="build" size="25px" />
+            <q-icon name="folder" size="25px" color="blue" />
+          </q-item-section>
+          <q-item-section>{{ t("data") }}</q-item-section>
+        </q-item>
+
+        <q-item to="/configuration">
+          <q-item-section avatar>
+            <q-icon name="build" size="25px" color="blue" />
           </q-item-section>
           <q-item-section>{{ t("configuration") }}</q-item-section>
         </q-item>
@@ -79,14 +71,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 import { IConfigurationStore } from "@/models/store-model";
 import { IData } from "@/models/month-model";
-import { storeToRefs } from "pinia";
-
-import { handleAutoSave } from "@/utils/auto-save-handler";
-
 import { createDataFolder, readFile } from "@/utils/fs-handler";
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import useTimekeepingStore from "@/stores/useTimekeepingStore";
@@ -96,7 +84,16 @@ import LanguageDropdown from "@/components/LanguageDropdown.vue";
 import { useI18n } from "vue-i18n";
 import { useQuasar } from "quasar";
 
-const leftDrawerOpen = ref(false);
+const menuItems = [
+  { name: "time_keeper", isActive: true },
+  { name: "time_calculator", isActive: false },
+  { name: "data", isActive: false },
+  { name: "configuration", isActive: false },
+];
+
+const activeMenuItem = ref(menuItems[0]);
+const leftDrawerOpen = ref(true);
+const miniState = ref(true);
 
 const configurationStore = useConfigurationStore();
 const timekeeperStore = useTimekeepingStore();

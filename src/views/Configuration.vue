@@ -213,10 +213,10 @@ const stateOptions = computed(() => {
 const onApply = async () => {
   try {
     await configurationStore.saveConfiguration();
-    usePopupStore().showPopup(t, true);
+    usePopupStore().showPopup(t("saved"), true);
   } catch (error) {
     console.error("Could not write configuration.json.");
-    usePopupStore().showPopup(t);
+    usePopupStore().showPopup(t("not_saved"));
   }
 };
 

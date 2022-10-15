@@ -48,4 +48,8 @@ body.body--dark {
 .secondary {
   color: #429169 !important;
 }
+
+.bg-secondary {
+  background-color: #429169 !important;
+}
 </style>
