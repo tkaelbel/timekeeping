@@ -212,19 +212,13 @@ const calculateOvertime = (cw: number) => {
       (day) => wholeWeek[day].holiday?.isHoliday
     );
 
-    // filter weekend
-    // TODO: add configuration property
-    const dayKeysWithoutWeekend = Object.keys(wholeWeek).filter(
-      (day: string) => day !== "sunday" && day !== "saturday"
-    );
-
-    const days =
-      dayKeysWithoutWeekend.length < configStore.weeklyWorkingDays
-        ? dayKeysWithoutWeekend.length - holidays.length
-        : configStore.weeklyWorkingDays - holidays.length;
-
-    return weekSum === 0 ? 0 : weekSum - configStore.getDayWorkingHours * days;
+    return weekSum === 0
+      ? 0
+      : weekSum -
+          (configStore.weeklyHoursWorking / configStore.weeklyWorkingDays) *
+            (configStore.weeklyWorkingDays - holidays.length);
   }
+
   return weekSum === 0 ? 0 : weekSum - configStore.weeklyHoursWorking;
 };
 

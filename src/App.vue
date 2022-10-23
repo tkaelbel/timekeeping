@@ -52,4 +52,8 @@ body.body--dark {
 .bg-secondary {
   background-color: #429169 !important;
 }
+
+.blue-grey-color {
+  color: #607d8b !important;
+}
 </style>

@@ -31,30 +31,67 @@
       @mouseout="miniState = true"
     >
       <q-list padding>
-        <q-item to="/">
+        <q-item
+          to="/"
+          @click="selectMenuItem = 'time_keeper'"
+          :active="selectMenuItem === 'time_keeper'"
+          :class="
+            selectMenuItem === 'time_keeper' && configurationStore.isDarkMode
+              ? 'blue-grey-color'
+              : 'primary'
+          "
+        >
           <q-item-section avatar>
-            <q-icon name="schedule" size="25px" color="blue" />
+            <q-icon name="schedule" size="25px" />
           </q-item-section>
           <q-item-section>{{ t("time_keeper") }}</q-item-section>
         </q-item>
 
-        <q-item to="/timecalculator">
+        <q-item
+          to="/timecalculator"
+          @click="selectMenuItem = 'time_calculator'"
+          :active="selectMenuItem === 'time_calculator'"
+          :class="
+            selectMenuItem === 'time_calculator' &&
+            configurationStore.isDarkMode
+              ? 'blue-grey-color'
+              : 'primary'
+          "
+        >
           <q-item-section avatar>
-            <q-icon name="calculate" size="25px" color="blue" />
+            <q-icon name="calculate" size="25px" />
           </q-item-section>
           <q-item-section>{{ t("time_calculator") }}</q-item-section>
         </q-item>
 
-        <q-item to="/data">
+        <q-item
+          to="/data"
+          @click="selectMenuItem = 'data'"
+          :active="selectMenuItem === 'data'"
+          :class="
+            selectMenuItem === 'data' && configurationStore.isDarkMode
+              ? 'blue-grey-color'
+              : 'primary'
+          "
+        >
           <q-item-section avatar>
-            <q-icon name="folder" size="25px" color="blue" />
+            <q-icon name="folder" size="25px" />
           </q-item-section>
           <q-item-section>{{ t("data") }}</q-item-section>
         </q-item>
 
-        <q-item to="/configuration">
+        <q-item
+          to="/configuration"
+          @click="selectMenuItem = 'configuration'"
+          :active="selectMenuItem === 'configuration'"
+          :class="
+            selectMenuItem === 'configuration' && configurationStore.isDarkMode
+              ? 'blue-grey-color'
+              : 'primary'
+          "
+        >
           <q-item-section avatar>
-            <q-icon name="build" size="25px" color="blue" />
+            <q-icon name="build" size="25px" />
           </q-item-section>
           <q-item-section>{{ t("configuration") }}</q-item-section>
         </q-item>
@@ -84,14 +121,7 @@ import LanguageDropdown from "@/components/LanguageDropdown.vue";
 import { useI18n } from "vue-i18n";
 import { useQuasar } from "quasar";
 
-const menuItems = [
-  { name: "time_keeper", isActive: true },
-  { name: "time_calculator", isActive: false },
-  { name: "data", isActive: false },
-  { name: "configuration", isActive: false },
-];
-
-const activeMenuItem = ref(menuItems[0]);
+const selectMenuItem = ref("time_keeper");
 const leftDrawerOpen = ref(true);
 const miniState = ref(true);
 
