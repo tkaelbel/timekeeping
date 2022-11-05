@@ -34,7 +34,13 @@
           />
 
           <q-stepper-navigation>
-            <q-btn @click="step = 3" color="primary" label="Continue" />
+            <q-btn
+              @click="
+                selectedOperation.value === 'export' ? (step = 4) : (step = 3)
+              "
+              color="primary"
+              label="Continue"
+            />
             <q-btn
               flat
               @click="step = 1"
@@ -73,7 +79,7 @@
             />
             <q-btn
               flat
-              @click="step = 3"
+              @click="step = 2"
               color="primary"
               label="Back"
               class="q-ml-sm"
@@ -101,7 +107,7 @@
               style="width: 150px"
             />
 
-            <div class="row q-pb-sm">
+            <div class="row q-pb-sm" v-if="uploadedFile">
               <q-input
                 class="q-pr-md"
                 disable
@@ -128,7 +134,7 @@
           </div>
 
           <q-stepper-navigation>
-            <q-btn color="primary" label="Finish" />
+            <q-btn color="primary" label="Finish" @click="finish" />
             <q-btn
               flat
               @click="step = 2"
@@ -164,14 +170,18 @@
   </q-page>
 </template>
 <script setup lang="ts">
+import { IData, IMonth } from "@/models/month-model";
 import useConfigurationStore from "@/stores/useConfigurationStore";
 import usePopupStore from "@/stores/usePopupStore";
+import useTimekeepingStore from "@/stores/useTimekeepingStore";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
+import { exportFile } from "quasar";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const configurationStore = useConfigurationStore();
+const timekeepingStore = useTimekeepingStore();
 
 const fileReader = new FileReader();
 
@@ -207,7 +217,7 @@ const selectedOperation = ref(operationOptions[0]);
 const selectedFile = ref(fileOptions[0]);
 const uploadedFile = ref();
 
-const readFile = ref<Object>();
+const readFile = ref<IData>();
 
 const isDataValueShown = ref(false);
 
@@ -227,10 +237,9 @@ const handleImport = () => {
   }
 
   fileReader.onload = () => {
-    console.log(fileReader.result);
     if (typeof fileReader.result === "string") {
       const obj = JSON.parse(fileReader.result);
-      readFile.value = JSON.stringify(obj, null, "\t");
+      readFile.value = obj;
     }
   };
 
@@ -239,4 +248,67 @@ const handleImport = () => {
     return;
   };
 };
+
+const finish = () => {
+  const operation = selectedOperation.value;
+  const file = selectedFile.value;
+
+  if (operation.value === "export") {
+    const status = exportFile(
+      selectedFile.value.value,
+      JSON.stringify(
+        file.value === "data"
+          ? timekeepingStore.data
+          : configurationStore.$state
+      ),
+      "application/json"
+    );
+
+    //TODO: popup or first state or both
+    if (!status) {
+      console.log("could not do it");
+    }
+  }
+
+  if (operation.value === "import" && readFile.value) {
+    // TODO: check if object is valid
+
+    isInputValid(readFile.value);
+
+    timekeepingStore.data = readFile.value as IData;
+    //TODO: popup or first state or both
+  }
+
+  if (operation.value === "backup") {
+  }
+};
+
+const isInputValid = (input: any): boolean => {
+  if (typeof input === "undefined") return false;
+
+  let isValid = true;
+
+  const years = Object.keys(input);
+  // first level
+  for (let index = 0; index < years.length; index++) {
+    const year = years[index];
+
+    // check for year
+    if (/^\d+$/.test(year) === false) {
+      isValid = false;
+      break;
+    }
+
+    // check for month
+    const months = input[years[index]];
+
+    // check for cw
+
+    // check for days
+  }
+
+  return true;
+};
+
+const isMonthValid = (month: IMonth): boolean => {};
 </script>

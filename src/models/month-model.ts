@@ -45,6 +45,6 @@ export interface IData {
   [key: number]: IMonth;
 }
 
-interface IMonth {
+export interface IMonth {
   [key: string]: IWeek;
 }
