@@ -36,7 +36,7 @@ export default defineStore("timekeepingStore", {
       return calculatedWeekOvertime;
     },
     calculateRestVactionDays() {
-      const { calculatedRestVacation } = calculateAdditionalInfos(this.data);
+      const { calculatedRestVacation } = calculateAdditionalInfos(this.data, this.currentDate);
       if (calculatedRestVacation === 0) return 0;
 
       const dayHoursMustWork =
@@ -89,13 +89,16 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
         const cwData = cws[cw as unknown as number];
         const calculatedWeek = calculateWeek(cwData);
         calculatedWeekOvertime += calculatedWeek.weekSumOvertime;
-        calculatedRestVacation += calculatedWeek.weekSumVacation;
         calculatedOverallSick += calculatedWeek.weekSumSick;
 
         if (
           currentDate?.toLocaleDateString("en-US", { month: "short" }) === month
         ) {
           calculatedMonthSick += calculatedWeek.weekSumSick;
+        }
+
+        if ( currentDate?.toLocaleDateString("en-US", { year: "numeric"}) === year) {
+          calculatedRestVacation += calculatedWeek.weekSumVacation;
         }
       });
     });
