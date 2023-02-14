@@ -5,7 +5,7 @@
     filled
     :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
     :disable="configurationStore.isHolidayMode && day.holiday?.isHoliday"
-    v-model.number="day.hours"
+    v-model="calculateTimeTest"
     v-if="currentSelected.value === selectOptions[0].value"
   >
     <q-btn-dropdown flat dense class="button-dropdown" size="md">
@@ -101,24 +101,91 @@
       </q-list>
     </q-btn-dropdown>
   </q-input>
+  <!-- TODO Add the daily model here -->
+  <q-expansion-item
+      v-model="expanded"
+      icon="calculate"
+    >
+      <q-input
+        type="text"
+        filled
+        v-model="day.begin"
+        :label="t('work_time_start')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+      <q-input
+        type="text"
+        filled
+        v-model="day.pause"
+        :label="t('break')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+      <q-input
+        type="text"
+        filled
+        v-model="day.end"
+        :label="t('work_time_end')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+    </q-expansion-item>
 </template>
 <script setup lang="ts">
 import { IDayModel } from "@/models/month-model";
 import useConfigurationStore from "@/stores/useConfigurationStore";
-import { computed, ref } from "vue";
+import { daysInWeek, subHours, subMinutes } from "date-fns";
+import { storeToRefs } from "pinia";
+import { computed, mergeProps, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
-defineProps<{ day: IDayModel }>();
+const expanded = ref(false)
+const props = defineProps<{ day: IDayModel }>();
 
 const configurationStore = useConfigurationStore();
+const { isDarkMode } = storeToRefs(useConfigurationStore());
 
-const { t } = useI18n();
+const { t, n, locale } = useI18n();
 
 const selectOptions = [
   { label: "work", value: "Hours", icon: "o_schedule" },
   { label: "vacation", value: "Vacation", icon: "o_beach_access" },
   { label: "sick", value: "Sickness", icon: "o_sick" },
 ];
+
+const getDateFromInput = (time: string): Date => {
+  const date = new Date();
+  const splittedTime = time.split(":");
+  if (splittedTime && splittedTime.length > 1) {
+    date.setHours(splittedTime[0] as unknown as number);
+    date.setMinutes(splittedTime[1] as unknown as number);
+  }
+
+  return date;
+};
+
+const calculateTimeTest = computed<undefined | number>(()  => {
+  if (props.day.begin && props.day.pause && props.day.end){
+    const dateEndTime = getDateFromInput(props.day.end);
+    const dateBeginTime = getDateFromInput(props.day.begin);
+    const datePauseTime = getDateFromInput(props.day.pause);
+
+    let temp = subMinutes(dateEndTime, datePauseTime.getMinutes());
+    temp = subMinutes(temp, dateBeginTime.getMinutes());
+    temp = subHours(temp, datePauseTime.getHours());
+    temp = subHours(temp, dateBeginTime.getHours());
+    
+    const hour = temp.getHours();
+    const minutesInHours = temp.getMinutes() / 60;
+    const calculatedNumber = parseFloat(n(hour + minutesInHours, "decimal", locale.value))
+    if (!isNaN(calculatedNumber)) {
+      return props.day.hours 
+    }
+    return calculatedNumber
+  }
+      return props.day.hours 
+})
 
 const selectOptionsRef = computed(() => {
   const temp = selectOptions;

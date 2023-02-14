@@ -159,6 +159,9 @@ const inputValues = computed(() => {
                 sicknessHours: 0,
                 vacationHours: 0,
                 holiday: isHoliday(weekDay.day),
+                begin: "",
+                end: "",
+                pause: "",
               },
             };
           } else {
@@ -168,6 +171,9 @@ const inputValues = computed(() => {
               sicknessHours: 0,
               vacationHours: 0,
               holiday: isHoliday(weekDay.day),
+              begin: "",
+              end: "",
+              pause: "",
             };
           }
         }
@@ -230,8 +236,10 @@ const calculateOvertime = (cw: number) => {
 
 const onSave = async () => {
   try {
+    debugger;
     await timeKeeperStore.saveData();
     usePopupStore().showPopup(t, true);
+    debugger;
   } catch (error) {
     console.error("Could not write configuration.json.");
     usePopupStore().showPopup(t);

@@ -14,14 +14,21 @@ export interface IWeekModel {
 export interface IDayModelRef {
   day: Date;
   hours: Ref<number>;
+  begin: Ref<string>;
+  end: Ref<string>;
+  pause: Ref<string>;
 }
 
+// This model is used to save Day
 export interface IDayModel {
   day: Date;
   hours: number;
   vacationHours: number;
   sicknessHours: number;
   holiday: IHolidayModel;
+  begin: string;
+  end: string;
+  pause: string;
 }
 
 export interface IHolidayModel {

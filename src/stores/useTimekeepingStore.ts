@@ -17,6 +17,9 @@ export default defineStore("timekeepingStore", {
     async saveData() {
       const { data } = this;
       try {
+        debugger;
+        console.log("test")
+        console.log(data)
         await createFile("data", JSON.stringify(data));
         console.log("Successfully saved data");
       } catch (error) {
