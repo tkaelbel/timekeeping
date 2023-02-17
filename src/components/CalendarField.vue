@@ -1,11 +1,11 @@
 <template>
   <q-input
     class="day-input"
-    type="number"
     filled
     :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
     :disable="configurationStore.isHolidayMode && day.holiday?.isHoliday"
     v-model="calculateTimeTest"
+    readonly
     v-if="currentSelected.value === selectOptions[0].value"
   >
     <q-btn-dropdown flat dense class="button-dropdown" size="md">
@@ -78,7 +78,7 @@
       configurationStore.isSicknessMode
     "
   >
-    <q-btn-dropdown flat dense class="button-dropdown" size="md">
+    <q-btn-dropdown flat dense class="button-dropdown" size="md" >
       <template v-slot:label>
         <div class="row items-center no-wrap">
           <q-icon left :name="currentSelected.icon" />
@@ -105,6 +105,7 @@
   <q-expansion-item
       v-model="expanded"
       icon="calculate"
+      :disable="currentSelected.value !== selectOptions[0].value" 
     >
       <q-input
         type="text"
@@ -165,7 +166,7 @@ const getDateFromInput = (time: string): Date => {
   return date;
 };
 
-const calculateTimeTest = computed<undefined | number>(()  => {
+const calculateTimeTest = computed(()  => {
   if (props.day.begin && props.day.pause && props.day.end){
     const dateEndTime = getDateFromInput(props.day.end);
     const dateBeginTime = getDateFromInput(props.day.begin);
@@ -175,14 +176,14 @@ const calculateTimeTest = computed<undefined | number>(()  => {
     temp = subMinutes(temp, dateBeginTime.getMinutes());
     temp = subHours(temp, datePauseTime.getHours());
     temp = subHours(temp, dateBeginTime.getHours());
-    
     const hour = temp.getHours();
     const minutesInHours = temp.getMinutes() / 60;
-    const calculatedNumber = parseFloat(n(hour + minutesInHours, "decimal", locale.value))
-    if (!isNaN(calculatedNumber)) {
+    const calculatedString = n(hour + minutesInHours, "decimal", locale.value)
+    if (!calculatedString || calculatedString === undefined || calculatedString === "") {
       return props.day.hours 
     }
-    return calculatedNumber
+
+    return calculatedString
   }
       return props.day.hours 
 })
