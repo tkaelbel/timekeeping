@@ -201,7 +201,7 @@ const weekSums = (cw: number) => {
         ? wholeWeek[key].sicknessHours
         : 0;
     }
-
+    
     // Add vacation if set
     weekSum += wholeWeek[key].vacationHours ? wholeWeek[key].vacationHours : 0;
   });

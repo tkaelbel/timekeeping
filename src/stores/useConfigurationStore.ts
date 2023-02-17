@@ -17,6 +17,7 @@ export default defineStore("configurationStore", {
       isSicknessWorkTime: true,
       isHolidayMode: true,
       weeklyWorkingDays: 5,
+      allowBreakInput: true,
     } as IConfigurationStore),
   getters: {
     convertAutoSaveTimeToSeconds(): number {
@@ -42,6 +43,7 @@ export default defineStore("configurationStore", {
           isSicknessWorkTime,
           isHolidayMode,
           weeklyWorkingDays,
+          allowBreakInput,
         } = this;
 
         const output = JSON.stringify({
@@ -57,6 +59,7 @@ export default defineStore("configurationStore", {
           isSicknessWorkTime,
           isHolidayMode,
           weeklyWorkingDays,
+          allowBreakInput,
         });
         await createFile("configuration", output);
         console.debug("Wrote configuration.json successfully");
