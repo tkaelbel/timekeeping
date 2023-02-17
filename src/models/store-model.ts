@@ -24,6 +24,7 @@ export interface IConfigurationStore {
   isSicknessWorkTime: boolean;
   isHolidayMode: boolean;
   weeklyWorkingDays: number;
+  allowBreakInput: boolean;
 }
 
 export interface IPopupStore {

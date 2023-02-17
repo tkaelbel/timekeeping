@@ -22,6 +22,7 @@ export interface IDayModel {
   vacationHours: number;
   sicknessHours: number;
   holiday: IHolidayModel;
+  breakHours: number;
 }
 
 export interface IHolidayModel {

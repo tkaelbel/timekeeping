@@ -83,9 +83,6 @@ import { ref, watch } from "vue";
 
 import { IConfigurationStore } from "@/models/store-model";
 import { IData } from "@/models/month-model";
-import { storeToRefs } from "pinia";
-
-import { handleAutoSave } from "@/utils/auto-save-handler";
 
 import { createDataFolder, readFile } from "@/utils/fs-handler";
 import useConfigurationStore from "@/stores/useConfigurationStore";
@@ -134,6 +131,7 @@ if (config) {
     isSicknessMode,
     isSicknessWorkTime,
     weeklyWorkingDays,
+    allowBreakInput,
   } = config;
 
   configurationStore.yearlyVacationDays = yearlyVacationDays
@@ -164,17 +162,25 @@ if (config) {
   configurationStore.isHolidayMode = isHolidayMode
     ? isHolidayMode
     : configurationStore.isHolidayMode;
+    
   configurationStore.country = country ? country : configurationStore.country;
   configurationStore.state = state ? state : configurationStore.state;
+
   configurationStore.isSicknessMode = isSicknessMode
     ? isSicknessMode
     : configurationStore.isSicknessMode;
+
   configurationStore.isSicknessWorkTime = isSicknessWorkTime
     ? isSicknessWorkTime
     : configurationStore.isSicknessWorkTime;
+
   configurationStore.weeklyWorkingDays = weeklyWorkingDays
     ? weeklyWorkingDays
     : configurationStore.weeklyWorkingDays;
+
+    configurationStore.allowBreakInput = allowBreakInput
+    ? allowBreakInput
+    : configurationStore.allowBreakInput;
 }
 
 const dataFile = (await readFile("data.json")) as IData;
