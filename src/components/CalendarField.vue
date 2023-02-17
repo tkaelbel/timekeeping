@@ -40,7 +40,7 @@
     :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
     :disable="configurationStore.isHolidayMode && day.holiday?.isHoliday"
     v-model.number="day.vacationHours"
-    v-if="currentSelected.value === selectOptions[2].value"
+    v-if="currentSelected.value === selectOptions[1].value"
   >
     <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
@@ -75,7 +75,7 @@
     v-model.number="day.sicknessHours"
     v-if="
       selectOptionsRefContains('sick') &&
-      currentSelected.value === selectOptions[3].value &&
+      currentSelected.value === selectOptions[2].value &&
       configurationStore.isSicknessMode
     "
   >
@@ -158,7 +158,6 @@ interface SelectOption {
 
 const selectOptions: Array<SelectOption> = [
   { label: "work", value: "Hours", icon: "o_schedule" },
-  { label: "break", value: "Break", icon: "o_lunch_dining" },
   { label: "vacation", value: "Vacation", icon: "o_beach_access" },
   { label: "sick", value: "Sickness", icon: "o_sick" },
 ];
