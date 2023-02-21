@@ -236,10 +236,8 @@ const calculateOvertime = (cw: number) => {
 
 const onSave = async () => {
   try {
-    debugger;
     await timeKeeperStore.saveData();
     usePopupStore().showPopup(t, true);
-    debugger;
   } catch (error) {
     console.error("Could not write configuration.json.");
     usePopupStore().showPopup(t);
