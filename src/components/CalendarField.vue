@@ -8,6 +8,40 @@
     readonly
     v-if="currentSelected.value === selectOptions[0].value"
   >
+    <q-btn-dropdown
+      flat
+      dense
+      class="button-dropdown"
+      size="md"
+      :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+      :disable="currentSelected.value !== selectOptions[0].value"
+    >
+      <q-input
+        type="text"
+        filled
+        v-model="day.begin"
+        :label="t('work_time_start')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+      <q-input
+        type="text"
+        filled
+        v-model="day.pause"
+        :label="t('break')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+      <q-input
+        type="text"
+        filled
+        v-model="day.end"
+        :label="t('work_time_end')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+    </q-btn-dropdown>
+
     <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
         <div class="row items-center no-wrap">
@@ -31,7 +65,6 @@
       </q-list>
     </q-btn-dropdown>
   </q-input>
-
 
   <q-input
     class="day-input"
@@ -102,36 +135,6 @@
       </q-list>
     </q-btn-dropdown>
   </q-input>
-
-  <q-btn-dropdown
-    :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-    :disable="currentSelected.value !== selectOptions[0].value"
-  >
-    <q-input
-      type="text"
-      filled
-      v-model="day.begin"
-      :label="t('work_time_start')"
-      mask="##:##"
-      :color="isDarkMode ? 'blue-grey' : 'blue'"
-    ></q-input>
-    <q-input
-      type="text"
-      filled
-      v-model="day.pause"
-      :label="t('break')"
-      mask="##:##"
-      :color="isDarkMode ? 'blue-grey' : 'blue'"
-    ></q-input>
-    <q-input
-      type="text"
-      filled
-      v-model="day.end"
-      :label="t('work_time_end')"
-      mask="##:##"
-      :color="isDarkMode ? 'blue-grey' : 'blue'"
-    ></q-input>
-  </q-btn-dropdown>
 </template>
 <script setup lang="ts">
 import { IDayModel } from "@/models/month-model";
