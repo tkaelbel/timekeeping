@@ -79,7 +79,7 @@
       configurationStore.isSicknessMode
     "
   >
-    <q-btn-dropdown flat dense class="button-dropdown" size="md" >
+    <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
         <div class="row items-center no-wrap">
           <q-icon left :name="currentSelected.icon" />
@@ -102,37 +102,36 @@
       </q-list>
     </q-btn-dropdown>
   </q-input>
-  <!-- TODO Add the daily model here -->
-  <q-expansion-item
-      v-model="expanded"
-      icon="calculate"
-      :disable="currentSelected.value !== selectOptions[0].value" 
-    >
-      <q-input
-        type="text"
-        filled
-        v-model="day.begin"
-        :label="t('work_time_start')"
-        mask="##:##"
-        :color="isDarkMode ? 'blue-grey' : 'blue'"
-      ></q-input>
-      <q-input
-        type="text"
-        filled
-        v-model="day.pause"
-        :label="t('break')"
-        mask="##:##"
-        :color="isDarkMode ? 'blue-grey' : 'blue'"
-      ></q-input>
-      <q-input
-        type="text"
-        filled
-        v-model="day.end"
-        :label="t('work_time_end')"
-        mask="##:##"
-        :color="isDarkMode ? 'blue-grey' : 'blue'"
-      ></q-input>
-    </q-expansion-item>
+
+  <q-btn-dropdown
+    :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+    :disable="currentSelected.value !== selectOptions[0].value"
+  >
+    <q-input
+      type="text"
+      filled
+      v-model="day.begin"
+      :label="t('work_time_start')"
+      mask="##:##"
+      :color="isDarkMode ? 'blue-grey' : 'blue'"
+    ></q-input>
+    <q-input
+      type="text"
+      filled
+      v-model="day.pause"
+      :label="t('break')"
+      mask="##:##"
+      :color="isDarkMode ? 'blue-grey' : 'blue'"
+    ></q-input>
+    <q-input
+      type="text"
+      filled
+      v-model="day.end"
+      :label="t('work_time_end')"
+      mask="##:##"
+      :color="isDarkMode ? 'blue-grey' : 'blue'"
+    ></q-input>
+  </q-btn-dropdown>
 </template>
 <script setup lang="ts">
 import { IDayModel } from "@/models/month-model";
@@ -142,7 +141,7 @@ import { storeToRefs } from "pinia";
 import { computed, mergeProps, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
-const expanded = ref(false)
+const expanded = ref(false);
 const props = defineProps<{ day: IDayModel }>();
 
 const configurationStore = useConfigurationStore();
@@ -173,8 +172,8 @@ const getDateFromInput = (time: string): Date => {
   return date;
 };
 
-const calculateTimeTest = computed(()  => {
-  if (props.day.begin && props.day.pause && props.day.end){
+const calculateTimeTest = computed(() => {
+  if (props.day.begin && props.day.pause && props.day.end) {
     const dateEndTime = getDateFromInput(props.day.end);
     const dateBeginTime = getDateFromInput(props.day.begin);
     const datePauseTime = getDateFromInput(props.day.pause);
@@ -185,18 +184,22 @@ const calculateTimeTest = computed(()  => {
     temp = subHours(temp, dateBeginTime.getHours());
     const hour = temp.getHours();
     const minutesInHours = temp.getMinutes() / 60;
-    const calculatedString = n(hour + minutesInHours, "decimal", locale.value)
-    if (!calculatedString || calculatedString === undefined || calculatedString === "") {
-      return props.day.hours 
+    const calculatedString = n(hour + minutesInHours, "decimal", locale.value);
+    if (
+      !calculatedString ||
+      calculatedString === undefined ||
+      calculatedString === ""
+    ) {
+      return props.day.hours;
     }
 
-    return calculatedString
+    return calculatedString;
   }
-      return props.day.hours 
-})
+  return props.day.hours;
+});
 const selectOptionsRefContains = (label: string) => {
   return selectOptions.find((curr) => curr.label === label) ? true : false;
-}
+};
 
 const selectOptionsRef = computed(() => {
   let temp = selectOptions;
@@ -204,7 +207,7 @@ const selectOptionsRef = computed(() => {
     temp = temp.filter((select) => select.label !== "sick");
   }
 
-  if(!configurationStore.allowBreakInput){
+  if (!configurationStore.allowBreakInput) {
     temp = temp.filter((select) => select.label !== "break");
   }
 
