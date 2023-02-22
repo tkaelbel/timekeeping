@@ -195,6 +195,7 @@ const calculateTimeTest = computed(() => {
     ) {
       return props.day.hours;
     }
+    props.day.hours = hour + minutesInHours;
 
     return calculatedString;
   }
