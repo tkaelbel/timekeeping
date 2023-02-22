@@ -16,7 +16,7 @@ export interface IDayModelRef {
   hours: Ref<number>;
   begin: Ref<string>;
   end: Ref<string>;
-  pause: Ref<string>;
+  breakTime: Ref<string>;
 }
 
 // This model is used to save Day
@@ -28,7 +28,7 @@ export interface IDayModel {
   holiday: IHolidayModel;
   begin: string;
   end: string;
-  pause: string;
+  breakTime: string;
 }
 
 export interface IHolidayModel {

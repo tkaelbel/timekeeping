@@ -4,7 +4,7 @@
     filled
     :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
     :disable="configurationStore.isHolidayMode && day.holiday?.isHoliday"
-    v-model="calculateTimeTest"
+    v-model="calculateWorkTime"
     readonly
     v-if="currentSelected.value === selectOptions[0].value"
   >
@@ -27,7 +27,7 @@
       <q-input
         type="text"
         filled
-        v-model="day.pause"
+        v-model="day.breakTime"
         :label="t('break')"
         mask="##:##"
         :color="isDarkMode ? 'blue-grey' : 'blue'"
@@ -175,15 +175,15 @@ const getDateFromInput = (time: string): Date => {
   return date;
 };
 
-const calculateTimeTest = computed(() => {
-  if (props.day.begin && props.day.pause && props.day.end) {
+const calculateWorkTime = computed(() => {
+  if (props.day.begin && props.day.breakTime && props.day.end) {
     const dateEndTime = getDateFromInput(props.day.end);
     const dateBeginTime = getDateFromInput(props.day.begin);
-    const datePauseTime = getDateFromInput(props.day.pause);
+    const dateBreakTime = getDateFromInput(props.day.breakTime);
 
-    let temp = subMinutes(dateEndTime, datePauseTime.getMinutes());
+    let temp = subMinutes(dateEndTime, dateBreakTime.getMinutes());
     temp = subMinutes(temp, dateBeginTime.getMinutes());
-    temp = subHours(temp, datePauseTime.getHours());
+    temp = subHours(temp, dateBreakTime.getHours());
     temp = subHours(temp, dateBeginTime.getHours());
     const hour = temp.getHours();
     const minutesInHours = temp.getMinutes() / 60;

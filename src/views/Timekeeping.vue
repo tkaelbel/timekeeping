@@ -161,7 +161,7 @@ const inputValues = computed(() => {
                 holiday: isHoliday(weekDay.day),
                 begin: "",
                 end: "",
-                pause: "",
+                breakTime: "",
               },
             };
           } else {
@@ -173,7 +173,7 @@ const inputValues = computed(() => {
               holiday: isHoliday(weekDay.day),
               begin: "",
               end: "",
-              pause: "",
+              breakTime: "",
             };
           }
         }
@@ -201,7 +201,7 @@ const weekSums = (cw: number) => {
         ? wholeWeek[key].sicknessHours
         : 0;
     }
-    
+
     // Add vacation if set
     weekSum += wholeWeek[key].vacationHours ? wholeWeek[key].vacationHours : 0;
   });

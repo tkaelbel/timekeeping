@@ -33,9 +33,9 @@ const getAllDaysOfMonth = (date: Date) => {
       week[dayName] = {
         day: new Date(tempDate),
         hours: ref(0),
-        begin: ref(0),
-        end: ref(0),
-        pause: ref(0),
+        begin: ref('0'),
+        end: ref('0'),
+        breakTime: ref('0'),
       };
     }
 
