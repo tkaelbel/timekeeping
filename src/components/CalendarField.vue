@@ -211,10 +211,6 @@ const selectOptionsRef = computed(() => {
     temp = temp.filter((select) => select.label !== "sick");
   }
 
-  if (!configurationStore.allowBreakInput) {
-    temp = temp.filter((select) => select.label !== "break");
-  }
-
   return temp;
 });
 

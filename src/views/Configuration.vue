@@ -37,23 +37,6 @@
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
           />
 
-          <q-toggle
-            color="secondary"
-            v-model="configurationStore.allowBreakInput"
-            checked-icon="lunch_dining"
-            unchecked-icon="o_lunch_dining"
-            size="lg"
-            :label="t('break_mode')"
-            left-label
-          >
-            <q-tooltip class="tooltip">
-              {{
-                configurationStore.allowBreakInput
-                  ? t("break_mode_active")
-                  : t("break_mode_inactive")
-              }}
-            </q-tooltip>
-          </q-toggle>
         </q-card-section>
       </q-card>
 
