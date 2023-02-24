@@ -19,12 +19,6 @@
           <q-btn flat icon="schedule" :label="t('time_keeper')" to="/" />
           <q-btn
             flat
-            icon="calculate"
-            :label="t('time_calculator')"
-            to="/timecalculator"
-          />
-          <q-btn
-            flat
             icon="build"
             :label="t('configuration')"
             to="/configuration"
@@ -53,13 +47,6 @@
           <q-item-section>{{ t("time_keeper") }}</q-item-section>
         </q-item>
 
-        <q-item clickable to="/timecalculator">
-          <q-item-section avatar>
-            <q-icon name="calculate" size="25px" />
-          </q-item-section>
-          <q-item-section>{{ t("time_calculator") }}</q-item-section>
-        </q-item>
-
         <q-item clickable to="/configuration">
           <q-item-section avatar>
             <q-icon name="build" size="25px" />
@@ -79,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 import { IConfigurationStore } from "@/models/store-model";
 import { IData } from "@/models/month-model";
@@ -131,7 +118,6 @@ if (config) {
     isSicknessMode,
     isSicknessWorkTime,
     weeklyWorkingDays,
-    allowBreakInput,
   } = config;
 
   configurationStore.yearlyVacationDays = yearlyVacationDays
@@ -178,9 +164,6 @@ if (config) {
     ? weeklyWorkingDays
     : configurationStore.weeklyWorkingDays;
 
-    configurationStore.allowBreakInput = allowBreakInput
-    ? allowBreakInput
-    : configurationStore.allowBreakInput;
 }
 
 const dataFile = (await readFile("data.json")) as IData;
