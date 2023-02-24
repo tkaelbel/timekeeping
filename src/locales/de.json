@@ -48,5 +48,6 @@
   "sickness_time_active": "Krankheitszeit wird als Arbeitszeit interpretiert",
   "sickness_time_inactive": "Krankheitszeit wird nicht als Arbeitszeit interpretiert",
   "sickness_time": "Krankheitszeit",
-  "invalid_save_time": "Bitte geben sie Zahlen >= 10 ein"
+  "invalid_save_time": "Bitte geben sie Zahlen >= 10 ein",
+  "monthly_overtime": "Überstunden pro Monat"
 }

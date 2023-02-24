@@ -159,6 +159,9 @@ const inputValues = computed(() => {
                 sicknessHours: 0,
                 vacationHours: 0,
                 holiday: isHoliday(weekDay.day),
+                begin: "",
+                end: "",
+                breakTime: "",
               },
             };
           } else {
@@ -168,6 +171,9 @@ const inputValues = computed(() => {
               sicknessHours: 0,
               vacationHours: 0,
               holiday: isHoliday(weekDay.day),
+              begin: "",
+              end: "",
+              breakTime: "",
             };
           }
         }

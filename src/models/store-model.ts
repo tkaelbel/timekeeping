@@ -5,12 +5,6 @@ export interface ITimekeeperStore {
   data: IData;
 }
 
-export interface ITimeCalulatorStore {
-  startTime: string;
-  breakTime: string;
-  endTime: string;
-}
-
 export interface IConfigurationStore {
   weeklyHoursWorking: number;
   yearlyVacationDays: number;

@@ -1,13 +1,47 @@
 <template>
   <q-input
     class="day-input"
-    type="number"
     filled
     :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
     :disable="configurationStore.isHolidayMode && day.holiday?.isHoliday"
-    v-model.number="day.hours"
+    v-model="calculateWorkTime"
+    readonly
     v-if="currentSelected.value === selectOptions[0].value"
   >
+    <q-btn-dropdown
+      flat
+      dense
+      class="button-dropdown"
+      size="md"
+      :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
+      :disable="currentSelected.value !== selectOptions[0].value"
+    >
+      <q-input
+        type="text"
+        filled
+        v-model="day.begin"
+        :label="t('work_time_start')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+      <q-input
+        type="text"
+        filled
+        v-model="day.breakTime"
+        :label="t('break')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+      <q-input
+        type="text"
+        filled
+        v-model="day.end"
+        :label="t('work_time_end')"
+        mask="##:##"
+        :color="isDarkMode ? 'blue-grey' : 'blue'"
+      ></q-input>
+    </q-btn-dropdown>
+
     <q-btn-dropdown flat dense class="button-dropdown" size="md">
       <template v-slot:label>
         <div class="row items-center no-wrap">
@@ -73,7 +107,7 @@
     :disable="configurationStore.isHolidayMode && day.holiday?.isHoliday"
     v-model.number="day.sicknessHours"
     v-if="
-      selectOptionsRef.length == 3 &&
+      selectOptionsRefContains('sick') &&
       currentSelected.value === selectOptions[2].value &&
       configurationStore.isSicknessMode
     "
@@ -105,29 +139,79 @@
 <script setup lang="ts">
 import { IDayModel } from "@/models/month-model";
 import useConfigurationStore from "@/stores/useConfigurationStore";
-import { computed, ref } from "vue";
+import { daysInWeek, subHours, subMinutes } from "date-fns";
+import { storeToRefs } from "pinia";
+import { computed, mergeProps, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
-defineProps<{ day: IDayModel }>();
+const expanded = ref(false);
+const props = defineProps<{ day: IDayModel }>();
 
 const configurationStore = useConfigurationStore();
+const { isDarkMode } = storeToRefs(useConfigurationStore());
 
-const { t } = useI18n();
+const { t, n, locale } = useI18n();
 
-const selectOptions = [
+interface SelectOption {
+  label: string;
+  value: string;
+  icon: string;
+}
+
+const selectOptions: Array<SelectOption> = [
   { label: "work", value: "Hours", icon: "o_schedule" },
   { label: "vacation", value: "Vacation", icon: "o_beach_access" },
   { label: "sick", value: "Sickness", icon: "o_sick" },
 ];
 
-const selectOptionsRef = computed(() => {
-  const temp = selectOptions;
-  if (!configurationStore.isSicknessMode) {
-    temp.splice(-1);
-    return temp;
+const getDateFromInput = (time: string): Date => {
+  const date = new Date();
+  const splittedTime = time.split(":");
+  if (splittedTime && splittedTime.length > 1) {
+    date.setHours(splittedTime[0] as unknown as number);
+    date.setMinutes(splittedTime[1] as unknown as number);
   }
 
-  return selectOptions;
+  return date;
+};
+
+const calculateWorkTime = computed(() => {
+  if (props.day.begin && props.day.breakTime && props.day.end) {
+    const dateEndTime = getDateFromInput(props.day.end);
+    const dateBeginTime = getDateFromInput(props.day.begin);
+    const dateBreakTime = getDateFromInput(props.day.breakTime);
+
+    let temp = subMinutes(dateEndTime, dateBreakTime.getMinutes());
+    temp = subMinutes(temp, dateBeginTime.getMinutes());
+    temp = subHours(temp, dateBreakTime.getHours());
+    temp = subHours(temp, dateBeginTime.getHours());
+    const hour = temp.getHours();
+    const minutesInHours = temp.getMinutes() / 60;
+    const calculatedString = n(hour + minutesInHours, "decimal", locale.value);
+    if (
+      !calculatedString ||
+      calculatedString === undefined ||
+      calculatedString === ""
+    ) {
+      return props.day.hours;
+    }
+    props.day.hours = hour + minutesInHours;
+
+    return calculatedString;
+  }
+  return props.day.hours;
+});
+const selectOptionsRefContains = (label: string) => {
+  return selectOptions.find((curr) => curr.label === label) ? true : false;
+};
+
+const selectOptionsRef = computed(() => {
+  let temp = selectOptions;
+  if (!configurationStore.isSicknessMode) {
+    temp = temp.filter((select) => select.label !== "sick");
+  }
+
+  return temp;
 });
 
 const currentSelected = ref(selectOptions[0]);

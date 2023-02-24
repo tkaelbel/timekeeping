@@ -36,6 +36,7 @@
             mask="###"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
           />
+
         </q-card-section>
       </q-card>
 

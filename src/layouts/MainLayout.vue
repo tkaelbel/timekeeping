@@ -19,12 +19,6 @@
           <q-btn flat icon="schedule" :label="t('time_keeper')" to="/" />
           <q-btn
             flat
-            icon="calculate"
-            :label="t('time_calculator')"
-            to="/timecalculator"
-          />
-          <q-btn
-            flat
             icon="build"
             :label="t('configuration')"
             to="/configuration"
@@ -53,13 +47,6 @@
           <q-item-section>{{ t("time_keeper") }}</q-item-section>
         </q-item>
 
-        <q-item clickable to="/timecalculator">
-          <q-item-section avatar>
-            <q-icon name="calculate" size="25px" />
-          </q-item-section>
-          <q-item-section>{{ t("time_calculator") }}</q-item-section>
-        </q-item>
-
         <q-item clickable to="/configuration">
           <q-item-section avatar>
             <q-icon name="build" size="25px" />
@@ -79,13 +66,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 import { IConfigurationStore } from "@/models/store-model";
 import { IData } from "@/models/month-model";
-import { storeToRefs } from "pinia";
-
-import { handleAutoSave } from "@/utils/auto-save-handler";
 
 import { createDataFolder, readFile } from "@/utils/fs-handler";
 import useConfigurationStore from "@/stores/useConfigurationStore";
@@ -164,17 +148,22 @@ if (config) {
   configurationStore.isHolidayMode = isHolidayMode
     ? isHolidayMode
     : configurationStore.isHolidayMode;
+    
   configurationStore.country = country ? country : configurationStore.country;
   configurationStore.state = state ? state : configurationStore.state;
+
   configurationStore.isSicknessMode = isSicknessMode
     ? isSicknessMode
     : configurationStore.isSicknessMode;
+
   configurationStore.isSicknessWorkTime = isSicknessWorkTime
     ? isSicknessWorkTime
     : configurationStore.isSicknessWorkTime;
+
   configurationStore.weeklyWorkingDays = weeklyWorkingDays
     ? weeklyWorkingDays
     : configurationStore.weeklyWorkingDays;
+
 }
 
 const dataFile = (await readFile("data.json")) as IData;

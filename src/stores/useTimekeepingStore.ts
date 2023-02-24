@@ -29,6 +29,11 @@ export default defineStore("timekeepingStore", {
     allDaysOfMonth(): Map<number, IWeekModel> {
       return getAllDaysOfMonth(this.currentDate);
     },
+    calculateMonthlyOvertime() {
+      const { calculatedMonthOvertime } = calculateAdditionalInfos(this.data, this.currentDate);
+      if (calculatedMonthOvertime === 0) return 0;
+      return calculatedMonthOvertime;
+    },
     calculateOverallOvertime() {
       const { calculatedWeekOvertime } = calculateAdditionalInfos(this.data);
       if (calculatedWeekOvertime === 0) return 0;
@@ -77,6 +82,7 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
   let calculatedRestVacation = 0;
   let calculatedOverallSick = 0;
   let calculatedMonthSick = 0;
+  let calculatedMonthOvertime = 0;
 
   const keyYears = Object.keys(data);
   keyYears.forEach((year: string) => {
@@ -95,6 +101,7 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
           currentDate?.toLocaleDateString("en-US", { month: "short" }) === month
         ) {
           calculatedMonthSick += calculatedWeek.weekSumSick;
+          calculatedMonthOvertime += calculatedWeek.weekSumOvertime;
         }
 
         if ( currentDate?.toLocaleDateString("en-US", { year: "numeric"}) === year) {
@@ -109,6 +116,7 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
     calculatedRestVacation,
     calculatedOverallSick,
     calculatedMonthSick,
+    calculatedMonthOvertime,
   };
 };
 
