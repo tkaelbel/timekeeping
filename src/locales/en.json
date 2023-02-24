@@ -49,7 +49,5 @@
   "sickness_time_inactive": "Sickness hours not interpreted as work time",
   "sickness_time": "Sickness hours",
   "invalid_save_time": "Please use numbers >= 10",
-  "break_mode_active": "Break capture active",
-  "break_mode_inactive": "Break capture inactive",
-  "break_mode": "Break capture"
+  "monthly_overtime": "Monthly overtime"
 }

@@ -58,7 +58,7 @@
     },
     "windows": [
       {
-        "height": 900,
+        "height": 920,
         "resizable": true,
         "title": "timekeeping",
         "width": 1700,
