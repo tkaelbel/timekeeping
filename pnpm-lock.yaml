@@ -19,7 +19,7 @@ specifiers:
   flag-icons: ^6.6.6
   pinia: ^2.0.30
   quasar: ^2.11.6
-  sass: 1.58.1
+  sass: 1.58.3
   typescript: ^4.9.5
   vite: ^4.1.1
   vue: ^3.2.47
@@ -51,9 +51,9 @@ devDependencies:
   eslint: 8.34.0
   eslint-config-prettier: 8.6.0_eslint@8.34.0
   eslint-plugin-vue: 9.9.0_eslint@8.34.0
-  sass: 1.58.1
+  sass: 1.58.3
   typescript: 4.9.5
-  vite: 4.1.1_qwczgscu5yinpidm7yywvcndf4
+  vite: 4.1.1_tuq4uaq64ig7wgklr2h7aod5xq
   vue-tsc: 1.0.24_typescript@4.9.5
 
 packages:
@@ -1620,7 +1620,7 @@ packages:
       debug: 4.3.4
       fast-glob: 3.2.12
       source-map: 0.6.1
-      vite: 4.1.1_qwczgscu5yinpidm7yywvcndf4
+      vite: 4.1.1_tuq4uaq64ig7wgklr2h7aod5xq
       vue-i18n: 9.2.2_vue@3.2.47
     transitivePeerDependencies:
       - supports-color
@@ -1861,7 +1861,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
       quasar: 2.11.6
-      vite: 4.1.1_qwczgscu5yinpidm7yywvcndf4
+      vite: 4.1.1_tuq4uaq64ig7wgklr2h7aod5xq
       vue: 3.2.47
     dev: true
 
@@ -2262,7 +2262,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.1.1_qwczgscu5yinpidm7yywvcndf4
+      vite: 4.1.1_tuq4uaq64ig7wgklr2h7aod5xq
       vue: 3.2.47
     dev: true
 
@@ -6331,8 +6331,8 @@ packages:
       chokidar: 3.5.3
     dev: true
 
-  /sass/1.58.1:
-    resolution: {integrity: sha512-bnINi6nPXbP1XNRaranMFEBZWUfdW/AF16Ql5+ypRxfTvCRTTKrLsMIakyDcayUt2t/RZotmL4kgJwNH5xO+bg==}
+  /sass/1.58.3:
+    resolution: {integrity: sha512-Q7RaEtYf6BflYrQ+buPudKR26/lH+10EmO9bBqbmPh/KeLqv8bjpTNqxe71ocONqXq+jYiCbpPUmQMS+JJPk4A==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -6980,7 +6980,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite/4.1.1_qwczgscu5yinpidm7yywvcndf4:
+  /vite/4.1.1_tuq4uaq64ig7wgklr2h7aod5xq:
     resolution: {integrity: sha512-LM9WWea8vsxhr782r9ntg+bhSFS06FJgCvvB0+8hf8UWtvaiDagKYWXndjfX6kGl74keHJUcpzrQliDXZlF5yg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7010,7 +7010,7 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.15.0
-      sass: 1.58.1
+      sass: 1.58.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
