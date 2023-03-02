@@ -18,7 +18,7 @@ specifiers:
   eslint-plugin-vue: 9.9.0
   flag-icons: 6.6.6
   pinia: 2.0.32
-  quasar: 2.11.6
+  quasar: 2.11.7
   sass: 1.58.3
   typescript: 4.9.5
   vite: 4.1.4
@@ -34,7 +34,7 @@ dependencies:
   date-holidays: 3.16.17
   flag-icons: 6.6.6
   pinia: 2.0.32_hmuptsblhheur2tugfgucj7gc4
-  quasar: 2.11.6
+  quasar: 2.11.7
   vue: 3.2.47
   vue-i18n: 9.2.2_vue@3.2.47
   vue-router: 4.1.6_vue@3.2.47
@@ -42,7 +42,7 @@ dependencies:
 devDependencies:
   '@intlify/unplugin-vue-i18n': 0.8.2_vue-i18n@9.2.2
   '@quasar/app': 3.3.3_qcipoioytc6ooddd66bkvufjpe
-  '@quasar/vite-plugin': 1.3.0_52lxpiutpukrturxg6utggjnqa
+  '@quasar/vite-plugin': 1.3.0_vstdmh4ffwxma4lth7sb5xux5u
   '@tauri-apps/cli': 1.2.3
   '@types/node': 18.14.2
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
@@ -1860,7 +1860,7 @@ packages:
       serialize-javascript: 5.0.1
     dev: true
 
-  /@quasar/vite-plugin/1.3.0_52lxpiutpukrturxg6utggjnqa:
+  /@quasar/vite-plugin/1.3.0_vstdmh4ffwxma4lth7sb5xux5u:
     resolution: {integrity: sha512-wd7b/QrKu/WB53l+vxo6GLbkoEwh5FFKLtLl3fM8TXrDDRB1qsKKkRa/vwTU4dpuyBaOZDjycmYuAsOlTdNp8w==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -1870,7 +1870,7 @@ packages:
       vue: ^3.0.0
     dependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
-      quasar: 2.11.6
+      quasar: 2.11.7
       vite: 4.1.4_wlyq37gek244gc22rfb2kn6efu
       vue: 3.2.47
     dev: true
@@ -6088,8 +6088,8 @@ packages:
     engines: {node: '>=0.6'}
     dev: true
 
-  /quasar/2.11.6:
-    resolution: {integrity: sha512-jJniWqTtfLHDuAT1YNx6ZZdZU7nM8vwscyM7IxmijaHq+fDpgjaujDQUlJWgn5ZMkqe3Yvg93MgSxjcL71oJIw==}
+  /quasar/2.11.7:
+    resolution: {integrity: sha512-OzDwYfoSwZbwqfNWz9Bfn1mhGE8YMxpTLhPvVkQU87ePF6qFj4aWttcTUifXITKldOAZziN1Mmv8VLQyITHwiw==}
     engines: {node: '>= 10.18.1', npm: '>= 6.13.4', yarn: '>= 1.21.1'}
 
   /queue-microtask/1.2.3:
