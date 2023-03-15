@@ -12,7 +12,7 @@ specifiers:
   '@typescript-eslint/parser': 5.54.0
   '@vitejs/plugin-vue': 4.0.0
   date-fns: 2.29.3
-  date-holidays: 3.18.0
+  date-holidays: 3.19.0
   eslint: 8.35.0
   eslint-config-prettier: 8.7.0
   eslint-plugin-vue: 9.9.0
@@ -31,7 +31,7 @@ dependencies:
   '@quasar/extras': 1.15.11
   '@tauri-apps/api': 1.2.0
   date-fns: 2.29.3
-  date-holidays: 3.18.0
+  date-holidays: 3.19.0
   flag-icons: 6.6.6
   pinia: 2.0.33_hmuptsblhheur2tugfgucj7gc4
   quasar: 2.11.7
@@ -3462,8 +3462,8 @@ packages:
       moment-timezone: 0.5.40
     dev: false
 
-  /date-holidays/3.18.0:
-    resolution: {integrity: sha512-KKYla58T75zi7fa2D/H2pLjtaqi57UU7rgoj/Y172nSFDe0bWHMXrNdFCLOWzT3/87NgmLp+VgaTvYOusWCGCg==}
+  /date-holidays/3.19.0:
+    resolution: {integrity: sha512-bQtGy4ycRAfMdJxueYQTx08V0P8ssoAd4X9rg2CWyCHCn3oKe7vbHtIebXlESWBVplc5GomSN25MJy+GEJ9o7w==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
