@@ -10,7 +10,7 @@ specifiers:
   '@types/node': 18.14.6
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
-  '@vitejs/plugin-vue': 4.0.0
+  '@vitejs/plugin-vue': 4.1.0
   date-fns: 2.29.3
   date-holidays: 3.19.0
   eslint: 8.36.0
@@ -42,12 +42,12 @@ dependencies:
 devDependencies:
   '@intlify/unplugin-vue-i18n': 0.8.2_vue-i18n@9.2.2
   '@quasar/app': 3.3.3_ge76xtrpxvvc2xu5cbjw55ew3q
-  '@quasar/vite-plugin': 1.3.0_vstdmh4ffwxma4lth7sb5xux5u
+  '@quasar/vite-plugin': 1.3.0_a7csrp2bv2h4p3slaa6gqkzqae
   '@tauri-apps/cli': 1.2.3
   '@types/node': 18.14.6
   '@typescript-eslint/eslint-plugin': 5.54.0_tnbpiedazx26prw2btpbggkieq
   '@typescript-eslint/parser': 5.54.0_vgl77cfdswitgr47lm5swmv43m
-  '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+  '@vitejs/plugin-vue': 4.1.0_vite@4.1.4+vue@3.2.47
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0_eslint@8.36.0
   eslint-plugin-vue: 9.9.0_eslint@8.36.0
@@ -1875,7 +1875,7 @@ packages:
       serialize-javascript: 5.0.1
     dev: true
 
-  /@quasar/vite-plugin/1.3.0_vstdmh4ffwxma4lth7sb5xux5u:
+  /@quasar/vite-plugin/1.3.0_a7csrp2bv2h4p3slaa6gqkzqae:
     resolution: {integrity: sha512-wd7b/QrKu/WB53l+vxo6GLbkoEwh5FFKLtLl3fM8TXrDDRB1qsKKkRa/vwTU4dpuyBaOZDjycmYuAsOlTdNp8w==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -1884,7 +1884,7 @@ packages:
       vite: ^2.0.0 || ^3.0.0 || ^4.0.0
       vue: ^3.0.0
     dependencies:
-      '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vitejs/plugin-vue': 4.1.0_vite@4.1.4+vue@3.2.47
       quasar: 2.11.7
       vite: 4.1.4_wedaarye5onuzsxjqdyovl2qiu
       vue: 3.2.47
@@ -2280,8 +2280,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue/4.0.0_vite@4.1.4+vue@3.2.47:
-    resolution: {integrity: sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==}
+  /@vitejs/plugin-vue/4.1.0_vite@4.1.4+vue@3.2.47:
+    resolution: {integrity: sha512-++9JOAFdcXI3lyer9UKUV4rfoQ3T1RN8yDqoCLar86s0xQct5yblxAE+yWgRnU5/0FOlVCpTZpYSBV/bGWrSrQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
