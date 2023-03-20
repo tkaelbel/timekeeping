@@ -32,7 +32,7 @@ jobs:
           node-version: 18.14.2
 
       - name: Rust setup
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
           
