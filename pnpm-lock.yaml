@@ -67,14 +67,14 @@ devDependencies:
     specifier: 9.10.0
     version: 9.10.0(eslint@8.37.0)
   sass:
-    specifier: 1.60.0
-    version: 1.60.0
+    specifier: 1.61.0
+    version: 1.61.0
   typescript:
     specifier: 4.9.5
     version: 4.9.5
   vite:
     specifier: 4.2.1
-    version: 4.2.1(@types/node@18.15.11)(sass@1.60.0)
+    version: 4.2.1(@types/node@18.15.11)(sass@1.61.0)
   vue-tsc:
     specifier: 1.2.0
     version: 1.2.0(typescript@4.9.5)
@@ -1914,7 +1914,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.1.0(vite@4.2.1)(vue@3.2.47)
       quasar: 2.11.10
-      vite: 4.2.1(@types/node@18.15.11)(sass@1.60.0)
+      vite: 4.2.1(@types/node@18.15.11)(sass@1.61.0)
       vue: 3.2.47
     dev: true
 
@@ -2325,7 +2325,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.2.1(@types/node@18.15.11)(sass@1.60.0)
+      vite: 4.2.1(@types/node@18.15.11)(sass@1.61.0)
       vue: 3.2.47
     dev: true
 
@@ -6453,9 +6453,9 @@ packages:
       chokidar: 3.5.3
     dev: true
 
-  /sass@1.60.0:
-    resolution: {integrity: sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==}
-    engines: {node: '>=12.0.0'}
+  /sass@1.61.0:
+    resolution: {integrity: sha512-PDsN7BrVkNZK2+dj/dpKQAWZavbAQ87IXqVvw2+oEYI+GwlTWkvbQtL7F2cCNbMqJEYKPh1EcjSxsnqIb/kyaQ==}
+    engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 3.5.3
@@ -7118,7 +7118,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.2.1(@types/node@18.15.11)(sass@1.60.0):
+  /vite@4.2.1(@types/node@18.15.11)(sass@1.61.0):
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7148,7 +7148,7 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.19.1
-      sass: 1.60.0
+      sass: 1.61.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
