@@ -172,7 +172,7 @@
             :label="t('auto_save')"
             mask="#####"
             :color="configurationStore.isDarkMode ? 'blue-grey' : 'blue'"
-            :rules="[ (val: number | any[]) => val >= 10 || t('invalid_save_time')]"
+            :rules="[ (val: number) => val >= 10 || t('invalid_save_time')]"
           />
         </q-card-section>
       </q-card>

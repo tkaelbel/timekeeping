@@ -49,5 +49,6 @@
   "sickness_time_inactive": "Sickness hours not interpreted as work time",
   "sickness_time": "Sickness hours",
   "invalid_save_time": "Please use numbers >= 10",
-  "monthly_overtime": "Monthly overtime"
+  "monthly_overtime": "Monthly overtime",
+  "yearly_overtime": "Yearly overtime"
 }

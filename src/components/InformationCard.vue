@@ -15,6 +15,11 @@
     </q-card-section>
 
     <q-card-section>
+      {{ t("yearly_overtime") }}:
+      {{ n(calculateYearlyOvertime, "decimal", locale) }}
+    </q-card-section>
+
+    <q-card-section>
       {{ t("overall_overtime") }}:
       {{ n(calculateOverallOvertime, "decimal", locale) }}
     </q-card-section>
@@ -58,6 +63,7 @@ const {
   calculateOverallSickDays,
   calculateMonthSickDays,
   calculateMonthlyOvertime,
+  calculateYearlyOvertime,
 } = storeToRefs(useTimekeepingStore());
 
 const { t, n, locale } = useI18n();

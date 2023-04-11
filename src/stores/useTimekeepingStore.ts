@@ -30,18 +30,28 @@ export default defineStore("timekeepingStore", {
       return getAllDaysOfMonth(this.currentDate);
     },
     calculateMonthlyOvertime() {
-      const { calculatedMonthOvertime } = calculateAdditionalInfos(this.data, this.currentDate);
-      if (calculatedMonthOvertime === 0) return 0;
+      const { calculatedMonthOvertime } = calculateAdditionalInfos(
+        this.data,
+        this.currentDate
+      );
       return calculatedMonthOvertime;
+    },
+    calculateYearlyOvertime() {
+      const { calculatedYearlyOvertime } = calculateAdditionalInfos(
+        this.data,
+        this.currentDate
+      );
+      return calculatedYearlyOvertime;
     },
     calculateOverallOvertime() {
       const { calculatedWeekOvertime } = calculateAdditionalInfos(this.data);
-      if (calculatedWeekOvertime === 0) return 0;
-
       return calculatedWeekOvertime;
     },
     calculateRestVactionDays() {
-      const { calculatedRestVacation } = calculateAdditionalInfos(this.data, this.currentDate);
+      const { calculatedRestVacation } = calculateAdditionalInfos(
+        this.data,
+        this.currentDate
+      );
       if (calculatedRestVacation === 0) return 0;
 
       const dayHoursMustWork =
@@ -83,6 +93,7 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
   let calculatedOverallSick = 0;
   let calculatedMonthSick = 0;
   let calculatedMonthOvertime = 0;
+  let calculatedYearlyOvertime = 0;
 
   const keyYears = Object.keys(data);
   keyYears.forEach((year: string) => {
@@ -104,8 +115,16 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
           calculatedMonthOvertime += calculatedWeek.weekSumOvertime;
         }
 
-        if ( currentDate?.toLocaleDateString("en-US", { year: "numeric"}) === year) {
+        if (
+          currentDate?.toLocaleDateString("en-US", { year: "numeric" }) === year
+        ) {
           calculatedRestVacation += calculatedWeek.weekSumVacation;
+        }
+
+        if (
+          currentDate?.toLocaleDateString("en-US", { year: "numeric" }) === year
+        ) {
+          calculatedYearlyOvertime += calculatedWeek.weekSumOvertime;
         }
       });
     });
@@ -117,6 +136,7 @@ const calculateAdditionalInfos = (data: IData, currentDate?: Date) => {
     calculatedOverallSick,
     calculatedMonthSick,
     calculatedMonthOvertime,
+    calculatedYearlyOvertime,
   };
 };
 
