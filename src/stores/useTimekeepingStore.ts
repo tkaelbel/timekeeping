@@ -162,7 +162,7 @@ const calculateWeek = (cw: { [key: string]: IDayModel }) => {
       weekSumVacation += cw[day].vacationHours ? cw[day].vacationHours : 0;
     }
 
-    if (cw[day].holiday?.isHoliday) {
+    if (cw[day].holiday?.isHoliday && day !== "sunday" && day !== "saturday") {
       holidays.push(cw[day]);
       return;
     }
