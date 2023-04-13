@@ -215,7 +215,7 @@ const calculateOvertime = (cw: number) => {
   const wholeWeek = inputValues.value[cw];
   if (wholeWeek) {
     const holidays = Object.keys(wholeWeek).filter(
-      (day) => wholeWeek[day].holiday?.isHoliday
+      (day) => wholeWeek[day].holiday?.isHoliday && day !== "sunday" && day !== "saturday"
     );
 
     // filter weekend
