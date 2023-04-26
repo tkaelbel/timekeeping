@@ -11,7 +11,7 @@
     "dev": "start vite --mode tauri && start tauri dev"
   },
   "dependencies": {
-    "@quasar/extras": "1.16.2",
+    "@quasar/extras": "1.16.3",
     "@tauri-apps/api": "1.2.0",
     "date-fns": "2.29.3",
     "date-holidays": "3.19.0",

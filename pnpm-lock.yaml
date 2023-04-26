@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@quasar/extras':
-    specifier: 1.16.2
-    version: 1.16.2
+    specifier: 1.16.3
+    version: 1.16.3
   '@tauri-apps/api':
     specifier: 1.2.0
     version: 1.2.0
@@ -1888,8 +1888,8 @@ packages:
       - webpack
     dev: true
 
-  /@quasar/extras@1.16.2:
-    resolution: {integrity: sha512-spDc1DrwxGts0MjmOAJ11xpxJANhCI1vEadxaw89wRQJ/QfKd0HZrwN7uN1U15cRozGRkJpdbsnP4cVXpkPysA==}
+  /@quasar/extras@1.16.3:
+    resolution: {integrity: sha512-c9p2j4KWrWqOcCcCD9IMjgPZzAiXKSMEMc3uYbqa5mHlEJ1kl88OMaeJUcmP+INRQ29AFSEQ9tZE20jLmdnLXw==}
     dev: false
 
   /@quasar/fastclick@1.1.4:
