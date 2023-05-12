@@ -11,8 +11,8 @@ dependencies:
     specifier: 2.30.0
     version: 2.30.0
   date-holidays:
-    specifier: 3.19.0
-    version: 3.19.0
+    specifier: 3.19.2
+    version: 3.19.2
   flag-icons:
     specifier: 6.6.6
     version: 6.6.6
@@ -3101,11 +3101,11 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /caldate@2.0.4:
-    resolution: {integrity: sha512-EtSyLpXDMAfc2PorMuQCvvfO4QP1H+uTuonzmtvk23sWNB/1oCj+skskw1GEQMlzcGvQrVCFIt58/4BVRWhGdw==}
+  /caldate@2.0.5:
+    resolution: {integrity: sha512-JndhrUuDuE975KUhFqJaVR1OQkCHZqpOrJur/CFXEIEhWhBMjxO85cRSK8q4FW+B+yyPq6GYua2u4KvNzTcq0w==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      moment-timezone: 0.5.40
+      moment-timezone: 0.5.43
     dev: false
 
   /call-bind@1.0.2:
@@ -3687,26 +3687,26 @@ packages:
       '@babel/runtime': 7.21.0
     dev: false
 
-  /date-holidays-parser@3.4.3:
-    resolution: {integrity: sha512-o2GYEQC1Ytypz7svRFwKO9DEyg3yc2ZwMJnIVIUU6NDOpsknsewt+QilU/z/nHzI1qj13zVIvFIHgEnjg6neVA==}
+  /date-holidays-parser@3.4.4:
+    resolution: {integrity: sha512-R5aO4oT8H51ZKdvApqHrqYEiNBrqT6tRj2PFXNcZfqMI4nxY7KKKly0ZsmquR5gY+x9ldKR8SAMdozzIInaoXg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       astronomia: 4.1.1
-      caldate: 2.0.4
+      caldate: 2.0.5
       date-bengali-revised: 2.0.2
       date-chinese: 2.1.4
       date-easter: 1.0.2
-      deepmerge: 4.3.0
+      deepmerge: 4.3.1
       jalaali-js: 1.2.6
-      moment-timezone: 0.5.40
+      moment-timezone: 0.5.43
     dev: false
 
-  /date-holidays@3.19.0:
-    resolution: {integrity: sha512-bQtGy4ycRAfMdJxueYQTx08V0P8ssoAd4X9rg2CWyCHCn3oKe7vbHtIebXlESWBVplc5GomSN25MJy+GEJ9o7w==}
+  /date-holidays@3.19.2:
+    resolution: {integrity: sha512-9izEnkVCkpHYwkWcuFw6EPhy9+MY8ASGdTCBTGSf6tbaiynFSsAL0ltGv/ft60Gft3sDbtZOTQZF95W9Nde+Fw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      date-holidays-parser: 3.4.3
+      date-holidays-parser: 3.4.4
       js-yaml: 4.1.0
       lodash.omit: 4.5.0
       lodash.pick: 4.4.0
@@ -3771,8 +3771,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /deepmerge@4.3.0:
-    resolution: {integrity: sha512-z2wJZXrmeHdvYJp/Ux55wIjqo81G5Bp4c+oELTW+7ar6SogWHajt5a9gO3s3IDaGSAXjDk0vlQKN3rms8ab3og==}
+  /deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
 
   /default-gateway@6.0.3:
@@ -4468,7 +4468,7 @@ packages:
       chalk: 4.1.2
       chokidar: 3.5.3
       cosmiconfig: 6.0.0
-      deepmerge: 4.3.0
+      deepmerge: 4.3.1
       eslint: 8.40.0
       fs-extra: 9.1.0
       glob: 7.2.3
@@ -5503,8 +5503,8 @@ packages:
       minimist: 1.2.8
     dev: true
 
-  /moment-timezone@0.5.40:
-    resolution: {integrity: sha512-tWfmNkRYmBkPJz5mr9GVDn9vRlVZOTe6yqY92rFxiOdWXbjaR0+9LwQnZGGuNR63X456NqmEkbskte8tWL5ePg==}
+  /moment-timezone@0.5.43:
+    resolution: {integrity: sha512-72j3aNyuIsDxdF1i7CEgV2FfxM1r6aaqJyLB2vwb33mXYyoyLly+F1zbWqhA3/bVIoJ4szlUoMbUnVdid32NUQ==}
     dependencies:
       moment: 2.29.4
     dev: false
