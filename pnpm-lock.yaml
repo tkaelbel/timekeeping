@@ -17,8 +17,8 @@ dependencies:
     specifier: 6.6.6
     version: 6.6.6
   pinia:
-    specifier: 2.1.0
-    version: 2.1.0(typescript@5.0.4)(vue@3.3.2)
+    specifier: 2.1.1
+    version: 2.1.1(typescript@5.0.4)(vue@3.3.2)
   quasar:
     specifier: 2.12.0
     version: 2.12.0
@@ -5847,12 +5847,12 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pinia@2.1.0(typescript@5.0.4)(vue@3.3.2):
-    resolution: {integrity: sha512-WAnicKzwxEow/1il0Ax9HjAB6/Uaqlaq/VxnyUDTxFnSVAPuh3AnJFLz60DOnJ9TRLPVl09kAk2y3bmYfetX7A==}
+  /pinia@2.1.1(typescript@5.0.4)(vue@3.3.2):
+    resolution: {integrity: sha512-Y2CgpcUtD8Ogdvo5LW5g20ykSZgnVDMgTSZFr40EvO6HB8axQk+0lHa1UrRah9wworFaxjovwRlY/wRICWj/KQ==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
-      vue: ^2.6.14 || ^3.2.0
+      vue: ^2.6.14 || ^3.3.0
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
@@ -5862,7 +5862,7 @@ packages:
       '@vue/devtools-api': 6.5.0
       typescript: 5.0.4
       vue: 3.3.2
-      vue-demi: 0.14.1(vue@3.3.2)
+      vue-demi: 0.14.4(vue@3.3.2)
     dev: false
 
   /pkg-dir@4.2.0:
@@ -7566,8 +7566,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vue-demi@0.14.1(vue@3.3.2):
-    resolution: {integrity: sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ==}
+  /vue-demi@0.14.4(vue@3.3.2):
+    resolution: {integrity: sha512-YR9bCmtIYgsqNVRG3MLLWlhbZ9tTNMuWHPd7yx0pHS3NDX17MeVNHgKTOClYE8pBjsfNe4CMaReP7zQtHDIbiA==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
