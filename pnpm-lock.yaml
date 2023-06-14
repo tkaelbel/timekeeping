@@ -9,8 +9,8 @@ dependencies:
     specifier: 1.16.4
     version: 1.16.4
   '@tauri-apps/api':
-    specifier: 1.3.0
-    version: 1.3.0
+    specifier: 1.4.0
+    version: 1.4.0
   date-fns:
     specifier: 2.30.0
     version: 2.30.0
@@ -1935,8 +1935,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@tauri-apps/api@1.3.0:
-    resolution: {integrity: sha512-AH+3FonkKZNtfRtGrObY38PrzEj4d+1emCbwNGu0V2ENbXjlLHMZQlUh+Bhu/CRmjaIwZMGJ3yFvWaZZgTHoog==}
+  /@tauri-apps/api@1.4.0:
+    resolution: {integrity: sha512-Jd6HPoTM1PZSFIzq7FB8VmMu3qSSyo/3lSwLpoapW+lQ41CL5Dow2KryLg+gyazA/58DRWI9vu/XpEeHK4uMdw==}
     engines: {node: '>= 14.6.0', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
     dev: false
 
