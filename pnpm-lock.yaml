@@ -19,7 +19,7 @@ specifiers:
   flag-icons: 6.7.0
   pinia: 2.1.4
   quasar: 2.12.3
-  sass: 1.63.6
+  sass: 1.64.0
   typescript: 5.1.6
   vite: 4.4.4
   vue: 3.3.4
@@ -51,9 +51,9 @@ devDependencies:
   eslint: 8.45.0
   eslint-config-prettier: 8.8.0_eslint@8.45.0
   eslint-plugin-vue: 9.15.1_eslint@8.45.0
-  sass: 1.63.6
+  sass: 1.64.0
   typescript: 5.1.6
-  vite: 4.4.4_s3dqxh4ls26dflp6mklu4tks4q
+  vite: 4.4.4_kziz5krsi3lnm6jld7vtccnduu
   vue-tsc: 1.8.5_typescript@5.1.6
 
 packages:
@@ -1902,7 +1902,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.2.3_vite@4.4.4+vue@3.3.4
       quasar: 2.12.3
-      vite: 4.4.4_s3dqxh4ls26dflp6mklu4tks4q
+      vite: 4.4.4_kziz5krsi3lnm6jld7vtccnduu
       vue: 3.3.4
     dev: true
 
@@ -2323,7 +2323,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.4_s3dqxh4ls26dflp6mklu4tks4q
+      vite: 4.4.4_kziz5krsi3lnm6jld7vtccnduu
       vue: 3.3.4
     dev: true
 
@@ -6540,8 +6540,8 @@ packages:
       chokidar: 3.5.3
     dev: true
 
-  /sass/1.63.6:
-    resolution: {integrity: sha512-MJuxGMHzaOW7ipp+1KdELtqKbfAWbH7OLIdoSMnVe3EXPMTmxTmlaZDCTsgIpPCs3w99lLo9/zDKkOrJuT5byw==}
+  /sass/1.64.0:
+    resolution: {integrity: sha512-m7YtAGmQta9uANIUJwXesAJMSncqH+3INc8kdVXs6eV6GUC8Qu2IYKQSN8PRLgiQfpca697G94klm2leYMxSHw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -7210,7 +7210,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite/4.4.4_s3dqxh4ls26dflp6mklu4tks4q:
+  /vite/4.4.4_kziz5krsi3lnm6jld7vtccnduu:
     resolution: {integrity: sha512-4mvsTxjkveWrKDJI70QmelfVqTm+ihFAb6+xf4sjEU2TmUCTlVX87tmg/QooPEMQb/lM9qGHT99ebqPziEd3wg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7242,7 +7242,7 @@ packages:
       esbuild: 0.18.13
       postcss: 8.4.26
       rollup: 3.26.2
-      sass: 1.63.6
+      sass: 1.64.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
