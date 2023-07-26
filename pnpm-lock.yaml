@@ -16,7 +16,7 @@ specifiers:
   eslint: 8.45.0
   eslint-config-prettier: 8.8.0
   eslint-plugin-vue: 9.15.1
-  flag-icons: 6.9.1
+  flag-icons: 6.9.2
   pinia: 2.1.6
   quasar: 2.12.3
   sass: 1.64.1
@@ -32,7 +32,7 @@ dependencies:
   '@tauri-apps/api': 1.4.0
   date-fns: 2.30.0
   date-holidays: 3.21.2
-  flag-icons: 6.9.1
+  flag-icons: 6.9.2
   pinia: 2.1.6_typescript@5.1.6+vue@3.3.4
   quasar: 2.12.3
   vue: 3.3.4
@@ -4373,8 +4373,8 @@ packages:
       path-exists: 4.0.0
     dev: true
 
-  /flag-icons/6.9.1:
-    resolution: {integrity: sha512-G0hxIiG9RR28C/pNhRnTj5avq+mDPW++lcMay/EuXh5PY8HIygPahoEw91pBIOkDUMhE9gCFhqTog+YFJiYI0A==}
+  /flag-icons/6.9.2:
+    resolution: {integrity: sha512-zN/v2PJYdM0N/9R82KM99aRUtfLhj0WbFspOj1Ha1RZbwD7K2/4mMm2Qz8ujFli0d79gx2RgZ71astcXsHMdSA==}
     dev: false
 
   /flat-cache/3.0.4:
