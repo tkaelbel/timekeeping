@@ -14,7 +14,7 @@ specifiers:
   date-fns: 2.30.0
   date-holidays: 3.21.2
   eslint: 8.45.0
-  eslint-config-prettier: 8.8.0
+  eslint-config-prettier: 8.9.0
   eslint-plugin-vue: 9.15.1
   flag-icons: 6.9.2
   pinia: 2.1.6
@@ -49,7 +49,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.62.0_ko3fmmbeyij36muomfgt2u76xu
   '@vitejs/plugin-vue': 4.2.3_vite@4.4.7+vue@3.3.4
   eslint: 8.45.0
-  eslint-config-prettier: 8.8.0_eslint@8.45.0
+  eslint-config-prettier: 8.9.0_eslint@8.45.0
   eslint-plugin-vue: 9.15.1_eslint@8.45.0
   sass: 1.64.1
   typescript: 5.1.6
@@ -4001,8 +4001,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-prettier/8.8.0_eslint@8.45.0:
-    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
+  /eslint-config-prettier/8.9.0_eslint@8.45.0:
+    resolution: {integrity: sha512-+sbni7NfVXnOpnRadUA8S28AUlsZt9GjgFvABIRL9Hkn8KqNzOp+7Lw4QWtrwn20KzU3wqu1QoOj2m+7rKRqkA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
