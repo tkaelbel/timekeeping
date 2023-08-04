@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@intlify/unplugin-vue-i18n':
-    specifier: ^0.12.0
-    version: 0.12.0(vue-i18n@9.2.2)
+    specifier: ^0.12.2
+    version: 0.12.2(vue-i18n@9.2.2)
   '@quasar/app':
     specifier: 3.3.3
     version: 3.3.3(eslint@8.46.0)(vue-router@4.2.4)(vue@3.3.4)
@@ -1704,18 +1704,13 @@ packages:
     resolution: {integrity: sha512-wRwTpsslgZS5HNyM7uDQYZtxnbI12aGiBZURX3BTR9RFIKKRWpllTsgzHWvj3HKm3Y2Sh5LPC1r0PDCKEhVn9Q==}
     engines: {node: '>= 14'}
 
-  /@intlify/shared@9.3.0-beta.20:
-    resolution: {integrity: sha512-RucSPqh8O9FFxlYUysQTerSw0b9HIRpyoN1Zjogpm0qLiHK+lBNSa5sh1nCJ4wSsNcjphzgpLQCyR60GZlRV8g==}
-    engines: {node: '>= 16'}
-    dev: true
-
   /@intlify/shared@9.3.0-beta.24:
     resolution: {integrity: sha512-AKxJ8s7eKIQWkNaf4wyyoLRwf4puCuQgjSChlDJm5JBEt6T8HGgnYTJLRXu6LD/JACn3Qwu6hM/XRX1c9yvjmQ==}
     engines: {node: '>= 16'}
     dev: true
 
-  /@intlify/unplugin-vue-i18n@0.12.0(vue-i18n@9.2.2):
-    resolution: {integrity: sha512-L155p03eZpzYUIU1YKbb38xq++GcaW6bsqo800GdonmkQXY8nc4/HsKQRQY5lRoAOkbhO0Vyt7yrsU11vVrqnw==}
+  /@intlify/unplugin-vue-i18n@0.12.2(vue-i18n@9.2.2):
+    resolution: {integrity: sha512-IIgzLRSPUKZM1FBdUAZ9NwVPiLUr4ea5g/HLWe2lB7gNtPDz4FOfUNUllIT504hT+3pDoJmjaYJ6pyqT7F4Wuw==}
     engines: {node: '>= 14.16'}
     peerDependencies:
       petite-vue-i18n: '*'
@@ -1730,7 +1725,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 7.0.2(vue-i18n@9.2.2)
-      '@intlify/shared': 9.3.0-beta.20
+      '@intlify/shared': 9.3.0-beta.24
       '@rollup/pluginutils': 5.0.2
       '@vue/compiler-sfc': 3.3.4
       debug: 4.3.4
@@ -3048,7 +3043,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001519
-      electron-to-chromium: 1.4.483
+      electron-to-chromium: 1.4.484
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: true
@@ -3833,8 +3828,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /electron-to-chromium@1.4.483:
-    resolution: {integrity: sha512-YLwU0iF//9R3cCEfq0wgL+pf9vglE4kwAg4S5tkVVZljUDKv7Wcz67mTY4OOj+T7YUbTGuqlbqgdl/s+7Q8KTw==}
+  /electron-to-chromium@1.4.484:
+    resolution: {integrity: sha512-nO3ZEomTK2PO/3TUXgEx0A97xZTpKVf4p427lABHuCpT1IQ2N+njVh29DkQkCk6Q4m2wjU+faK4xAcfFndwjvw==}
     dev: true
 
   /elementtree@0.1.7:
@@ -6446,8 +6441,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup@3.27.1:
-    resolution: {integrity: sha512-tXNDFwOkN6C2w5Blj1g6ForKeFw6c1mDu5jxoeDO3/pmYjgt+8yvIFjKzH5FQUq70OKZBkOt0zzv0THXL7vwzQ==}
+  /rollup@3.27.2:
+    resolution: {integrity: sha512-YGwmHf7h2oUHkVBT248x0yt6vZkYQ3/rvE5iQuVBh3WO8GcJ6BNeOkpoX1yMHIiBm18EMLjBPIoUDkhgnyxGOQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -7231,7 +7226,7 @@ packages:
       '@types/node': 18.17.2
       esbuild: 0.18.17
       postcss: 8.4.27
-      rollup: 3.27.1
+      rollup: 3.27.2
       sass: 1.64.2
     optionalDependencies:
       fsevents: 2.3.2
