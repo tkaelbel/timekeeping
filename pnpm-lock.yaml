@@ -18,8 +18,8 @@ dependencies:
     specifier: 3.21.2
     version: 3.21.2
   flag-icons:
-    specifier: 6.9.3
-    version: 6.9.3
+    specifier: 6.9.4
+    version: 6.9.4
   pinia:
     specifier: 2.1.6
     version: 2.1.6(typescript@5.1.6)(vue@3.3.4)
@@ -4332,8 +4332,8 @@ packages:
       path-exists: 4.0.0
     dev: true
 
-  /flag-icons@6.9.3:
-    resolution: {integrity: sha512-HIU4V8342pmBjk+zlvq0jGyHEifyP9976ynzQw8sLeONNcyMxW5I+NWY9OWGMrd9lkFjgfcnvRdD3MGd1ihHzQ==}
+  /flag-icons@6.9.4:
+    resolution: {integrity: sha512-d9ROOhLvn/Q8pGagdyUL4ENd+AjehJ/S86x/x3pJGWY4TSgId7BLh8clhKaoEGXFeHQNp/2SwFX2EXYO4T/3Aw==}
     dev: false
 
   /flat-cache@3.0.4:
