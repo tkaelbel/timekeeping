@@ -28,7 +28,7 @@
     "@quasar/vite-plugin": "1.4.1",
     "@tauri-apps/cli": "1.4.0",
     "@types/node": "18.17.12",
-    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/eslint-plugin": "6.5.0",
     "@typescript-eslint/parser": "6.5.0",
     "@vitejs/plugin-vue": "4.3.3",
     "eslint": "8.48.0",
