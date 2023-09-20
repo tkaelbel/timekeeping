@@ -80,8 +80,8 @@ devDependencies:
     specifier: 4.4.9
     version: 4.4.9(@types/node@18.17.18)(sass@1.67.0)
   vue-tsc:
-    specifier: 1.8.12
-    version: 1.8.12(typescript@5.2.2)
+    specifier: 1.8.13
+    version: 1.8.13(typescript@5.2.2)
 
 packages:
 
@@ -2456,8 +2456,8 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
 
-  /@vue/language-core@1.8.12(typescript@5.2.2):
-    resolution: {integrity: sha512-IYSr7ojQX2re7zMAKUKUYovuJ5IJoUI3PhgBRcpRBU29YnF/gDLf1c9ARtbnGPFvtDC+QP+/CfwVBxdPipBjEw==}
+  /@vue/language-core@1.8.13(typescript@5.2.2):
+    resolution: {integrity: sha512-nata2fYBZAkl4QJrU+IcArJCMTHt1VP8ePL/Z7eUPC2AF+Cm7Qgo9ksNCPBzZRh1LYjCaSaqV7njqNogwpsMVg==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -2514,11 +2514,11 @@ packages:
   /@vue/shared@3.3.4:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
 
-  /@vue/typescript@1.8.12(typescript@5.2.2):
-    resolution: {integrity: sha512-cE3mXd/iUM+1Row2gMfhSC4VAEySvpHzKom5v3mOw0hH7ck2odpdLTLPzcNrCPmvXKEie2UovBO7T5P6v2qIyQ==}
+  /@vue/typescript@1.8.13(typescript@5.2.2):
+    resolution: {integrity: sha512-ALJjHFqQ3dgZVCI/ogAS/dZ7JEhIi1N0Em5I7uwabY1p9RDRK3odLsycMHyxZRjm5dLI15c07eeBloHiD2Otlg==}
     dependencies:
       '@volar/typescript': 1.10.0
-      '@vue/language-core': 1.8.12(typescript@5.2.2)
+      '@vue/language-core': 1.8.13(typescript@5.2.2)
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -7259,14 +7259,14 @@ packages:
       he: 1.2.0
     dev: true
 
-  /vue-tsc@1.8.12(typescript@5.2.2):
-    resolution: {integrity: sha512-WQhx7ZTZEoB55a2D/lMDP1GPqifOj0ZSe7C85Eef7BDbVqfO8PVRWTyVolliENOSXoa5dYXWPwYbADVhCVCBPg==}
+  /vue-tsc@1.8.13(typescript@5.2.2):
+    resolution: {integrity: sha512-Hl8zUXPVK2KzPtbXeMCN0CSFkwvD96YOtYt9KvJPG9W8QGcNpGk9KHwPuGMxA8blWXSIli7gtsoC+clICEVdVg==}
     hasBin: true
     peerDependencies:
       typescript: '*'
     dependencies:
-      '@vue/language-core': 1.8.12(typescript@5.2.2)
-      '@vue/typescript': 1.8.12(typescript@5.2.2)
+      '@vue/language-core': 1.8.13(typescript@5.2.2)
+      '@vue/typescript': 1.8.13(typescript@5.2.2)
       semver: 7.5.4
       typescript: 5.2.2
     dev: true
