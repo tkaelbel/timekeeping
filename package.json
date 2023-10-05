@@ -14,7 +14,7 @@
     "@quasar/extras": "1.16.7",
     "@tauri-apps/api": "1.5.0",
     "date-fns": "2.30.0",
-    "date-holidays": "3.22.0",
+    "date-holidays": "3.22.1",
     "flag-icons": "6.11.1",
     "pinia": "2.1.6",
     "quasar": "2.12.7",
