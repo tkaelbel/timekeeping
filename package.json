@@ -37,7 +37,7 @@
     "sass": "1.69.4",
     "typescript": "5.2.2",
     "vite": "4.5.0",
-    "vue-tsc": "1.8.20"
+    "vue-tsc": "1.8.21"
   },
   "pnpm": {
     "overrides": {
