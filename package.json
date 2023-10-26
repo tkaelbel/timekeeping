@@ -25,7 +25,7 @@
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^0.13.0",
     "@quasar/app": "3.3.3",
-    "@quasar/vite-plugin": "1.5.0",
+    "@quasar/vite-plugin": "1.6.0",
     "@tauri-apps/cli": "1.5.5",
     "@types/node": "18.18.7",
     "@typescript-eslint/eslint-plugin": "6.9.0",
