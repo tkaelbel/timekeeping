@@ -8,7 +8,8 @@
     "build:tauri": "tauri build",
     "preview": "vite preview",
     "build:debug": "vite build && tauri build --debug",
-    "dev": "start vite --mode tauri && start tauri dev"
+    "dev": "start vite --mode tauri && start tauri dev",
+    "tauri": "tauri"
   },
   "dependencies": {
     "@quasar/extras": "1.16.7",
@@ -45,8 +46,7 @@
       "semver@>=7.0.0 <7.5.2": ">=7.5.2",
       "json5@<1.0.2": ">=1.0.2",
       "minimist@>=1.0.0 <1.2.6": ">=1.2.6",
-      "qs@>=6.9.0 <6.9.7": ">=6.9.7",
-      "@tauri-apps/cli@<2.0.0-alpha.16": ">=2.0.0-alpha.16"
+      "qs@>=6.9.0 <6.9.7": ">=6.9.7"
     }
   }
 }

@@ -1,5 +1,4 @@
 {
-  "$schema": "..\\node_modules/@tauri-apps/cli\\schema.json",
   "build": {
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
@@ -12,6 +11,7 @@
   },
   "tauri": {
     "allowlist": {
+      "all": false,
       "fs": {
         "all": true,
         "scope": ["$APP", "$APP/*", "$APP/data/*"]
@@ -52,9 +52,6 @@
     },
     "security": {
       "csp": null
-    },
-    "updater": {
-      "active": false
     },
     "windows": [
       {
