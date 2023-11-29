@@ -13,8 +13,8 @@ overrides:
 
 dependencies:
   '@quasar/extras':
-    specifier: 1.16.8
-    version: 1.16.8
+    specifier: 1.16.9
+    version: 1.16.9
   '@tauri-apps/api':
     specifier: 1.5.1
     version: 1.5.1
@@ -1923,8 +1923,8 @@ packages:
       - webpack
     dev: true
 
-  /@quasar/extras@1.16.8:
-    resolution: {integrity: sha512-mNSwQ6wkIVoAemhYdLm9q/FVqLHmVONZgCYdLLeqpakKNsR0r/zHQnCngzdDaXI7veYEvE0uW1gJa1wdQsxXxA==}
+  /@quasar/extras@1.16.9:
+    resolution: {integrity: sha512-SlOhwzXyPQHWgQIS2ncyDdYdksCJvUYNtgsDQqzAKEG3r3d/ejOxvThle79HTK3Q6HB+gQWFG21Ux00Osr5XSw==}
     dev: false
 
   /@quasar/fastclick@1.1.4:
