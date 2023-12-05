@@ -87,8 +87,8 @@ devDependencies:
     specifier: 4.5.1
     version: 4.5.1(@types/node@18.19.2)(sass@1.69.5)
   vue-tsc:
-    specifier: 1.8.24
-    version: 1.8.24(typescript@5.3.2)
+    specifier: 1.8.25
+    version: 1.8.25(typescript@5.3.2)
 
 packages:
 
@@ -2496,8 +2496,8 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
 
-  /@vue/language-core@1.8.24(typescript@5.3.2):
-    resolution: {integrity: sha512-2ClHvij0WlsDWryPzXJCSpPc6rusZFNoVtRZGgGGkKCmKuIREDDKmH8j+1tYyxPYyH0qL6pZ6+IHD8KIm5nWAw==}
+  /@vue/language-core@1.8.25(typescript@5.3.2):
+    resolution: {integrity: sha512-NJk/5DnAZlpvXX8BdWmHI45bWGLViUaS3R/RMrmFSvFMSbJKuEODpM4kR0F0Ofv5SFzCWuNiMhxameWpVdQsnA==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -2506,8 +2506,8 @@ packages:
     dependencies:
       '@volar/language-core': 1.11.1
       '@volar/source-map': 1.11.1
-      '@vue/compiler-dom': 3.3.9
-      '@vue/shared': 3.3.9
+      '@vue/compiler-dom': 3.3.10
+      '@vue/shared': 3.3.10
       computeds: 0.0.1
       minimatch: 9.0.3
       muggle-string: 0.3.1
@@ -7392,14 +7392,14 @@ packages:
       he: 1.2.0
     dev: true
 
-  /vue-tsc@1.8.24(typescript@5.3.2):
-    resolution: {integrity: sha512-eH1CSj231OzVEY5Hi7wS6ubzyOEwgr5jCptR0Ddf2SitGcaXIsPVDvrprm3eolCdyhDt3WS1Eb2F4fGX9BsUUw==}
+  /vue-tsc@1.8.25(typescript@5.3.2):
+    resolution: {integrity: sha512-lHsRhDc/Y7LINvYhZ3pv4elflFADoEOo67vfClAfF2heVHpHmVquLSjojgCSIwzA4F0Pc4vowT/psXCYcfk+iQ==}
     hasBin: true
     peerDependencies:
       typescript: '*'
     dependencies:
       '@volar/typescript': 1.11.1
-      '@vue/language-core': 1.8.24(typescript@5.3.2)
+      '@vue/language-core': 1.8.25(typescript@5.3.2)
       semver: 7.5.4
       typescript: 5.3.2
     dev: true
