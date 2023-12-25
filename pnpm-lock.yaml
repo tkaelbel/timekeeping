@@ -52,7 +52,7 @@ devDependencies:
     version: 3.3.3(eslint@8.56.0)(vue-router@4.2.5)(vue@3.3.13)
   '@quasar/vite-plugin':
     specifier: 1.6.0
-    version: 1.6.0(@vitejs/plugin-vue@4.5.2)(quasar@2.14.2)(vite@4.5.1)(vue@3.3.13)
+    version: 1.6.0(@vitejs/plugin-vue@4.6.0)(quasar@2.14.2)(vite@4.5.1)(vue@3.3.13)
   '@tauri-apps/cli':
     specifier: 1.5.5
     version: 1.5.5
@@ -66,8 +66,8 @@ devDependencies:
     specifier: 6.15.0
     version: 6.15.0(eslint@8.56.0)(typescript@5.3.3)
   '@vitejs/plugin-vue':
-    specifier: 4.5.2
-    version: 4.5.2(vite@4.5.1)(vue@3.3.13)
+    specifier: 4.6.0
+    version: 4.6.0(vite@4.5.1)(vue@3.3.13)
   eslint:
     specifier: 8.56.0
     version: 8.56.0
@@ -1938,7 +1938,7 @@ packages:
       serialize-javascript: 5.0.1
     dev: true
 
-  /@quasar/vite-plugin@1.6.0(@vitejs/plugin-vue@4.5.2)(quasar@2.14.2)(vite@4.5.1)(vue@3.3.13):
+  /@quasar/vite-plugin@1.6.0(@vitejs/plugin-vue@4.6.0)(quasar@2.14.2)(vite@4.5.1)(vue@3.3.13):
     resolution: {integrity: sha512-LmbV76G1CwWZbrEQhqyZpkRQTJyO3xpW55aXY1zWN+JhyUeG77CcMCEWteBVnJ6I6ehUPFDC9ONd2+WlwH6rNQ==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -1947,7 +1947,7 @@ packages:
       vite: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-beta.0
       vue: ^3.0.0
     dependencies:
-      '@vitejs/plugin-vue': 4.5.2(vite@4.5.1)(vue@3.3.13)
+      '@vitejs/plugin-vue': 4.6.0(vite@4.5.1)(vue@3.3.13)
       quasar: 2.14.2
       vite: 4.5.1(@types/node@18.19.3)(sass@1.69.5)
       vue: 3.3.13(typescript@5.3.3)
@@ -2383,8 +2383,8 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vitejs/plugin-vue@4.5.2(vite@4.5.1)(vue@3.3.13):
-    resolution: {integrity: sha512-UGR3DlzLi/SaVBPX0cnSyE37vqxU3O6chn8l0HJNzQzDia6/Au2A4xKv+iIJW8w2daf80G7TYHhi1pAUjdZ0bQ==}
+  /@vitejs/plugin-vue@4.6.0(vite@4.5.1)(vue@3.3.13):
+    resolution: {integrity: sha512-XHuyFdAikWRmHuAd89FOyUGIjrBU5KlxJtyi2hVeR9ySGFxQwE0bl5xAQju/ArMq5azdBivY4d+D2yPKwoYWUg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0 || ^5.0.0
