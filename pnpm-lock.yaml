@@ -75,8 +75,8 @@ devDependencies:
     specifier: 9.1.0
     version: 9.1.0(eslint@8.57.0)
   eslint-plugin-vue:
-    specifier: 9.21.1
-    version: 9.21.1(eslint@8.57.0)
+    specifier: 9.22.0
+    version: 9.22.0(eslint@8.57.0)
   sass:
     specifier: 1.70.0
     version: 1.70.0
@@ -3429,7 +3429,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.4.31)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
-      semver: 7.5.4
+      semver: 7.6.0
       webpack: 5.88.2
     dev: true
 
@@ -3967,8 +3967,8 @@ packages:
       eslint: 8.57.0
     dev: true
 
-  /eslint-plugin-vue@9.21.1(eslint@8.57.0):
-    resolution: {integrity: sha512-XVtI7z39yOVBFJyi8Ljbn7kY9yHzznKXL02qQYn+ta63Iy4A9JFBw6o4OSB9hyD2++tVT+su9kQqetUyCCwhjw==}
+  /eslint-plugin-vue@9.22.0(eslint@8.57.0):
+    resolution: {integrity: sha512-7wCXv5zuVnBtZE/74z4yZ0CM8AjH6bk4MQGm7hZjUC2DBppKU5ioeOk5LGSg/s9a1ZJnIsdPLJpXnu1Rc+cVHg==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
@@ -3977,8 +3977,8 @@ packages:
       eslint: 8.57.0
       natural-compare: 1.4.0
       nth-check: 2.1.1
-      postcss-selector-parser: 6.0.13
-      semver: 7.5.4
+      postcss-selector-parser: 6.0.15
+      semver: 7.6.0
       vue-eslint-parser: 9.4.2(eslint@8.57.0)
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
@@ -4369,7 +4369,7 @@ packages:
       memfs: 3.5.3
       minimatch: 3.1.2
       schema-utils: 2.7.0
-      semver: 7.5.4
+      semver: 7.6.0
       tapable: 1.1.3
       typescript: 4.5.5
       webpack: 5.88.2
@@ -5922,7 +5922,7 @@ packages:
       cosmiconfig: 7.1.0
       klona: 2.0.6
       postcss: 8.4.31
-      semver: 7.5.4
+      semver: 7.6.0
       webpack: 5.88.2
     dev: true
 
@@ -6170,6 +6170,14 @@ packages:
 
   /postcss-selector-parser@6.0.13:
     resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
+    engines: {node: '>=4'}
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+    dev: true
+
+  /postcss-selector-parser@6.0.15:
+    resolution: {integrity: sha512-rEYkQOMUCEMhsKbK66tbEU9QVIxbhN18YiniAwA7XQYTVBqrBy+P2p5JcdqsHgKM2zWylp8d7J6eszocfds5Sw==}
     engines: {node: '>=4'}
     dependencies:
       cssesc: 3.0.0
@@ -7068,7 +7076,7 @@ packages:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
       micromatch: 4.0.5
-      semver: 7.5.4
+      semver: 7.6.0
       typescript: 4.5.5
       webpack: 5.88.2
     dev: true
@@ -7296,7 +7304,7 @@ packages:
       espree: 9.6.1
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.5.4
+      semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
     dev: true
