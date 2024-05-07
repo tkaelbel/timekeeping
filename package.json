@@ -12,7 +12,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@quasar/extras": "1.16.9",
+    "@quasar/extras": "1.16.11",
     "@tauri-apps/api": "1.5.3",
     "date-fns": "2.30.0",
     "date-holidays": "3.23.10",
