@@ -20,7 +20,7 @@
     "pinia": "2.1.7",
     "quasar": "2.16.2",
     "vue": "3.4.27",
-    "vue-i18n": "9.10.2",
+    "vue-i18n": "9.13.1",
     "vue-router": "4.3.2"
   },
   "devDependencies": {
