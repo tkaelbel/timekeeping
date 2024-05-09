@@ -78,14 +78,14 @@ devDependencies:
     specifier: 9.25.0
     version: 9.25.0(eslint@8.57.0)
   sass:
-    specifier: 1.72.0
-    version: 1.72.0
+    specifier: 1.77.0
+    version: 1.77.0
   typescript:
     specifier: 5.4.5
     version: 5.4.5
   vite:
     specifier: 4.5.3
-    version: 4.5.3(@types/node@18.19.33)(sass@1.72.0)
+    version: 4.5.3(@types/node@18.19.33)(sass@1.77.0)
   vue-tsc:
     specifier: 1.8.27
     version: 1.8.27(typescript@5.4.5)
@@ -1669,7 +1669,7 @@ packages:
       jsonc-eslint-parser: 2.4.0
       magic-string: 0.30.8
       mlly: 1.6.1
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
       vue-i18n: 9.10.2(vue@3.4.27)
       yaml-eslint-parser: 1.2.2
     dev: true
@@ -1686,7 +1686,7 @@ packages:
     engines: {node: '>= 16'}
     dependencies:
       '@intlify/shared': 9.10.1
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /@intlify/message-compiler@9.10.2:
@@ -1694,7 +1694,7 @@ packages:
     engines: {node: '>= 16'}
     dependencies:
       '@intlify/shared': 9.10.2
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
 
   /@intlify/shared@9.10.1:
     resolution: {integrity: sha512-liyH3UMoglHBUn70iCYcy9CQlInx/lp50W2aeSxqqrvmG+LDj/Jj7tBJhBoQL4fECkldGhbmW0g2ommHfL6Wmw==}
@@ -1957,7 +1957,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.3)(vue@3.4.27)
       quasar: 2.15.1
-      vite: 4.5.3(@types/node@18.19.33)(sass@1.72.0)
+      vite: 4.5.3(@types/node@18.19.33)(sass@1.77.0)
       vue: 3.4.27(typescript@5.4.5)
     dev: true
 
@@ -2399,7 +2399,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.3(@types/node@18.19.33)(sass@1.72.0)
+      vite: 4.5.3(@types/node@18.19.33)(sass@1.77.0)
       vue: 3.4.27(typescript@5.4.5)
     dev: true
 
@@ -2429,7 +2429,7 @@ packages:
       '@vue/shared': 3.4.21
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /@vue/compiler-core@3.4.27:
@@ -2465,7 +2465,7 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.30.8
       postcss: 8.4.35
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /@vue/compiler-sfc@3.4.27:
@@ -6625,7 +6625,7 @@ packages:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /postcss@8.4.35:
@@ -6634,7 +6634,7 @@ packages:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /postcss@8.4.38:
@@ -6949,14 +6949,14 @@ packages:
       chokidar: 3.6.0
     dev: true
 
-  /sass@1.72.0:
-    resolution: {integrity: sha512-Gpczt3WA56Ly0Mn8Sl21Vj94s1axi9hDIzDFn9Ph9x3C3p4nNyvsqJoQyVXKou6cBlfFWEgRW4rT8Tb4i3XnVA==}
+  /sass@1.77.0:
+    resolution: {integrity: sha512-eGj4HNfXqBWtSnvItNkn7B6icqH14i3CiCGbzMKs3BAPTq62pp9NBYsBgyN4cA+qssqo9r26lW4JSvlaUUWbgw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.4
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /sax@1.1.4:
@@ -7187,6 +7187,7 @@ packages:
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
@@ -7664,7 +7665,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.3(@types/node@18.19.33)(sass@1.72.0):
+  /vite@4.5.3(@types/node@18.19.33)(sass@1.77.0):
     resolution: {integrity: sha512-kQL23kMeX92v3ph7IauVkXkikdDRsYMGTVl5KY2E9OY4ONLvkHf04MDTbnfo6NKxZiDLWzVpP5oTa8hQD8U3dg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7696,7 +7697,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.35
       rollup: 3.29.4
-      sass: 1.72.0
+      sass: 1.77.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
