@@ -16,7 +16,7 @@
     "@tauri-apps/api": "1.5.4",
     "date-fns": "2.30.0",
     "date-holidays": "3.23.12",
-    "flag-icons": "7.2.1",
+    "flag-icons": "7.2.3",
     "pinia": "2.1.7",
     "quasar": "2.16.2",
     "vue": "3.4.27",
