@@ -25,8 +25,8 @@ dependencies:
     specifier: 3.23.12
     version: 3.23.12
   flag-icons:
-    specifier: 7.2.1
-    version: 7.2.1
+    specifier: 7.2.3
+    version: 7.2.3
   pinia:
     specifier: 2.1.7
     version: 2.1.7(typescript@5.4.5)(vue@3.4.27)
@@ -4444,8 +4444,8 @@ packages:
       path-exists: 4.0.0
     dev: true
 
-  /flag-icons@7.2.1:
-    resolution: {integrity: sha512-EaU4XZmFt1BOilz9nMmJKjma5pOaNjzL7somOhadrrilollh4xj6aaXI2M1sd00VUfVWN0E25Q6xaW3SNt0k/Q==}
+  /flag-icons@7.2.3:
+    resolution: {integrity: sha512-X2gUdteNuqdNqob2KKTJTS+ZCvyWeLCtDz9Ty8uJP17Y4o82Y+U/Vd4JNrdwTAjagYsRznOn9DZ+E/Q52qbmqg==}
     dev: false
 
   /flat-cache@3.1.1:
