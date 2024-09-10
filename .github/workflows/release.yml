@@ -33,7 +33,7 @@ jobs:
         with:
           toolchain: stable
           
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.4.1
         name: Install pnpm
         id: pnpm-install
         with:
