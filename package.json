@@ -14,7 +14,7 @@
   "dependencies": {
     "@quasar/extras": "1.16.12",
     "@tauri-apps/api": "1.6.0",
-    "date-fns": "2.30.0",
+    "date-fns": "3.6.0",
     "date-holidays": "3.23.12",
     "flag-icons": "7.2.3",
     "pinia": "2.2.2",
