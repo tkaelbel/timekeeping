@@ -78,14 +78,14 @@ devDependencies:
     specifier: 9.28.0
     version: 9.28.0(eslint@8.57.1)
   sass:
-    specifier: 1.78.0
-    version: 1.78.0
+    specifier: 1.79.1
+    version: 1.79.1
   typescript:
     specifier: 5.6.2
     version: 5.6.2
   vite:
     specifier: 4.5.3
-    version: 4.5.3(@types/node@18.19.50)(sass@1.78.0)
+    version: 4.5.3(@types/node@18.19.50)(sass@1.79.1)
   vue-tsc:
     specifier: 1.8.27
     version: 1.8.27(typescript@5.6.2)
@@ -1663,7 +1663,7 @@ packages:
       jsonc-eslint-parser: 2.4.0
       magic-string: 0.30.11
       mlly: 1.6.1
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
       vue-i18n: 9.14.0(vue@3.5.6)
       yaml-eslint-parser: 1.2.2
     dev: true
@@ -1680,7 +1680,7 @@ packages:
     engines: {node: '>= 16'}
     dependencies:
       '@intlify/shared': 9.13.1
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /@intlify/message-compiler@9.14.0:
@@ -1688,7 +1688,7 @@ packages:
     engines: {node: '>= 16'}
     dependencies:
       '@intlify/shared': 9.14.0
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   /@intlify/shared@9.10.1:
     resolution: {integrity: sha512-liyH3UMoglHBUn70iCYcy9CQlInx/lp50W2aeSxqqrvmG+LDj/Jj7tBJhBoQL4fECkldGhbmW0g2ommHfL6Wmw==}
@@ -1956,7 +1956,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.3)(vue@3.5.6)
       quasar: 2.16.11
-      vite: 4.5.3(@types/node@18.19.50)(sass@1.78.0)
+      vite: 4.5.3(@types/node@18.19.50)(sass@1.79.1)
       vue: 3.5.6(typescript@5.6.2)
     dev: true
 
@@ -2398,7 +2398,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.3(@types/node@18.19.50)(sass@1.78.0)
+      vite: 4.5.3(@types/node@18.19.50)(sass@1.79.1)
       vue: 3.5.6(typescript@5.6.2)
     dev: true
 
@@ -2428,7 +2428,7 @@ packages:
       '@vue/shared': 3.4.21
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /@vue/compiler-core@3.5.5:
@@ -2438,7 +2438,7 @@ packages:
       '@vue/shared': 3.5.5
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /@vue/compiler-core@3.5.6:
@@ -2448,7 +2448,7 @@ packages:
       '@vue/shared': 3.5.6
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   /@vue/compiler-dom@3.4.21:
     resolution: {integrity: sha512-IZC6FKowtT1sl0CR5DpXSiEB5ayw75oT2bma1BEhV7RRR1+cfwLrxc2Z8Zq/RGFzJ8w5r9QtCOvTjQgdn0IKmA==}
@@ -2481,7 +2481,7 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.30.11
       postcss: 8.4.45
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /@vue/compiler-sfc@3.5.6:
@@ -2495,7 +2495,7 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.30.11
       postcss: 8.4.47
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   /@vue/compiler-ssr@3.4.21:
     resolution: {integrity: sha512-M5+9nI2lPpAsgXOGQobnIueVqc9sisBFexh5yMIMRAPYLa7+5wEJs8iqOZc1WAa9WQbx9GR2twgznU8LTIiZ4Q==}
@@ -3212,6 +3212,13 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
+
+  /chokidar@4.0.0:
+    resolution: {integrity: sha512-mxIojEAQcuEvT/lyXq+jf/3cO/KoA6z4CeNDGGevTybECPOMFCnQy3OPahluUkbqgPNGw5Bi78UC7Po6Lhy+NA==}
+    engines: {node: '>= 14.16.0'}
+    dependencies:
+      readdirp: 4.0.1
     dev: true
 
   /chrome-trace-event@1.0.3:
@@ -6634,7 +6641,7 @@ packages:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.1.0
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /postcss@8.4.35:
@@ -6643,7 +6650,7 @@ packages:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /postcss@8.4.45:
@@ -6652,7 +6659,7 @@ packages:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.1.0
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /postcss@8.4.47:
@@ -6769,6 +6776,11 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: true
+
+  /readdirp@4.0.1:
+    resolution: {integrity: sha512-GkMg9uOTpIWWKbSsgwb5fA4EavTR+SG/PMPoAY8hkhHfEEY0/vqljY+XHqtDf2cr2IJtoNRDbrrEpZUiZCkYRw==}
+    engines: {node: '>= 14.16.0'}
     dev: true
 
   /regenerate-unicode-properties@10.1.1:
@@ -6968,14 +6980,14 @@ packages:
       chokidar: 3.6.0
     dev: true
 
-  /sass@1.78.0:
-    resolution: {integrity: sha512-AaIqGSrjo5lA2Yg7RvFZrlXDBCp3nV4XP73GrLGvdRWWwk+8H3l0SDvq/5bA4eF+0RFPLuWUk3E+P1U/YqnpsQ==}
+  /sass@1.79.1:
+    resolution: {integrity: sha512-+mA7svoNKeL0DiJqZGeR/ZGUu8he4I8o3jyUcOFyo4eBJrwNgIMmAEwCMo/N2Y3wdjOBcRzoNxZIOtrtMX8EXg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
-      chokidar: 3.6.0
+      chokidar: 4.0.0
       immutable: 4.3.4
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     dev: true
 
   /sax@1.1.4:
@@ -7213,10 +7225,6 @@ packages:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /source-map-js@1.2.0:
-    resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
-    engines: {node: '>=0.10.0'}
 
   /source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -7694,7 +7702,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.3(@types/node@18.19.50)(sass@1.78.0):
+  /vite@4.5.3(@types/node@18.19.50)(sass@1.79.1):
     resolution: {integrity: sha512-kQL23kMeX92v3ph7IauVkXkikdDRsYMGTVl5KY2E9OY4ONLvkHf04MDTbnfo6NKxZiDLWzVpP5oTa8hQD8U3dg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7726,7 +7734,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.35
       rollup: 3.29.4
-      sass: 1.78.0
+      sass: 1.79.1
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
