@@ -51,8 +51,8 @@ devDependencies:
     specifier: 3.3.3
     version: 3.3.3(eslint@8.57.1)(vue-router@4.4.5)(vue@3.5.12)
   '@quasar/vite-plugin':
-    specifier: 1.7.0
-    version: 1.7.0(@vitejs/plugin-vue@4.6.2)(quasar@2.17.1)(vite@4.5.5)(vue@3.5.12)
+    specifier: 1.8.0
+    version: 1.8.0(@vitejs/plugin-vue@4.6.2)(quasar@2.17.1)(vite@4.5.5)(vue@3.5.12)
   '@tauri-apps/cli':
     specifier: 1.6.3
     version: 1.6.3
@@ -1945,8 +1945,8 @@ packages:
       serialize-javascript: 5.0.1
     dev: true
 
-  /@quasar/vite-plugin@1.7.0(@vitejs/plugin-vue@4.6.2)(quasar@2.17.1)(vite@4.5.5)(vue@3.5.12):
-    resolution: {integrity: sha512-ia4w1n4DuPYm92MQLPNpMqLJID1WGGRyVGxkVeg8V+V25Vh3p9QBo++iuXR4sW/bCmzzx66Ko6VStsr1zp90GQ==}
+  /@quasar/vite-plugin@1.8.0(@vitejs/plugin-vue@4.6.2)(quasar@2.17.1)(vite@4.5.5)(vue@3.5.12):
+    resolution: {integrity: sha512-+LC+y29R7dV7Y7GuCZyuC7MZ7E2Qz8r1ViUFQbJEV4+sx3561d/kDKTM7ZS4UQlrGgU22/LCOUrTC07N7g3JGg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@vitejs/plugin-vue': ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
