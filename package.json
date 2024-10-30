@@ -35,7 +35,7 @@
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-vue": "9.30.0",
-    "sass": "1.79.1",
+    "sass": "1.80.5",
     "typescript": "5.6.3",
     "vite": "4.5.5",
     "vue-tsc": "1.8.27"
