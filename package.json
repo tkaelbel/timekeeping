@@ -24,7 +24,7 @@
     "vue-router": "4.4.5"
   },
   "devDependencies": {
-    "@intlify/unplugin-vue-i18n": "^1.0.0",
+    "@intlify/unplugin-vue-i18n": "^6.0.0",
     "@quasar/app": "3.3.3",
     "@quasar/vite-plugin": "1.8.1",
     "@tauri-apps/cli": "1.6.3",
