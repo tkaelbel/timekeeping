@@ -37,7 +37,7 @@
     "eslint-plugin-vue": "9.31.0",
     "sass": "1.81.0",
     "typescript": "5.6.3",
-    "vite": "4.5.5",
+    "vite": "4.5.6",
     "vue-tsc": "1.8.27"
   },
   "pnpm": {
