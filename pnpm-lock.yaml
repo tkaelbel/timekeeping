@@ -75,8 +75,8 @@ devDependencies:
     specifier: 9.1.0
     version: 9.1.0(eslint@8.57.1)
   eslint-plugin-vue:
-    specifier: 9.31.0
-    version: 9.31.0(eslint@8.57.1)
+    specifier: 9.33.0
+    version: 9.33.0(eslint@8.57.1)
   sass:
     specifier: 1.81.0
     version: 1.81.0
@@ -4282,8 +4282,8 @@ packages:
       eslint: 8.57.1
     dev: true
 
-  /eslint-plugin-vue@9.31.0(eslint@8.57.1):
-    resolution: {integrity: sha512-aYMUCgivhz1o4tLkRHj5oq9YgYPM4/EJc0M7TAKRLCUA5OYxRLAhYEVD2nLtTwLyixEFI+/QXSvKU9ESZFgqjQ==}
+  /eslint-plugin-vue@9.33.0(eslint@8.57.1):
+    resolution: {integrity: sha512-174lJKuNsuDIlLpjeXc5E2Tss8P44uIimAfGD0b90k0NoirJqpG7stLuU9Vp/9ioTOrQdWVREc4mRd1BD+CvGw==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
