@@ -28,8 +28,8 @@ dependencies:
     specifier: 7.5.0
     version: 7.5.0
   pinia:
-    specifier: 2.2.6
-    version: 2.2.6(typescript@5.8.3)(vue@3.5.17)
+    specifier: 2.3.1
+    version: 2.3.1(typescript@5.8.3)(vue@3.5.17)
   quasar:
     specifier: 2.17.3
     version: 2.17.3
@@ -6132,15 +6132,12 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pinia@2.2.6(typescript@5.8.3)(vue@3.5.17):
-    resolution: {integrity: sha512-vIsR8JkDN5Ga2vAxqOE2cJj4VtsHnzpR1Fz30kClxlh0yCHfec6uoMeM3e/ddqmwFUejK3NlrcQa/shnpyT4hA==}
+  /pinia@2.3.1(typescript@5.8.3)(vue@3.5.17):
+    resolution: {integrity: sha512-khUlZSwt9xXCaTbbxFYBKDc/bWAGWJjOgvxETwkTN7KRm66EeT1ZdZj6i2ceh9sP2Pzqsbc704r2yngBrxBVug==}
     peerDependencies:
-      '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
-      vue: ^2.6.14 || ^3.5.11
+      vue: ^2.7.0 || ^3.5.11
     peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
       typescript:
         optional: true
     dependencies:
@@ -6148,6 +6145,8 @@ packages:
       typescript: 5.8.3
       vue: 3.5.17(typescript@5.8.3)
       vue-demi: 0.14.10(vue@3.5.17)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
     dev: false
 
   /pkg-dir@4.2.0:
