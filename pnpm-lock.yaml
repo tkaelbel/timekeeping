@@ -40,8 +40,8 @@ dependencies:
     specifier: 9.14.4
     version: 9.14.4(vue@3.5.17)
   vue-router:
-    specifier: 4.4.5
-    version: 4.4.5(vue@3.5.17)
+    specifier: 4.5.1
+    version: 4.5.1(vue@3.5.17)
 
 devDependencies:
   '@intlify/unplugin-vue-i18n':
@@ -49,7 +49,7 @@ devDependencies:
     version: 1.6.0(vue-i18n@9.14.4)
   '@quasar/app':
     specifier: 3.3.3
-    version: 3.3.3(eslint@8.57.1)(vue-router@4.4.5)(vue@3.5.17)
+    version: 3.3.3(eslint@8.57.1)(vue-router@4.5.1)(vue@3.5.17)
   '@quasar/vite-plugin':
     specifier: 1.9.0
     version: 1.9.0(@vitejs/plugin-vue@4.6.2)(quasar@2.18.1)(vite@4.5.14)(vue@3.5.17)
@@ -1961,7 +1961,7 @@ packages:
     resolution: {integrity: sha512-nWlGg+aMfQDhGYa5FtBhZwldeo2MtdjHdxmEQvhBXEnxgD5IhIYl0PHvex8SdwyN7qcSoMykMWdjyAX7ZxkpMw==}
     dev: true
 
-  /@quasar/app@3.3.3(eslint@8.57.1)(vue-router@4.4.5)(vue@3.5.17):
+  /@quasar/app@3.3.3(eslint@8.57.1)(vue-router@4.5.1)(vue@3.5.17):
     resolution: {integrity: sha512-REWlQpGxo0oNDEyeqP1eoKofSYjt7g0QFesz6ZTJH1OBC79VajlHLrYpiFljlgjzwlabqX2cCF0ncYDv9WPxsA==}
     engines: {node: '>= 12.22.1', npm: '>= 6.14.12', yarn: '>= 1.17.3'}
     hasBin: true
@@ -2034,7 +2034,7 @@ packages:
       url-loader: 4.1.1(file-loader@6.2.0)(webpack@5.88.2)
       vue: 3.5.17(typescript@5.8.3)
       vue-loader: 17.0.0(webpack@5.88.2)
-      vue-router: 4.4.5(vue@3.5.17)
+      vue-router: 4.5.1(vue@3.5.17)
       vue-style-loader: 4.1.3
       webpack: 5.88.2
       webpack-bundle-analyzer: 4.5.0
@@ -7969,8 +7969,8 @@ packages:
       webpack: 5.88.2
     dev: true
 
-  /vue-router@4.4.5(vue@3.5.17):
-    resolution: {integrity: sha512-4fKZygS8cH1yCyuabAXGUAsyi1b2/o/OKgu/RUb+znIYOxPRxdkytJEx+0wGcpBE1pX6vUgh5jwWOKRGvuA/7Q==}
+  /vue-router@4.5.1(vue@3.5.17):
+    resolution: {integrity: sha512-ogAF3P97NPm8fJsE4by9dwSYtDwXIY1nFY9T6DyQnGHd1E2Da94w9JIolpe42LJGIl0DwOHBi8TcRPlPGwbTtw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
