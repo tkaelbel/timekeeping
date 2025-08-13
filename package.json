@@ -33,7 +33,7 @@
     "@typescript-eslint/parser": "6.21.0",
     "@vitejs/plugin-vue": "4.6.2",
     "eslint": "8.57.1",
-    "eslint-config-prettier": "9.1.2",
+    "eslint-config-prettier": "10.1.8",
     "eslint-plugin-vue": "9.33.0",
     "sass": "1.90.0",
     "typescript": "5.9.2",
