@@ -78,14 +78,14 @@ devDependencies:
     specifier: 9.33.0
     version: 9.33.0(eslint@8.57.1)
   sass:
-    specifier: 1.92.0
-    version: 1.92.0
+    specifier: 1.99.0
+    version: 1.99.0
   typescript:
     specifier: 5.9.3
     version: 5.9.3
   vite:
     specifier: 4.5.14
-    version: 4.5.14(@types/node@18.19.130)(sass@1.92.0)
+    version: 4.5.14(@types/node@18.19.130)(sass@1.99.0)
   vue-tsc:
     specifier: 1.8.27
     version: 1.8.27(typescript@5.9.3)
@@ -2121,7 +2121,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.14)(vue@3.5.31)
       quasar: 2.18.2
-      vite: 4.5.14(@types/node@18.19.130)(sass@1.92.0)
+      vite: 4.5.14(@types/node@18.19.130)(sass@1.99.0)
       vue: 3.5.31(typescript@5.9.3)
     dev: true
 
@@ -2565,7 +2565,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.14(@types/node@18.19.130)(sass@1.92.0)
+      vite: 4.5.14(@types/node@18.19.130)(sass@1.99.0)
       vue: 3.5.31(typescript@5.9.3)
     dev: true
 
@@ -5078,8 +5078,8 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immutable@5.0.2:
-    resolution: {integrity: sha512-1NU7hWZDkV7hJ4PJ9dur9gTNQ4ePNPN4k9/0YhwjzykTi/+3Q5pF93YU5QoVj8BuOnhLgaY8gs0U2pj4kSYVcw==}
+  /immutable@5.1.5:
+    resolution: {integrity: sha512-t7xcm2siw+hlUM68I+UEOK+z84RzmN59as9DZ7P1l0994DKUWV7UXBMQZVxaoMSRQ+PBZbHCOoBt7a2wxOMt+A==}
     dev: true
 
   /import-fresh@3.3.0:
@@ -7179,13 +7179,13 @@ packages:
       chokidar: 3.6.0
     dev: true
 
-  /sass@1.92.0:
-    resolution: {integrity: sha512-KDNI0BxgIRDAfJgzNm5wuy+4yOCIZyrUbjSpiU/JItfih+KGXAVefKL53MTml054MmBA3DDKIBMSI/7XLxZJ3A==}
+  /sass@1.99.0:
+    resolution: {integrity: sha512-kgW13M54DUB7IsIRM5LvJkNlpH+WhMpooUcaWGFARkF1Tc82v9mIWkCbCYf+MBvpIUBSeSOTilpZjEPr2VYE6Q==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 4.0.0
-      immutable: 5.0.2
+      immutable: 5.1.5
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.4.1
@@ -7892,7 +7892,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.14(@types/node@18.19.130)(sass@1.92.0):
+  /vite@4.5.14(@types/node@18.19.130)(sass@1.99.0):
     resolution: {integrity: sha512-+v57oAaoYNnO3hIu5Z/tJRZjq5aHM2zDve9YZ8HngVHbhk66RStobhb1sqPMIPEleV6cNKYK4eGrAbE9Ulbl2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7924,7 +7924,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.49
       rollup: 3.29.4
-      sass: 1.92.0
+      sass: 1.99.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
