@@ -22,8 +22,8 @@ dependencies:
     specifier: 2.30.0
     version: 2.30.0
   date-holidays:
-    specifier: 3.29.0
-    version: 3.29.0
+    specifier: 3.30.2
+    version: 3.30.2
   flag-icons:
     specifier: 7.5.0
     version: 7.5.0
@@ -3919,8 +3919,8 @@ packages:
       moment-timezone: 0.5.48
     dev: false
 
-  /date-holidays@3.29.0:
-    resolution: {integrity: sha512-js8GcyMj9m82CNpgy4FddMqCrxSNj13mOr9GzCPg3Yj06B+QtmDuxYXk32FPTpR2hfH4khVPw58yWrF8ltOoGQ==}
+  /date-holidays@3.30.2:
+    resolution: {integrity: sha512-B7GLBc/7ucEw4KZeRKRMZin1NlTbQJtXn4tW4lHoRKdRzB68A/O6s/Jxlr/zStkZv43IeAQivYii/0dJytikGw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
