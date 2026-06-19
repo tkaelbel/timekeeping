@@ -78,14 +78,14 @@ devDependencies:
     specifier: 9.33.0
     version: 9.33.0(eslint@8.57.1)
   sass:
-    specifier: 1.99.0
-    version: 1.99.0
+    specifier: 1.101.0
+    version: 1.101.0
   typescript:
     specifier: 5.9.3
     version: 5.9.3
   vite:
     specifier: 4.5.14
-    version: 4.5.14(@types/node@18.19.130)(sass@1.99.0)
+    version: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
   vue-tsc:
     specifier: 1.8.27
     version: 1.8.27(typescript@5.9.3)
@@ -2130,7 +2130,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.14)(vue@3.5.38)
       quasar: 2.19.3
-      vite: 4.5.14(@types/node@18.19.130)(sass@1.99.0)
+      vite: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
       vue: 3.5.38(typescript@5.9.3)
     dev: true
 
@@ -2574,7 +2574,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.14(@types/node@18.19.130)(sass@1.99.0)
+      vite: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
       vue: 3.5.38(typescript@5.9.3)
     dev: true
 
@@ -3390,11 +3390,11 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /chokidar@4.0.0:
-    resolution: {integrity: sha512-mxIojEAQcuEvT/lyXq+jf/3cO/KoA6z4CeNDGGevTybECPOMFCnQy3OPahluUkbqgPNGw5Bi78UC7Po6Lhy+NA==}
-    engines: {node: '>= 14.16.0'}
+  /chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
     dependencies:
-      readdirp: 4.0.1
+      readdirp: 5.0.0
     dev: true
 
   /chrome-trace-event@1.0.3:
@@ -7008,9 +7008,9 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /readdirp@4.0.1:
-    resolution: {integrity: sha512-GkMg9uOTpIWWKbSsgwb5fA4EavTR+SG/PMPoAY8hkhHfEEY0/vqljY+XHqtDf2cr2IJtoNRDbrrEpZUiZCkYRw==}
-    engines: {node: '>= 14.16.0'}
+  /readdirp@5.0.0:
+    resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
+    engines: {node: '>= 20.19.0'}
     dev: true
 
   /regenerate-unicode-properties@10.1.1:
@@ -7202,24 +7202,24 @@ packages:
       webpack: 5.88.2
     dev: true
 
+  /sass@1.101.0:
+    resolution: {integrity: sha512-OL3GoQyoUdDt843DpVmDO6y2k1sc5IhUDSpu8XucEI+35neq5QivZ1iuegnpraEVTJXlQGK1gl27zKcTLEPbQw==}
+    engines: {node: '>=20.19.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 5.0.0
+      immutable: 5.1.5
+      source-map-js: 1.2.1
+    optionalDependencies:
+      '@parcel/watcher': 2.4.1
+    dev: true
+
   /sass@1.32.12:
     resolution: {integrity: sha512-zmXn03k3hN0KaiVTjohgkg98C3UowhL1/VSGdj4/VAAiMKGQOE80PFPxFP2Kyq0OUskPKcY5lImkhBKEHlypJA==}
     engines: {node: '>=8.9.0'}
     hasBin: true
     dependencies:
       chokidar: 3.6.0
-    dev: true
-
-  /sass@1.99.0:
-    resolution: {integrity: sha512-kgW13M54DUB7IsIRM5LvJkNlpH+WhMpooUcaWGFARkF1Tc82v9mIWkCbCYf+MBvpIUBSeSOTilpZjEPr2VYE6Q==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    dependencies:
-      chokidar: 4.0.0
-      immutable: 5.1.5
-      source-map-js: 1.2.1
-    optionalDependencies:
-      '@parcel/watcher': 2.4.1
     dev: true
 
   /sax@1.1.4:
@@ -7923,7 +7923,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.14(@types/node@18.19.130)(sass@1.99.0):
+  /vite@4.5.14(@types/node@18.19.130)(sass@1.101.0):
     resolution: {integrity: sha512-+v57oAaoYNnO3hIu5Z/tJRZjq5aHM2zDve9YZ8HngVHbhk66RStobhb1sqPMIPEleV6cNKYK4eGrAbE9Ulbl2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7955,7 +7955,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.49
       rollup: 3.29.4
-      sass: 1.99.0
+      sass: 1.101.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
