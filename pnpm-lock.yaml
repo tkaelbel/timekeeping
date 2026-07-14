@@ -31,8 +31,8 @@ dependencies:
     specifier: 2.3.1
     version: 2.3.1(typescript@5.9.3)(vue@3.5.39)
   quasar:
-    specifier: 2.20.1
-    version: 2.20.1
+    specifier: 2.21.3
+    version: 2.21.3
   vue:
     specifier: 3.5.39
     version: 3.5.39(typescript@5.9.3)
@@ -52,7 +52,7 @@ devDependencies:
     version: 3.3.3(eslint@8.57.1)(vue-router@4.6.4)(vue@3.5.39)
   '@quasar/vite-plugin':
     specifier: 1.12.0
-    version: 1.12.0(@vitejs/plugin-vue@4.6.2)(quasar@2.20.1)(vite@4.5.14)(vue@3.5.39)
+    version: 1.12.0(@vitejs/plugin-vue@4.6.2)(quasar@2.21.3)(vite@4.5.14)(vue@3.5.39)
   '@tauri-apps/cli':
     specifier: 1.6.3
     version: 1.6.3
@@ -2119,7 +2119,7 @@ packages:
       serialize-javascript: 5.0.1
     dev: true
 
-  /@quasar/vite-plugin@1.12.0(@vitejs/plugin-vue@4.6.2)(quasar@2.20.1)(vite@4.5.14)(vue@3.5.39):
+  /@quasar/vite-plugin@1.12.0(@vitejs/plugin-vue@4.6.2)(quasar@2.21.3)(vite@4.5.14)(vue@3.5.39):
     resolution: {integrity: sha512-EME6h0bhsHJgpRGeJA2BvC7R5rtZGg/FWCeWAH34c0wcV77n5iIRC3jsp9Ju6gW557sOiczJXxChmhYikTrWEw==}
     engines: {node: '>=20'}
     peerDependencies:
@@ -2129,7 +2129,7 @@ packages:
       vue: ^3.0.0
     dependencies:
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.14)(vue@3.5.39)
-      quasar: 2.20.1
+      quasar: 2.21.3
       vite: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
       vue: 3.5.39(typescript@5.9.3)
     dev: true
@@ -6944,8 +6944,8 @@ packages:
       side-channel: 1.0.4
     dev: true
 
-  /quasar@2.20.1:
-    resolution: {integrity: sha512-C+uFyt9/D2B2Dad/c9tGSlyWLMsrz+ROJLm3FKFdY9i+vc1Mk2q/+JyHBmQnuvQCEpUrdiXqcWQbpmZhuvo60A==}
+  /quasar@2.21.3:
+    resolution: {integrity: sha512-RGaLSbHrnpd5PmrWDJd3jxX0kYFvbiV6eisR3sO1R1RWPrhzC8kdHhTaud+m/Ju+K5Mjt+9KzRp8+CcRiZHWNw==}
     engines: {node: '>= 10.18.1', npm: '>= 6.13.4', yarn: '>= 1.21.1'}
 
   /queue-microtask@1.2.3:
