@@ -78,14 +78,14 @@ devDependencies:
     specifier: 9.33.0
     version: 9.33.0(eslint@8.57.1)
   sass:
-    specifier: 1.101.0
-    version: 1.101.0
+    specifier: 1.104.0
+    version: 1.104.0
   typescript:
     specifier: 5.9.3
     version: 5.9.3
   vite:
     specifier: 4.5.14
-    version: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
+    version: 4.5.14(@types/node@18.19.130)(sass@1.104.0)
   vue-tsc:
     specifier: 1.8.27
     version: 1.8.27(typescript@5.9.3)
@@ -2109,7 +2109,7 @@ packages:
     dependencies:
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.14)(vue@3.5.42)
       quasar: 2.22.0
-      vite: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
+      vite: 4.5.14(@types/node@18.19.130)(sass@1.104.0)
       vue: 3.5.42(typescript@5.9.3)
     dev: true
 
@@ -2553,7 +2553,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.14(@types/node@18.19.130)(sass@1.101.0)
+      vite: 4.5.14(@types/node@18.19.130)(sass@1.104.0)
       vue: 3.5.42(typescript@5.9.3)
     dev: true
 
@@ -7172,8 +7172,8 @@ packages:
       webpack: 5.88.2
     dev: true
 
-  /sass@1.101.0:
-    resolution: {integrity: sha512-OL3GoQyoUdDt843DpVmDO6y2k1sc5IhUDSpu8XucEI+35neq5QivZ1iuegnpraEVTJXlQGK1gl27zKcTLEPbQw==}
+  /sass@1.104.0:
+    resolution: {integrity: sha512-btHMApW2bgolvClhRW8AlQJzgI9lUB3pPSofBQQT+E46GWvf9o0TVQ13SYv5riWZVFyPN+JNz3TKW9XhBlc10w==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     dependencies:
@@ -7893,7 +7893,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.14(@types/node@18.19.130)(sass@1.101.0):
+  /vite@4.5.14(@types/node@18.19.130)(sass@1.104.0):
     resolution: {integrity: sha512-+v57oAaoYNnO3hIu5Z/tJRZjq5aHM2zDve9YZ8HngVHbhk66RStobhb1sqPMIPEleV6cNKYK4eGrAbE9Ulbl2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7925,7 +7925,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.49
       rollup: 3.29.4
-      sass: 1.101.0
+      sass: 1.104.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
