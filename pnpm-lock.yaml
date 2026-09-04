@@ -22,8 +22,8 @@ dependencies:
     specifier: 2.30.0
     version: 2.30.0
   date-holidays:
-    specifier: 3.33.0
-    version: 3.33.0
+    specifier: 3.36.0
+    version: 3.36.0
   flag-icons:
     specifier: 7.5.0
     version: 7.5.0
@@ -3896,13 +3896,13 @@ packages:
       moment-timezone: 0.5.48
     dev: false
 
-  /date-holidays@3.33.0:
-    resolution: {integrity: sha512-1pqbC8hOYlWh6K1XxBvR7uZa+EqUauudJah2SIhPNet7wh8DJGvVY1AziUUpq0+pqhxLW04Jobj6sYer0/6oLw==}
+  /date-holidays@3.36.0:
+    resolution: {integrity: sha512-uKcRwVgaIC5jEbm2Z4LQzXmTDulWcO+6kQie3GLoAiS1sYfpWmq1qrlrDHmo2BXGyIxT5o7IO0Z/jVQUZgJsCg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
       date-holidays-parser: 3.4.7
-      js-yaml: 5.2.1
+      js-yaml: 5.4.1
       lodash: 4.18.1
       prepin: 1.0.3
     dev: false
@@ -5318,8 +5318,8 @@ packages:
       argparse: 2.0.1
     dev: true
 
-  /js-yaml@5.2.1:
-    resolution: {integrity: sha512-zfLtNfQqxVqq3uaTqSkh4x4hZw3KHobGUA0fJUj4wawW8bsQLTVqpHdXSIzidh7o+4lEW36tANuAGdaFx6Zgnw==}
+  /js-yaml@5.4.1:
+    resolution: {integrity: sha512-28R/k+NAjeuf7+CKlTxWZVExJGwVVLwY06DgEnOMz2gEpfNkDcD7QvyiVPT0xy0XXhU8vHsd4Ot42OOPdJG7dQ==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
